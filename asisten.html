@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asisten AI Kings Rental</title>
+    <style>
+        /* =========================================
+           BAGIAN 1: CSS (MENGATUR TAMPILAN / DESAIN)
+           ========================================= */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 450px;
+            height: 100%;
+            max-height: 800px;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        @media screen and (min-width: 500px) {
+            .chat-container {
+                height: 90vh;
+                border-radius: 12px;
+                overflow: hidden;
+            }
+        }
+
+        .chat-header {
+            background-color: #0056b3;
+            color: white;
+            padding: 16px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .chat-box {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background-color: #f8f9fa;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 15px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        /* Desain balon chat AI */
+        .message.ai {
+            background-color: #e2e3e5;
+            color: #212529;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        /* Desain balon chat User (Anda) */
+        .message.user {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+        
+        /* Animasi titik-titik saat AI berpikir */
+        .loading-dots::after {
+            content: '.';
+            animation: dots 1.5s steps(5, end) infinite;
+        }
+        @keyframes dots {
+            0%, 20% { color: rgba(0,0,0,0); text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); }
+            40% { color: #383d41; text-shadow: .25em 0 0 rgba(0,0,0,0), .5em 0 0 rgba(0,0,0,0); }
+            60% { text-shadow: .25em 0 0 #383d41, .5em 0 0 rgba(0,0,0,0); }
+            80%, 100% { text-shadow: .25em 0 0 #383d41, .5em 0 0 #383d41; }
+        }
+
+        .input-area {
+            display: flex;
+            padding: 15px;
+            background-color: #ffffff;
+            border-top: 1px solid #dee2e6;
+            gap: 10px;
+        }
+
+        .input-area input {
+            flex-grow: 1;
+            padding: 12px 15px;
+            border: 1px solid #ced4da;
+            border-radius: 25px;
+            outline: none;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+        }
+
+        .input-area input:focus {
+            border-color: #007bff;
+        }
+
+        .input-area button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .input-area button:hover {
+            background-color: #0056b3;
+        }
+        
+        .input-area button:disabled {
+            background-color: #a0c4ff;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =========================================
+         BAGIAN 2: HTML (KERANGKA CHAT)
+         ========================================= -->
+    <div class="chat-container">
+        <div class="chat-header">
+            ✨ AI Customer Service
+        </div>
+
+        <div class="chat-box" id="chat-box">
+            <div class="message ai">
+                Halo! Saya asisten pintar Kings Rental Bumiayu. Saya bisa merekomendasikan mobil sesuai rute, budget, atau kebutuhan Anda. Ada yang bisa dibantu?
+            </div>
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="Ketik pesan Anda di sini..." autocomplete="off">
+            <button id="send-btn">Kirim</button>
+        </div>
+    </div>
+
+    <!-- =========================================
+         BAGIAN 3: JAVASCRIPT (OTAK AI / GEMINI)
+         ========================================= -->
+    <script>
+        // 1. Kunci Rahasia API Anda 
+        const API_KEY = 'AIzaSyDpPElFjBJiDZ-yN3i5R7bw8WZRiR-_8co'; 
+        
+        // 2. Instruksi Sifat AI
+        const sistemPrompt = `Kamu adalah asisten pelanggan (customer service) yang ramah dan profesional untuk sebuah bisnis penyewaan mobil bernama "Kings Rental Bumiayu". 
+        Tugasmu adalah merekomendasikan mobil, menjawab pertanyaan harga, dan membantu pelanggan.
+        Gunakan bahasa Indonesia yang sopan, santai, dan tidak kaku. 
+        Jika ditanya harga, gunakan patokan ini: Avanza/Xenia Rp 300.000, Innova Rp 500.000, Brio/Agya Rp 250.000.
+        Jika ditanya mobil untuk nanjak/pegunungan (seperti Baturraden), sarankan mobil berpenggerak roda belakang seperti Avanza/Innova, atau SUV seperti Rush. Jangan berikan kode pemrograman.`;
+
+        // Mengambil elemen HTML untuk dikendalikan oleh Javascript
+        const chatBox = document.getElementById('chat-box');
+        const userInput = document.getElementById('user-input');
+        const sendBtn = document.getElementById('send-btn');
+
+        // Fungsi untuk menempelkan balon pesan ke layar chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender);
+            
+            if(sender === 'ai') {
+                 let formattedText = text.replace(/\n/g, '<br>');
+                 formattedText = formattedText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                 messageDiv.innerHTML = formattedText;
+            } else {
+                messageDiv.innerText = text;
+            }
+            
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight; 
+            return messageDiv; 
+        }
+
+        // Fungsi utama untuk mengobrol dengan server Google Gemini
+        async function fetchGeminiResponse(userText, loadingElement) {
+            // MENGGUNAKAN NAMA MODEL PALING BARU DAN STABIL (gemini-2.5-flash)
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+
+            const requestBody = {
+                "system_instruction": { "parts": [{"text": sistemPrompt}] },
+                "contents": [ { "role": "user", "parts": [{"text": userText}] } ]
+            };
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestBody)
+                });
+
+                // Menangkap pesan error asli dari Google jika gagal
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error("Detail Error API:", errorData);
+                    throw new Error(errorData.error?.message || `HTTP Error ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data && data.candidates && data.candidates.length > 0) {
+                    const aiReply = data.candidates[0].content.parts[0].text;
+                    loadingElement.classList.remove('loading-dots');
+                    
+                    let formattedReply = aiReply.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    loadingElement.innerHTML = formattedReply;
+                }
+
+            } catch (error) {
+                // Menampilkan error aslinya ke layar chat agar kita tahu apa yang salah
+                loadingElement.classList.remove('loading-dots');
+                loadingElement.innerHTML = `<strong>Error dari Google:</strong><br><span style="color:red; font-size: 0.85rem;">${error.message}</span>`;
+            }
+        }
+
+        // Fungsi yang berjalan saat tombol 'Kirim' diklik
+        async function handleSend() {
+            const text = userInput.value.trim();
+            if (text === '') return;
+
+            addMessage(text, 'user');
+            userInput.value = ''; 
+            
+            sendBtn.disabled = true;
+            userInput.disabled = true;
+
+            const loadingMsg = addMessage("Sedang mengetik", 'ai');
+            loadingMsg.classList.add('loading-dots');
+
+            await fetchGeminiResponse(text, loadingMsg);
+            
+            sendBtn.disabled = false;
+            userInput.disabled = false;
+            userInput.focus();
+        }
+
+        sendBtn.addEventListener('click', handleSend);
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') handleSend();
+        });
+    </script>
+</body>
+</html>
