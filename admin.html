@@ -52,7 +52,9 @@
         }
 
         body {
-            background-color: var(--surface-secondary);
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.82) 0%, rgba(15, 23, 42, 0.88) 100%),
+                        url('assets/images/cta-bg-borobudur.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: var(--text-main);
             min-height: 100vh;
         }
@@ -64,18 +66,20 @@
             align-items: center;
             height: 100vh;
             padding: 20px;
-            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            background: transparent;
         }
 
         .login-card {
-            background: var(--surface);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             padding: 40px;
             border-radius: var(--radius-lg);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
             width: 100%;
             max-width: 400px;
             text-align: center;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .login-card h2 {
@@ -168,12 +172,15 @@
 
         .sidebar {
             width: var(--sidebar-width);
-            background: var(--surface);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             height: 100vh;
             position: fixed;
             left: 0;
             top: 0;
-            border-right: 1px solid var(--border);
+            border-right: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 4px 0 25px rgba(0, 0, 0, 0.15);
             padding: 30px;
             display: flex;
             flex-direction: column;
@@ -235,17 +242,20 @@
         .page-title h1 {
             font-family: 'Outfit', sans-serif;
             font-size: 1.8rem;
-            color: var(--text-main);
+            color: #ffffff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
 
         .page-title p {
-            color: var(--text-muted);
+            color: #e2e8f0;
             margin-top: 4px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
         }
 
         .btn-logout {
-            background: white;
-            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             color: var(--text-main);
             padding: 10px 20px;
             border-radius: var(--radius-sm);
@@ -255,12 +265,13 @@
             align-items: center;
             gap: 8px;
             transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
 
         .btn-logout:hover {
             border-color: var(--danger);
             color: var(--danger);
-            background: rgba(239, 68, 68, 0.05);
+            background: #ffffff;
         }
 
         /* --- CARDS & LISTS --- */
@@ -274,6 +285,8 @@
         .section-header h3 {
             font-family: 'Outfit', sans-serif;
             font-size: 1.4rem;
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
         }
 
         .content-grid {
@@ -284,11 +297,13 @@
         }
 
         .form-card {
-            background: var(--surface);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             padding: 24px;
             border-radius: var(--radius-md);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.25);
             position: sticky;
             top: 40px;
         }
@@ -299,19 +314,22 @@
         }
 
         .admin-car-card {
-            background: var(--surface);
+            background: rgba(255, 255, 255, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
             padding: 20px;
             border-radius: var(--radius-md);
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             display: flex;
             align-items: center;
             gap: 20px;
             transition: 0.2s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
         }
 
         .admin-car-card:hover {
             border-color: var(--accent);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
             transform: translateY(-2px);
         }
 
