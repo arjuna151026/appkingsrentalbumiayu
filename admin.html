@@ -818,8 +818,22 @@
         ];
 
         // --- CEK LOGIN & LOAD DATA ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const isLogged = localStorage.getItem('kings_isAdmin');
+        document.addEventListener('DOMContentLoaded', async () => {
+            let isLogged = localStorage.getItem('kings_isAdmin');
+
+            // Cek juga sesi PHP jika login melalui login.html
+            if (isLogged !== 'true') {
+                try {
+                    const res = await fetch('api_session.php');
+                    const sess = await res.json();
+                    if (sess.logged_in && sess.role === 'admin') {
+                        localStorage.setItem('kings_isAdmin', 'true');
+                        isLogged = 'true';
+                    }
+                } catch (e) {
+                    console.warn("Gagal mengecek session backend:", e);
+                }
+            }
 
             if (isLogged === 'true') {
                 showDashboard();
@@ -856,7 +870,7 @@
         // --- FUNGSI LOGOUT ---
         function handleLogout() {
             localStorage.removeItem('kings_isAdmin');
-            location.reload();
+            window.location.href = 'api_logout.php';
         }
 
         // --- TAMPILKAN DASHBOARD ---
