@@ -650,8 +650,16 @@ class TypeWriter {
         this.txt = '';
         this.wordIndex = 0;
         this.wait = parseInt(wait, 10);
-        this.type();
         this.isDeleting = false;
+
+        let span = this.txtElement.querySelector('.txt');
+        if (!span) {
+            span = document.createElement('span');
+            span.className = 'txt';
+            this.txtElement.appendChild(span);
+        }
+        this.txtSpan = span;
+        this.type();
     }
 
     type() {
@@ -664,7 +672,7 @@ class TypeWriter {
             this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
 
-        this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+        this.txtSpan.textContent = this.txt || '\u00A0';
 
         let typeSpeed = 100;
 
