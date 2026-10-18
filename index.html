@@ -1,0 +1,4249 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King's Rental | Premium Car & Motorbike Rental Bumiayu</title>
+    <link rel="icon" href="assets/logos/logo_baru.png" type="image/png">
+    <meta name="description"
+        content="King's Rental: Layanan sewa mobil premium di Bumiayu dan sekitarnya. Armada terawat, bersih, dan nyaman. Tersedia layanan lepas kunci dan dengan sopir.">
+    <meta name="keywords"
+        content="rental mobil bumiayu, sewa mobil bumiayu, sewa mobil brebes selatan, rental mobil lepas kunci bumiayu, sewa mobil pengantin bumiayu, rental innova bumiayu, rental avanza bumiayu">
+    <meta name="author" content="King's Rental Bumiayu">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="King's Rental | Sewa Mobil Premium Bumiayu">
+    <meta property="og:description"
+        content="Butuh kendaraan di Bumiayu? King's Rental sediakan armada terawat dengan layanan prioritas. Klik untuk lihat katalog mobil kami!">
+    <meta property="og:image" content="http://kingsrentalbumiayu.kesug.com/assets/logos/logo_baru.png">
+    <meta property="og:url" content="http://kingsrentalbumiayu.kesug.com/">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* -----------------------------------------------------------
+           1. CONFIGURATION & VARIABLES (THEME ENGINE)
+        ----------------------------------------------------------- */
+        :root {
+            /* Colors: Navy & Electric Blue Palette */
+            --primary-dark: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #3b82f6;
+            /* Electric Blue */
+            --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            --accent-glow: rgba(59, 130, 246, 0.5);
+
+            /* Typography */
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --text-on-accent: #ffffff;
+
+            /* Glassmorphism Variables */
+            --glass-bg: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+            --glass-blur: blur(12px);
+
+            /* Dimensions */
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 32px;
+            --radius-pill: 100px;
+
+            /* Rating Colors */
+            --rating-gold: #f59e0b;
+            --rating-bg: rgba(245, 158, 11, 0.1);
+
+            /* Animation */
+            --transition-fast: 0.2s ease;
+            --transition-smooth: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+            /* New Variables for Mobile Nav */
+            --surface: #ffffff;
+            --border: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(15, 23, 42, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            --accent-glow: rgba(59, 130, 246, 0.3);
+            --surface: #0f172a;
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        /* -----------------------------------------------------------
+           2. GLOBAL RESET & BASE STYLES
+        ----------------------------------------------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        [data-theme="dark"] body {
+            background-color: #020617;
+        }
+
+        /* Background Ambient Blobs (Liquid Effect) */
+        .ambient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 10s infinite ease-in-out;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--accent);
+            animation-delay: 0s;
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: #8b5cf6;
+            animation-delay: 2s;
+        }
+
+        .blob-3 {
+            top: 40%;
+            left: 40%;
+            width: 300px;
+            height: 300px;
+            background: #06b6d4;
+            animation-delay: 4s;
+            opacity: 0.2;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition-fast);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Utility: Glass Panel */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+
+        /* ===== FITUR BARU: RIPPLE EFFECT PADA TOMBOL ===== */
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn:active::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* -----------------------------------------------------------
+           3. NAVBAR (FLOATING PILL)
+        ----------------------------------------------------------- */
+        .navbar {
+            position: fixed;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1200px;
+            z-index: 1000;
+            padding: 12px 32px;
+            border-radius: var(--radius-pill);
+            transition: var(--transition-smooth);
+        }
+
+        .navbar.scrolled {
+            top: 10px;
+            width: 95%;
+            max-width: 1200px;
+            background: rgba(var(--primary-dark), 0.9);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 8px;
+            transition: transform 0.2s;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(15deg);
+            color: var(--accent);
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        /* -----------------------------------------------------------
+           4. HERO SECTION - TRAVELOKA STYLE (MOUNTAIN BG)
+        ----------------------------------------------------------- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            /* Foto gunung - statis, tidak bergerak */
+            background-image: url('assets/images/hero-background.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: scroll;
+        }
+
+        /* Dark overlay - lebih pekat agar teks terbaca jelas */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(105deg,
+                    rgba(5, 10, 25, 0.45) 0%,
+                    rgba(10, 20, 50, 0.38) 55%,
+                    rgba(15, 30, 65, 0.30) 100%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Scroll indicator dot at bottom */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+            z-index: 2;
+            animation: heroPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes heroPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.0);
+            }
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 180px 32px 120px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* Text goes white on the mountain BG */
+        .hero-text h1 {
+            font-size: 3.2rem;
+            margin-bottom: 24px;
+            color: white;
+            -webkit-text-fill-color: white;
+            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+            line-height: 1.2;
+        }
+
+        .hero-text h1 .txt-type {
+            color: #60a5fa;
+            border-right-color: white;
+        }
+
+        .hero-text p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 32px;
+            max-width: 540px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Make outline button visible on dark bg */
+        .hero .btn-outline {
+            border-color: rgba(255, 255, 255, 0.5);
+            color: white;
+        }
+
+        .hero .btn-outline:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        /* Car image floats on the right */
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image img {
+            border-radius: var(--radius-lg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            animation: floatCar 6s ease-in-out infinite;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        @keyframes floatCar {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-18px);
+            }
+        }
+
+
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            box-shadow: 0 10px 25px -5px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px -5px var(--accent-glow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--glass-border);
+            color: var(--text-main);
+            backdrop-filter: blur(4px);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+
+        /* -----------------------------------------------------------
+           5. SEARCH BAR (GLASS DASHBOARD) - REDESIGNED
+        ----------------------------------------------------------- */
+        .search-container {
+            position: relative;
+            z-index: 10;
+            margin-top: -80px;
+            padding: 0 24px;
+        }
+
+        .search-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .tab-btn {
+            background: rgba(0, 0, 0, 0.4);
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: var(--radius-pill);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(4px);
+        }
+
+        .tab-btn.active {
+            background: #0ea5e9;
+            color: white;
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .search-box {
+            background: white;
+            border-radius: var(--radius-pill);
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-group {
+            flex: 1;
+            padding: 0 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .search-group:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background: #e2e8f0;
+        }
+
+        .search-group label {
+            display: block;
+            font-size: 0.75rem;
+            color: #64748b;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .search-group input {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 0.95rem;
+            color: #1e293b;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            background: transparent;
+        }
+
+        .search-group input::placeholder {
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        .search-btn-primary {
+            background: #f97316;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            cursor: pointer;
+            transition: 0.3s;
+            flex-shrink: 0;
+            margin-left: 10px;
+        }
+
+        .search-btn-primary:hover {
+            background: #ea580c;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 900px) {
+            .search-container {
+                margin-top: -40px;
+            }
+
+            .search-box {
+                flex-direction: column;
+                border-radius: 20px;
+                padding: 20px;
+                gap: 16px;
+            }
+
+            .search-group {
+                width: 100%;
+                padding: 0;
+                border-bottom: 1px solid #e2e8f0;
+                padding-bottom: 12px;
+            }
+
+            .search-group:not(:last-child)::after {
+                display: none;
+            }
+
+            .search-group:last-of-type {
+                border-bottom: none;
+            }
+
+            .search-btn-primary {
+                width: 100%;
+                border-radius: 12px;
+                margin-left: 0;
+                height: 54px;
+            }
+        }
+
+        /* -----------------------------------------------------------
+           6. CATALOG SECTION
+        ----------------------------------------------------------- */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            backdrop-filter: blur(4px);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        /* ===== FITUR BARU: 3D TILT EFFECT PADA CAR CARD ===== */
+        .car-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .car-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px -5px rgba(0, 0, 0, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .car-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .car-card:hover::before {
+            opacity: 1;
+        }
+
+        .car-image {
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .car-card:hover .car-image img {
+            transform: scale(1.1);
+        }
+
+        .badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 2;
+            background: rgba(15, 23, 42, 0.85);
+            color: white;
+            padding: 6px 14px;
+            border-radius: var(--radius-pill);
+            font-size: 0.75rem;
+            font-weight: 700;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .car-rating {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.15);
+            border-radius: 6px;
+            color: var(--rating-gold);
+            font-weight: 600;
+            font-size: 0.78rem;
+            margin-bottom: 10px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .car-rating i {
+            font-size: 0.9rem;
+        }
+
+        .car-rating .review-count {
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 0.72rem;
+            margin-left: 2px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .stats-container {
+            border-radius: var(--radius-md);
+            padding: 25px 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+            margin-top: 10px;
+            /* Nilai positif agar tidak mepet dengan search form */
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 10;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            max-width: 950px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stat-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 5px;
+            border-radius: 12px;
+            transition: var(--transition-smooth);
+        }
+
+        .stat-info {
+            text-align: left;
+        }
+
+        .stat-box h2 {
+            font-size: 1.4rem;
+            margin: 0;
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .stat-box p {
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.65rem;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
+        }
+
+        .stat-icon-mini {
+            width: 36px;
+            height: 36px;
+            background: rgba(59, 130, 246, 0.08);
+            color: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 20px;
+                margin-top: 5px;
+                /* Tetap lega di mobile */
+            }
+
+            .stat-box {
+                justify-content: flex-start;
+                padding-left: 10px;
+            }
+        }
+
+        .car-content {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .car-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 20px;
+        }
+
+        .car-title h3 {
+            font-size: 1.35rem;
+            margin-bottom: 6px;
+        }
+
+
+        .car-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: rgba(59, 130, 246, 0.05);
+            padding: 8px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .car-card:hover .spec-item {
+            background: rgba(59, 130, 246, 0.1);
+            transform: translateX(3px);
+        }
+
+        .spec-item i {
+            color: var(--accent);
+        }
+
+        .car-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price span {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .price small {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .car-card.unavailable {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .car-card.unavailable .car-image::after {
+            content: "TIDAK TERSEDIA";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-15deg);
+            background: rgba(220, 38, 38, 0.2);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(220, 38, 38, 0.5);
+            color: #ef4444;
+            padding: 10px 20px;
+            font-weight: 800;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            white-space: nowrap;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* -----------------------------------------------------------
+           7. PROCESS & TESTIMONIALS
+        ----------------------------------------------------------- */
+        .section-padding {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            backdrop-filter: blur(4px);
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+            box-shadow: 0 44px 15px var(--accent-glow);
+        }
+
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        /* ===== FITUR BARU: 3D TILT EFFECT PADA CAR CARD ===== */
+        .car-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .car-card:hover {
+            transform: translateY(-15px) rotateX(5deg);
+            box-shadow: 0 25px 50px -5px rgba(0, 0, 0, 0.2);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .car-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .car-card:hover::before {
+            opacity: 1;
+        }
+
+        .car-image {
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.02);
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .car-card:hover .car-image img {
+            transform: scale(1.1);
+        }
+
+        .badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            z-index: 2;
+            background: rgba(15, 23, 42, 0.85);
+            color: white;
+            padding: 6px 14px;
+            border-radius: var(--radius-pill);
+            font-size: 0.75rem;
+            font-weight: 700;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+
+
+        /* -----------------------------------------------------------
+           7. PROCESS & TESTIMONIALS
+        ----------------------------------------------------------- */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .step-card {
+            text-align: center;
+            padding: 32px 24px;
+            border-radius: var(--radius-lg);
+            transition: 0.3s;
+        }
+
+        .step-card:hover {
+            background: var(--glass-bg);
+            box-shadow: var(--glass-shadow);
+            transform: translateY(-10px);
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.1));
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: 0.3s;
+        }
+
+        .step-card:hover .step-icon {
+            transform: scale(1.1) rotate(10deg);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(37, 99, 235, 0.2));
+        }
+
+        .testimonials {
+            background: linear-gradient(to bottom, transparent, rgba(59, 130, 246, 0.05));
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .review-card {
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            transition: 0.3s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .review-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            line-height: 1.8;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--accent);
+        }
+
+        /* -----------------------------------------------------------
+           8. FOOTER WITH WAVE ANIMATION
+        ----------------------------------------------------------- */
+        footer {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid var(--glass-border);
+            padding: 80px 0 30px;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== FITUR BARU: ANIMATED WAVE ===== */
+        .footer-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+        }
+
+        .footer-wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 60px;
+        }
+
+        .footer-wave .shape-fill {
+            fill: rgba(59, 130, 246, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            margin-top: 20px;
+            color: var(--text-muted);
+            max-width: 320px;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 24px;
+            font-size: 1.1rem;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            color: var(--text-muted);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            background: #25D366;
+            color: white;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            transition: transform 0.3s;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7);
+            }
+        }
+
+        /* -----------------------------------------------------------
+        9. RESPONSIVE DESIGN (MOBILE FIX)
+        ----------------------------------------------------------- */
+
+        @media (max-width: 1024px) {
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+
+            .cars-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .hero {
+                background-attachment: scroll;
+                /* disable parallax on mobile */
+                min-height: 100svh;
+            }
+
+            .hero-inner {
+                padding: 110px 20px 80px;
+            }
+
+            .hero-grid {
+                display: flex;
+                flex-direction: column-reverse;
+                gap: 30px;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin: 0 auto 24px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.2rem;
+                min-height: 130px;
+            }
+
+            .txt-type {
+                white-space: normal;
+            }
+
+            .btn-group {
+                justify-content: center;
+            }
+
+            .search-container {
+                margin-top: 0;
+                padding: 0 20px;
+                margin-bottom: 60px;
+            }
+
+            .search-box {
+                flex-direction: column;
+                padding: 20px;
+                gap: 15px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .search-group:not(:last-child)::after {
+                display: none;
+            }
+
+            .search-group {
+                width: 100%;
+                padding: 0;
+                border-bottom: 1px solid #f1f5f9;
+                padding-bottom: 10px;
+            }
+
+            .search-group:last-of-type {
+                border-bottom: none;
+            }
+
+            .search-btn-primary {
+                width: 100%;
+                border-radius: 12px;
+                margin-left: 0;
+                height: 48px;
+                margin-top: 10px;
+            }
+
+            .navbar {
+                top: 0;
+                width: 100%;
+                border-radius: 0;
+                padding: 15px 20px;
+                max-width: none;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid var(--glass-border);
+            }
+
+            [data-theme="dark"] .navbar {
+                background: rgba(15, 23, 42, 0.95);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background: var(--surface);
+                flex-direction: column;
+                align-items: center;
+                padding: 60px 30px;
+                gap: 40px;
+                transform: translateY(-150%);
+                transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                overflow-y: auto;
+            }
+
+            .nav-links a {
+                font-size: 2rem;
+                font-weight: 700;
+                font-family: 'Outfit', sans-serif;
+                letter-spacing: 1px;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .cars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+
+            .blob {
+                opacity: 0.1;
+            }
+
+            #tulis-review .glass-panel {
+                padding: 24px !important;
+                border-radius: 20px !important;
+            }
+
+            #tulis-review .section-title h3 {
+                font-size: 1.5rem !important;
+            }
+
+            #tulis-review form {
+                gap: 16px !important;
+            }
+
+            #tulis-review form>div:first-child {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: 0.8s all ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* -----------------------------------------------------------
+           10. MODAL POPUP KONFIRMASI (GLASSMORPHISM)
+        ----------------------------------------------------------- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-glass {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 420px;
+            padding: 30px;
+            transform: translateY(30px) scale(0.95);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+        }
+
+        .modal-overlay.active .modal-glass {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .modal-close:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .modal-header h3 {
+            font-size: 1.4rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .modal-body {
+            margin-bottom: 24px;
+        }
+
+        .modal-detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed rgba(100, 116, 139, 0.3);
+            font-size: 0.95rem;
+        }
+
+        .modal-detail-row span {
+            color: var(--text-muted);
+        }
+
+        .modal-detail-row strong {
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .modal-total {
+            text-align: center;
+            margin-top: 20px;
+            padding: 16px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: var(--radius-md);
+        }
+
+        .modal-total .label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .modal-total .amount {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            transition: 0.3s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-cancel {
+            background: transparent;
+            border: 2px solid var(--glass-border) !important;
+            color: var(--text-main);
+        }
+
+        .btn-cancel:hover {
+            background: rgba(100, 116, 139, 0.1);
+        }
+
+        .btn-wa {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 10px 20px -5px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn-wa:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px rgba(37, 211, 102, 0.5);
+        }
+
+        /* -----------------------------------------------------------
+           11. EFEK TYPEWRITER (KURSOR KEDIP)
+        ----------------------------------------------------------- */
+        .txt-type {
+            color: var(--accent);
+            border-right: 0.1em solid var(--text-muted);
+            padding-right: 5px;
+            animation: blink-cursor 0.7s step-end infinite;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        @keyframes blink-cursor {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: white;
+            }
+        }
+
+        /* -----------------------------------------------------------
+           12. EFEK LOADING PENCARIAN
+        ----------------------------------------------------------- */
+        .searching-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: var(--radius-lg);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        [data-theme="dark"] .searching-overlay {
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .searching-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(59, 130, 246, 0.3);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 10px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* --- 13. PRELOADER (LAYAR LOADING) --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--surface);
+            z-index: 999999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease-out, visibility 0.6s ease-out;
+        }
+
+        .loader-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .loader-logo {
+            height: 70px;
+            width: auto;
+            animation: pulseLogo 1.2s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulseLogo {
+            0% {
+                transform: scale(0.9);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        .preloader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        /* --- 16. TOAST NOTIFICATION --- */
+        #toast-container {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 999999;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .toast {
+            min-width: 280px;
+            padding: 16px 24px;
+            border-radius: 12px;
+            background: var(--surface);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-weight: 600;
+            color: var(--text-main);
+            border-left: 5px solid;
+            border-right: 1px solid var(--border);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            border-left-color: #10b981;
+        }
+
+        .toast.success i {
+            color: #10b981;
+            font-size: 1.4rem;
+        }
+
+        /* --- 17. SKELETON LOADING --- */
+        .skeleton {
+            background: linear-gradient(90deg, rgba(100, 116, 139, 0.1) 25%, rgba(100, 116, 139, 0.2) 50%, rgba(100, 116, 139, 0.1) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+
+        .skel-card {
+            height: 400px;
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            border: 1px solid var(--glass-border);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* -----------------------------------------------------------
+           18. CTA / NEWSLETTER BANNER (ABSOLUTE OVERLAY)
+        ----------------------------------------------------------- */
+        .cta-banner-full {
+            width: 100%;
+            margin-top: 60px;
+            margin-bottom: -5px;
+            /* Rapat dengan footer */
+            position: relative;
+            display: block;
+            overflow: hidden;
+        }
+
+        .cta-banner-full img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .cta-overlay-form {
+            position: absolute;
+            top: 46.5%;
+            /* Dinaikkan lagi sesuai permintaan agar pas di tengah kolom */
+            left: 60.2%;
+            transform: translate(-50%, -50%);
+            width: 46.5%;
+            display: flex;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .cta-overlay-form input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            outline: none;
+            padding: 1vw 1vw 1vw 12%;
+            /* Digeser ke kanan (ditambah padding-nya) agar tidak mepet icon */
+            font-size: 1.1vw;
+            color: #444;
+            caret-color: white;
+            /* Warna kursor pengetikan diubah menjadi putih */
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        .cta-overlay-form button {
+            width: 30%;
+            height: 4.5vw;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1vw;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        .cta-overlay-form button:hover {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .cta-overlay-form input {
+                font-size: 2.2vw;
+            }
+        }
+
+        /* -----------------------------------------------------------
+           19. WIDGET ASISTEN AI (GEMINI) DENGAN ROBOT EILIK
+        ----------------------------------------------------------- */
+
+        /* Tombol bulat untuk AI (di atas WA) */
+        #chat-widget-button {
+            position: fixed;
+            bottom: 110px;
+            right: 30px;
+            width: 68px;
+            /* Diperbesar sedikit untuk ikon Eilik */
+            height: 68px;
+            background-color: var(--surface);
+            /* Dinamis mengikuti Light/Dark Mode */
+            color: var(--text-main);
+            border: 2px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.35);
+            z-index: 100;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        #chat-widget-button:hover {
+            transform: scale(1.15) translateY(-5px);
+            box-shadow: 0 15px 35px rgba(59, 130, 246, 0.5);
+            border-color: var(--accent);
+        }
+
+        /* Animasi Eilik Bouncing */
+        .bot-icon {
+            width: 44px;
+            height: 44px;
+            animation: floatBot 3s ease-in-out infinite;
+        }
+
+        @keyframes floatBot {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+
+        /* Container utama chat (awalnya disembunyikan) */
+        .chat-container {
+            position: fixed;
+            bottom: 185px;
+            /* Jarak dari tombol AI */
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            max-height: calc(100vh - 200px);
+            background-color: var(--surface);
+            display: none;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            border: 1px solid var(--glass-border);
+        }
+
+        .chat-container.show {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media screen and (max-width: 400px) {
+            .chat-container {
+                width: calc(100% - 40px);
+                bottom: 185px;
+                right: 20px;
+                height: 400px;
+            }
+        }
+
+        .chat-header {
+            background-color: var(--surface);
+            color: var(--text-main);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 10;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            transition: 0.2s;
+        }
+
+        .close-btn:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+
+        .chat-box {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background-color: var(--glass-bg);
+        }
+
+        .message {
+            max-width: 85%;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .message.ai {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .message.user {
+            background-color: var(--accent);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        .input-area-ai {
+            display: flex;
+            padding: 12px;
+            background-color: var(--surface);
+            border-top: 1px solid var(--border);
+            gap: 8px;
+        }
+
+        .input-area-ai input {
+            flex-grow: 1;
+            padding: 10px 15px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-main);
+            border-radius: 20px;
+            outline: none;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        .input-area-ai input:focus {
+            border-color: var(--accent);
+        }
+
+        .input-area-ai button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .input-area-ai button:hover {
+            opacity: 0.8;
+        }
+
+        .input-area-ai button:disabled {
+            background-color: var(--text-muted);
+            cursor: not-allowed;
+        }
+
+        /* GREETING POP-UP BUBBLE (Ide 1) */
+        .greeting-bubble {
+            position: fixed;
+            bottom: 190px;
+            right: 30px;
+            background: var(--surface);
+            color: var(--text-main);
+            padding: 12px 18px;
+            border-radius: 16px;
+            border-bottom-right-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border: 1px solid var(--glass-border);
+            z-index: 99;
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .greeting-bubble.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            visibility: visible;
+        }
+
+        .greeting-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            right: 20px;
+            width: 15px;
+            height: 15px;
+            background: var(--surface);
+            border-bottom: 1px solid var(--glass-border);
+            border-right: 1px solid var(--glass-border);
+            transform: rotate(45deg);
+        }
+
+        /* QUICK VIEW MODAL & SLIDER (Ide 3) */
+        .modal-lg {
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .qv-image {
+            position: relative;
+            height: 100%;
+            min-height: 300px;
+            overflow: hidden;
+            border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+        }
+
+        .slider-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .slider-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+
+        .slider-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(15, 23, 42, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            font-size: 1.5rem;
+            transition: 0.3s;
+            backdrop-filter: blur(4px);
+        }
+
+        .slider-btn:hover {
+            background: var(--accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .slider-btn-prev {
+            left: 10px;
+        }
+
+        .slider-btn-next {
+            right: 10px;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.3);
+        }
+
+        .qv-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .qv-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .qv-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        @media(max-width: 768px) {
+            .modal-lg {
+                grid-template-columns: 1fr;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .qv-image {
+                height: 250px;
+                min-height: unset;
+                border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            }
+
+            .qv-content {
+                padding: 20px;
+            }
+        }
+
+        /* FAQ SECTION (Ide 4) */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .faq-item {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-item.active {
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px 24px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 1.1rem;
+        }
+
+        .faq-icon {
+            font-size: 1.2rem;
+            color: var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            padding: 0 24px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 20px;
+        }
+
+        /* TESTIMONI BERJALAN (MARQUEE) - IDE 5 */
+        .marquee-wrapper {
+            width: 100%;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            gap: 32px;
+            animation: scrollMarquee 40s linear infinite;
+            padding: 10px 32px;
+        }
+
+        /* Animasi berhenti saat di-hover/disentuh kursor */
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scrollMarquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(calc(-50% - 16px));
+            }
+        }
+
+        /* Menjaga ukuran kartu agar tidak mengecil saat dijejerkan */
+        .marquee-track .review-card {
+            width: 380px;
+            flex-shrink: 0;
+        }
+
+        @media(max-width: 900px) {
+            .marquee-track .review-card {
+                width: 300px;
+            }
+        }
+
+        /* MIC BUTTON (Ide 2) */
+        .btn-mic {
+            background-color: var(--glass-bg) !important;
+            border: 1px solid var(--glass-border) !important;
+            color: var(--text-main) !important;
+            flex-shrink: 0;
+        }
+
+        .btn-mic.recording {
+            background-color: #ef4444 !important;
+            color: white !important;
+            border-color: #ef4444 !important;
+            animation: micPulse 1.5s infinite;
+        }
+
+        @keyframes micPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="assets/logos/logo_baru.png" alt="King's Rental Logo" class="loader-logo">
+            <div class="loader-spinner"></div>
+        </div>
+    </div>
+
+    <div class="ambient-bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav class="navbar glass-panel">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="assets/logos/logo_baru.png" alt="Kings Logo" style="height: 40px; width: auto;">
+                King's<span>.</span>
+            </a>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" class="active">Beranda</a></li>
+                <li><a href="#armada">Armada</a></li>
+                <li><a href="#cara-sewa">Cara Sewa</a></li>
+                <li><a href="#sop-pelepasan">SOP</a></li>
+                <li><a href="#testimoni">Testimoni</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="login.html" class="btn btn-primary"
+                    style="padding: 8px 20px; font-size: 0.9rem; margin-right: 8px; border-radius: 50px;">Masuk</a>
+
+                <button class="theme-toggle" id="theme-toggle" title="Switch Theme">
+                    <i class="ri-moon-line"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <i class="ri-menu-line"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-inner container">
+            <div class="hero-grid">
+                <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
+                    <h1>Sewa Mobil Premium <br>
+                        <span class="txt-type" data-wait="2000"
+                            data-words='["Bumiayu &amp; Sekitarnya", "Lepas Kunci Mudah", "Dengan Sopir Ramah", "Harga Transparan"]'>
+                        </span>
+                    </h1>
+                    <p>Rasakan pengalaman berkendara kelas atas dengan armada terawat dan layanan prioritas. Harga
+                        transparan, tanpa biaya tersembunyi.</p>
+
+                    <div class="btn-group">
+                        <a href="#armada" class="btn btn-primary">
+                            Lihat Armada <i class="ri-arrow-right-line"></i>
+                        </a>
+                        <a href="https://wa.me/6283170520797" class="btn btn-outline">
+                            <i class="ri-whatsapp-line"></i> Hubungi CS
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image" data-aos="fade-left" data-aos-duration="1000">
+                    <img src="assets/cars/innovaReborn.jpg" alt="Premium Car Rental">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container search-container" data-aos="fade-up" data-aos-duration="800">
+        <div class="search-tabs">
+            <button class="tab-btn active" onclick="switchSearchTab('lepas-kunci')">
+                <i class="ri-car-line"></i> Tanpa Sopir
+            </button>
+            <button class="tab-btn" onclick="switchSearchTab('dengan-sopir')">
+                <i class="ri-user-star-line"></i> Dengan Sopir
+            </button>
+        </div>
+
+        <form class="search-box" onsubmit="event.preventDefault(); filterMobil();">
+            <div class="search-group" style="flex: 1.5;">
+                <label>Lokasi Rental Anda</label>
+                <input type="text" id="lokasi" placeholder="Cari kota atau wilayah">
+            </div>
+
+            <div class="search-group">
+                <label>Tanggal Mulai Rental</label>
+                <input type="text" id="tgl-mulai" placeholder="Pilih Tanggal" onfocus="(this.type='date')"
+                    onblur="(this.type='text')">
+            </div>
+
+            <div class="search-group" style="flex: 0.8;">
+                <label>Waktu Mulai</label>
+                <input type="time" id="jam-mulai" value="09:00">
+            </div>
+
+            <div class="search-group">
+                <label>Tanggal Selesai</label>
+                <input type="text" id="tgl-selesai" placeholder="Pilih Tanggal" onfocus="(this.type='date')"
+                    onblur="(this.type='text')">
+            </div>
+
+            <div class="search-group" style="flex: 0.8;">
+                <label>Waktu Selesai</label>
+                <input type="time" id="jam-selesai" value="09:00">
+            </div>
+
+            <button type="submit" class="search-btn-primary">
+                <i class="ri-search-line"></i>
+            </button>
+        </form>
+    </div>
+
+    <div class="container" style="margin-bottom: 80px;" data-aos="zoom-in" data-aos-duration="1000">
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-icon-mini"><i class="ri-car-fill"></i></div>
+                <div class="stat-info">
+                    <h2><span class="counter" data-target="50">0</span>+</h2>
+                    <p>Armada Premium</p>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon-mini"><i class="ri-user-heart-fill"></i></div>
+                <div class="stat-info">
+                    <h2><span class="counter" data-target="1500">0</span>+</h2>
+                    <p>Pelanggan Puas</p>
+                </div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-icon-mini"><i class="ri-customer-service-2-fill"></i></div>
+                <div class="stat-info">
+                    <h2><span class="counter" data-target="24">0</span>/<span class="counter" data-target="7">0</span>
+                    </h2>
+                    <p>Layanan Support</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="armada" class="section-padding container">
+        <div class="section-title" data-aos="fade-up">
+            <span>Katalog Eksklusif</span>
+            <h2>Pilihan Armada Terbaik</h2>
+        </div>
+
+        <div class="filter-tabs" data-aos="fade-up" data-aos-delay="100">
+            <button class="filter-btn active" onclick="filterSelection('all')">Semua</button>
+            <button class="filter-btn" onclick="filterSelection('gold')">Gold</button>
+            <button class="filter-btn" onclick="filterSelection('silver')">Silver</button>
+        </div>
+
+        <div class="cars-grid" id="carsGrid">
+            <!-- Cars rendered by JS -->
+        </div>
+    </section>
+
+    <section id="cara-sewa" class="section-padding container">
+        <div class="section-title" data-aos="fade-up">
+            <span>Proses Mudah</span>
+            <h2>Cara Booking di King's</h2>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card glass-panel" data-aos="flip-left" data-aos-delay="0">
+                <div class="step-icon"><i class="ri-car-line"></i></div>
+                <h3>1. Pilih Unit</h3>
+                <p>Pilih mobil yang sesuai dengan kebutuhan perjalanan Anda.</p>
+            </div>
+            <div class="step-card glass-panel" data-aos="flip-left" data-aos-delay="100">
+                <div class="step-icon"><i class="ri-whatsapp-line"></i></div>
+                <h3>2. Kontak Admin</h3>
+                <p>Klik tombol pesan untuk terhubung otomatis ke WhatsApp.</p>
+            </div>
+            <div class="step-card glass-panel" data-aos="flip-left" data-aos-delay="200">
+                <div class="step-icon"><i class="ri-wallet-3-line"></i></div>
+                <h3>3. Pembayaran</h3>
+                <p>Lakukan DP ringan untuk mengunci jadwal pemakaian Anda.</p>
+            </div>
+            <div class="step-card glass-panel" data-aos="flip-left" data-aos-delay="300">
+                <div class="step-icon"><i class="ri-key-2-line"></i></div>
+                <h3>4. Serah Terima</h3>
+                <p>Unit diantar ke lokasi atau ambil di garasi kami.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOP SECTION -->
+    <section id="sop-pelepasan" class="section-padding container">
+        <div class="section-title" data-aos="fade-up">
+            <span>Standar Pelayanan</span>
+            <h2>SOP Pelepasan Unit Kendaraan</h2>
+        </div>
+
+        <div class="glass-panel" data-aos="fade-up" data-aos-delay="100"
+            style="padding: 30px; border-radius: var(--radius-lg); margin-bottom: 40px; border: 1px solid var(--glass-border);">
+            <div style="display: grid; gap: 20px; font-size: 0.95rem; color: var(--text-muted);">
+                <div>
+                    <strong style="color: var(--text-main); display: block; margin-bottom: 5px;">Tujuan:</strong>
+                    Untuk memastikan seluruh proses pelepasan unit kendaraan ke pelanggan berjalan dengan standar
+                    pelayanan yang baik, aman, dan tercatat dengan jelas.
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    <div>
+                        <strong style="color: var(--text-main); display: block; margin-bottom: 5px;">Ruang
+                            Lingkup:</strong>
+                        Seluruh unit kendaraan yang akan dilepas ke pelanggan baik untuk jangka pendek maupun jangka
+                        panjang.
+                    </div>
+                    <div>
+                        <strong style="color: var(--text-main); display: block; margin-bottom: 5px;">Pihak
+                            Terkait:</strong>
+                        Staff operasional / admin, driver / petugas serah terima, customer.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 data-aos="fade-up"
+            style="text-align: center; margin-bottom: 30px; font-size: 1.5rem; color: var(--text-main);">
+            Prosedur Pelepasan Unit:
+        </h3>
+
+        <div class="sop-grid"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; text-align: left;">
+
+            <div class="sop-item" data-aos="fade-right" data-aos-delay="0"
+                style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 16px; border: 1px solid var(--glass-border);">
+                <h4 style="color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; font-weight: 800;">
+                    1. Pemeriksaan Jadwal & Dokumen
+                </h4>
+                <ul style="list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem;">
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Verifikasi
+                        booking / reservasi pelanggan (tanggal, durasi, tipe kendaraan).</li>
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Periksa
+                        kelengkapan dokumen: fotokopi KTP, SIM A / SIM Internasional.</li>
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Bukti pembayaran
+                        atau DP.</li>
+                    <li style="display: flex; align-items: start; gap: 8px;">- Formulir perjanjian sewa.</li>
+                </ul>
+            </div>
+
+            <div class="sop-item" data-aos="fade-right" data-aos-delay="100"
+                style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 16px; border: 1px solid var(--glass-border);">
+                <h4 style="color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; font-weight: 800;">
+                    2. Persiapan Kendaraan
+                </h4>
+                <ul style="list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem;">
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Cuci dan
+                        bersihkan unit kendaraan (interior & eksterior).</li>
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Periksa standar
+                        kelayakan jalan: tekanan ban.</li>
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Cek oli, air
+                        radiator, and air wiper.</li>
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Pastikan
+                        lampu-lampu berfungsi normal.</li>
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Rem dan klakson
+                        berfungsi dengan baik.</li>
+                    <li style="display: flex; align-items: start; gap: 8px;">- Isi bahan bakar sesuai standar serah
+                        terima.</li>
+                </ul>
+            </div>
+
+            <div class="sop-item" data-aos="fade-right" data-aos-delay="200"
+                style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 16px; border: 1px solid var(--glass-border);">
+                <h4 style="color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; font-weight: 800;">
+                    3. Checklist Serah Terima
+                </h4>
+                <ul style="list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem;">
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Kondisi fisik
+                        kendaraan (cek bodi, cat, kaca, interior, ban).</li>
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Foto unit dari 4
+                        sudut, interior, dan odometer.</li>
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Catat kondisi BBM
+                        saat serah terima.</li>
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Cek perlengkapan
+                        standar (STNK, dongkrak, P3K, dll).</li>
+                    <li style="display: flex; align-items: start; gap: 8px;">- Tanda tangan kedua belah pihak di
+                        form serah terima.</li>
+                </ul>
+            </div>
+
+            <div class="sop-item" data-aos="fade-right" data-aos-delay="300"
+                style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 16px; border: 1px solid var(--glass-border);">
+                <h4 style="color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; font-weight: 800;">
+                    4. Edukasi Pelanggan
+                </h4>
+                <ul style="list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem;">
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Jelaskan aturan
+                        pemakaian (area larangan, batas kecepatan).</li>
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Prosedur klaim
+                        kerusakan atau kehilangan.</li>
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Informasikan jam
+                        pengembalian & denda keterlambatan.</li>
+                    <li style="display: flex; align-items: start; gap: 8px;">- Berikan kontak CS operasional untuk
+                        kendala di jalan.</li>
+                </ul>
+            </div>
+
+            <div class="sop-item" data-aos="fade-right" data-aos-delay="400"
+                style="background: rgba(255,255,255,0.03); padding: 24px; border-radius: 16px; border: 1px solid var(--glass-border);">
+                <h4 style="color: var(--accent); margin-bottom: 15px; font-size: 1.1rem; font-weight: 800;">
+                    5. Pelepasan Unit
+                </h4>
+                <ul style="list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem;">
+                    <li style="margin-bottom: 8px; display: flex; align-items: start; gap: 8px;">- Serahkan unit
+                        kepada pelanggan sesuai perjanjian.</li>
+                    <li style="display: flex; align-items: start; gap: 8px;">- Simpan arsip dokumen serah terima
+                        (fisik/digital).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="glass-panel" data-aos="fade-up"
+            style="margin-top: 30px; padding: 30px; border-radius: var(--radius-lg); border: 1px solid var(--glass-border);">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div>
+                    <h4 style="color: var(--text-main); margin-bottom: 15px;">Catatan Khusus:</h4>
+                    <ul style="list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem;">
+                        <li style="margin-bottom: 8px;">- Untuk pelanggan baru, lakukan verifikasi lebih ketat.</li>
+                        <li style="margin-bottom: 8px;">- Pastikan asuransi kendaraan aktif sesuai ketentuan.</li>
+                        <li>- Bila ada deposit, dokumentasikan secara jelas.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="color: var(--text-main); margin-bottom: 15px;">Form / Dokumen Pendukung:</h4>
+                    <ul style="list-style: none; padding: 0; color: var(--text-muted); font-size: 0.9rem;">
+                        <li style="margin-bottom: 8px;">- Form checklist kendaraan.</li>
+                        <li style="margin-bottom: 8px;">- Form serah terima unit.</li>
+                        <li style="margin-bottom: 8px;">- Copy kontrak / perjanjian sewa.</li>
+                        <li>- Foto kondisi unit (sebelum pelepasan).</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section-padding container">
+        <div class="section-title" data-aos="fade-up">
+            <span>Pusat Bantuan</span>
+            <h2>Pertanyaan Seputar Rental</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item glass-panel" data-aos="fade-up" data-aos-delay="0">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Apa saja syarat menyewa mobil lepas kunci? <i class="ri-arrow-down-s-line faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <br>Syarat standar kami adalah menyiapkan e-KTP asli, SIM A asli yang masih berlaku, serta bersedia
+                    difoto saat serah terima unit. Untuk keperluan khusus mungkin akan diminta dokumen tambahan seperti
+                    ID Card Karyawan/Mahasiswa.
+                </div>
+            </div>
+            <div class="faq-item glass-panel" data-aos="fade-up" data-aos-delay="100">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Apakah ada biaya tambahan atau tersembunyi? <i class="ri-arrow-down-s-line faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <br>Harga yang tertera di website sudah final untuk durasi per 24 jam. Biaya tambahan hanya berlaku
+                    jika ada kelebihan waktu pemakaian (overtime), pengantaran/penjemputan unit ke luar kota, atau jika
+                    mobil dikembalikan dalam keadaan sangat kotor/rusak.
+                </div>
+            </div>
+            <div class="faq-item glass-panel" data-aos="fade-up" data-aos-delay="200">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Bagaimana jika mobil mengalami kendala di jalan? <i class="ri-arrow-down-s-line faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <br>Tim support King's Rental siap sedia 24/7. Segera hubungi Admin / CS kami. Kami akan memberikan
+                    panduan langsung atau mengirim tim mekanik/mobil pengganti jika kendala tidak bisa diatasi sendiri.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimoni" class="section-padding testimonials">
+        <div class="container" style="overflow: visible;">
+            <div class="section-title" data-aos="fade-up">
+                <span>Apa Kata Mereka?</span>
+                <h2>Pengalaman Pelanggan</h2>
+            </div>
+        </div>
+        <div class="marquee-wrapper">
+            <div class="marquee-track" id="testimonial-track">
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM SUBMIT REVIEW -->
+    <section id="tulis-review" class="section-padding" style="padding-top: 0;">
+        <div class="container">
+            <div class="glass-panel" data-aos="zoom-in"
+                style="max-width: 650px; margin: 0 auto; padding: 35px; border-radius: 24px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.2);">
+
+                <div
+                    style="position: absolute; top: -50px; right: -50px; width: 150px; height: 150px; background: var(--accent); opacity: 0.15; filter: blur(60px); border-radius: 50%;">
+                </div>
+                <div
+                    style="position: absolute; bottom: -30px; left: -30px; width: 120px; height: 120px; background: #8b5cf6; opacity: 0.15; filter: blur(50px); border-radius: 50%;">
+                </div>
+
+
+                <div class="section-title" style="margin-bottom: 30px; position: relative;">
+                    <span
+                        style="background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-block; margin-bottom: 10px;">Bagikan
+                        Cerita Anda</span>
+                    <h3
+                        style="font-size: 1.8rem; background: linear-gradient(to right, var(--text-main), var(--text-muted)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
+                        Tulis Ulasan</h3>
+                </div>
+
+                <form onsubmit="event.preventDefault(); submitReview();"
+                    style="display: grid; gap: 18px; position: relative; z-index: 2;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
+                        <div class="form-group">
+                            <label
+                                style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); font-size: 0.85rem;">Nama
+                                Lengkap</label>
+                            <input type="text" id="reviewName" required
+                                style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); color: var(--text-main); font-size: 0.95rem; transition: all 0.3s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);"
+                                onfocus="this.style.borderColor='var(--accent)'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
+                                onblur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.02)';">
+                        </div>
+                        <div class="form-group">
+                            <label
+                                style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); font-size: 0.85rem;">Pekerjaan
+                                / Asal</label>
+                            <input type="text" id="reviewRole" placeholder="Contoh: Wisatawan Jakarta"
+                                style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); color: var(--text-main); font-size: 0.95rem; transition: all 0.3s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);"
+                                onfocus="this.style.borderColor='var(--accent)'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
+                                onblur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.02)';">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label
+                            style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); font-size: 0.85rem;">Beri
+                            Rating</label>
+                        <div class="rating-input-container"
+                            style="background: rgba(0,0,0,0.03); border: 1px solid var(--glass-border); padding: 24px; border-radius: 20px; transition: 0.3s; margin-bottom: 5px;">
+                            <div class="rating-input"
+                                style="display: flex; gap: 14px; font-size: 2.2rem; color: #cbd5e1; cursor: pointer; width: fit-content; margin-bottom: 12px;">
+                                <i class="ri-star-fill" onclick="setRating(1)" id="star-1"
+                                    style="transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></i>
+                                <i class="ri-star-fill" onclick="setRating(2)" id="star-2"
+                                    style="transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></i>
+                                <i class="ri-star-fill" onclick="setRating(3)" id="star-3"
+                                    style="transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></i>
+                                <i class="ri-star-fill" onclick="setRating(4)" id="star-4"
+                                    style="transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></i>
+                                <i class="ri-star-fill" onclick="setRating(5)" id="star-5"
+                                    style="transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></i>
+                            </div>
+                            <span id="ratingLabel"
+                                style="font-size: 0.95rem; font-weight: 600; color: var(--text-muted); transition: 0.3s;">Pilih
+                                rating bintang</span>
+                            <input type="hidden" id="reviewRating" value="0" required>
+                            <p id="ratingError"
+                                style="color: #ef4444; font-size: 0.85rem; display: none; margin-top: 10px; font-weight: 500; display: flex; align-items: center; gap: 5px;">
+                                <i class="ri-error-warning-fill"></i> Silakan pilih bintang rating!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label
+                            style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); font-size: 0.85rem;">Ceritakan
+                            Pengalaman Anda</label>
+                        <textarea id="reviewText" rows="4" required
+                            placeholder="Bagaimana pengalaman Anda menggunakan layanan kami?"
+                            style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); font-family: inherit; color: var(--text-main); font-size: 0.95rem; transition: all 0.3s; resize: vertical; min-height: 100px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);"
+                            onfocus="this.style.borderColor='var(--accent)'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
+                            onblur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.02)';"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary"
+                        style="justify-content: center; width: 100%; padding: 14px; font-size: 1rem; border-radius: 50px; margin-top: 5px; position: relative; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);">
+                        Kirim Ulasan Saya <i class="ri-send-plane-fill" style="margin-left: 8px;"></i>
+                    </button>
+                    <p style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 5px;">
+                        <i class="ri-lock-2-line" style="vertical-align: middle;"></i> Review Anda akan dimoderasi
+                        sebelum ditampilkan.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner-full" data-aos="fade-up">
+        <img src="assets/images/banner-full.jpg" alt="Promo Berlangganan King's Rental">
+        <form class="cta-overlay-form"
+            onsubmit="event.preventDefault(); alert('Terima kasih sudah berlangganan info King\'s Rental!');">
+            <input type="email" placeholder="Masukkan Alamat Email" required>
+            <button type="submit">Berlangganan</button>
+        </form>
+    </section>
+
+    <footer id="kontak">
+        <!-- Wave Animation -->
+        <div class="footer-wave">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand" data-aos="fade-up">
+                    <a href="#" class="logo" style="font-size: 2rem;">
+                        <img src="assets/logos/logo_baru.png" alt="Kings Logo" style="height: 50px; width: auto;">
+                        King's.
+                    </a>
+                    <p>Mitra perjalanan terbaik Anda. Menyediakan layanan sewa mobil premium dengan standar keamanan
+                        dan kenyamanan tinggi.</p>
+                </div>
+
+                <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#armada">Daftar Mobil</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Tentang Kami</a></li>
+                    </ul>
+
+                    <h4 style="margin-top: 32px;">Follow kami di</h4>
+                    <ul class="social-list">
+                        <li><a href="#"><i class="ri-facebook-box-fill" style="color: #1877F2;"></i> Facebook</a>
+                        </li>
+                        <li><a href="https://www.instagram.com/rental.mobilbumiayu?igsh=MXNpcjVsY3dsZ2dxYw=="
+                                target="_blank"><i class="ri-instagram-line" style="color: #E4405F;"></i>
+                                Instagram</a>
+                        </li>
+                        <li><a href="#"><i class="ri-tiktok-fill" style="color: var(--text-main);"></i> TikTok</a>
+                        </li>
+                        <li><a href="#"><i class="ri-whatsapp-line" style="color: #25D366;"></i> WhatsApp</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links" data-aos="fade-up" data-aos-delay="200">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="#">Sewa/12jam</a></li>
+                        <li><a href="#">Sewa Harian</a></li>
+                        <li><a href="#">Sewa Bulanan</a></li>
+                        <li><a href="#">Antar Jemput Stasiun/Bandara</a></li>
+                        <li><a href="#">Wedding Car</a></li>
+                        <li><a href="#">Dll</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact" data-aos="fade-up" data-aos-delay="300">
+                    <h4>Hubungi Kami</h4>
+                    <div class="contact-item">
+                        <i class="ri-map-pin-line"></i>
+                        <a href="https://maps.app.goo.gl/3GqQhwy9PepKmtPj9" target="_blank"
+                            style="color: inherit; text-decoration: none; transition: color 0.3s;"
+                            onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='inherit'">
+                            <span>Dk Krajan 1 gang nusa indah, krajan, jatisawit, kec bumiayu, kab brebes, jawa
+                                tengah
+                                52273</span>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="ri-phone-line"></i>
+                        <span>+62 831 7052 0797</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="ri-mail-line"></i>
+                        <span>sewamobilkita1@gmail.com</span>
+                    </div>
+                    <div class="glass-panel"
+                        style="margin-top: 20px; border-radius: 12px; overflow: hidden; padding: 0;">
+                        <iframe
+                            src="https://maps.google.com/maps?q=King's+Rental+Mobil+Bumiayu&t=&z=17&ie=UTF8&iwloc=&output=embed"
+                            width="100%" height="150" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 King's Rental Bumiayu. All Rights Reserved.
+                <a href="admin.html"
+                    style="margin-left: 10px; opacity: 0.5; font-size: 0.8rem; text-decoration: none;"><i
+                        class="ri-lock-line"></i> Admin</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WIDGET WA MENGAMBANG (BAWAAN ANDA) -->
+    <a href="https://wa.me/6283170520797" class="floating-wa" target="_blank" title="Chat WhatsApp">
+        <i class="ri-whatsapp-line"></i>
+    </a>
+
+    <!-- WIDGET CHAT AI (BARU) -->
+    <!-- GREETING POP-UP BUBBLE (FITUR BARU - IDE 1) -->
+    <div id="chat-greeting-bubble" class="greeting-bubble glass-panel">
+        Halo Kak! Ada yang bisa dibantu? ✨
+    </div>
+    <div id="chat-widget-button" title="Tanya Asisten AI">
+        <!-- SVG Ikon Robot ala Eilik -->
+        <svg class="bot-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Antena -->
+            <path d="M50 18 L50 6" stroke="var(--text-muted)" stroke-width="4" stroke-linecap="round" />
+            <circle cx="50" cy="6" r="4" fill="var(--accent)" />
+            <!-- Kepala -->
+            <rect x="15" y="18" width="70" height="52" rx="22" fill="var(--surface)" stroke="var(--text-main)"
+                stroke-width="4" />
+            <!-- Layar Wajah -->
+            <rect x="25" y="26" width="50" height="34" rx="10" fill="#0f172a" />
+            <!-- Mata Kiri (Senyum) -->
+            <path d="M 35 44 Q 40 35 45 44" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"
+                style="filter: drop-shadow(0 0 2px var(--accent));" />
+            <!-- Mata Kanan (Senyum) -->
+            <path d="M 55 44 Q 60 35 65 44" stroke="var(--accent)" stroke-width="5" stroke-linecap="round"
+                style="filter: drop-shadow(0 0 2px var(--accent));" />
+            <!-- Badan -->
+            <path d="M 30 75 C 30 68, 70 68, 70 75 L 65 95 C 65 102, 35 102, 35 95 Z" fill="var(--surface)"
+                stroke="var(--text-main)" stroke-width="4" />
+            <!-- Tangan Kiri -->
+            <path d="M 22 75 Q 12 80 12 90" stroke="var(--text-main)" stroke-width="4" stroke-linecap="round" />
+            <!-- Tangan Kanan -->
+            <path d="M 78 75 Q 88 80 88 90" stroke="var(--text-main)" stroke-width="4" stroke-linecap="round" />
+        </svg>
+    </div>
+
+    <div class="chat-container" id="chat-container">
+        <div class="chat-header">
+            <span style="display: flex; align-items: center; gap: 10px;">
+                <svg width="24" height="24" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="15" y="18" width="70" height="52" rx="22" fill="var(--text-main)" stroke="var(--text-main)"
+                        stroke-width="4" />
+                    <rect x="25" y="26" width="50" height="34" rx="10" fill="var(--surface)" />
+                    <path d="M 35 44 Q 40 35 45 44" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" />
+                    <path d="M 55 44 Q 60 35 65 44" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" />
+                    <path d="M 30 75 C 30 68, 70 68, 70 75 L 65 95 C 65 102, 35 102, 35 95 Z" fill="var(--text-main)"
+                        stroke="var(--text-main)" stroke-width="4" />
+                </svg>
+                AI Customer Service
+            </span>
+            <button class="close-btn" id="close-chat-btn"><i class="ri-close-line"></i></button>
+        </div>
+        <div class="chat-box" id="chat-box">
+            <div class="message ai">Halo! Saya asisten pintar Kings Rental Bumiayu. Saya bisa merekomendasikan mobil
+                sesuai rute, budget, atau kebutuhan Anda. Ada yang bisa dibantu?</div>
+        </div>
+        <div class="input-area-ai">
+            <button id="mic-btn" class="btn-mic" title="Bicara dengan AI"><i class="ri-mic-line"></i></button>
+            <input type="text" id="user-input" placeholder="Ketik pesan..." autocomplete="off">
+            <button id="send-btn"><i class="ri-send-plane-fill"></i></button>
+        </div>
+    </div>
+
+
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-glass">
+            <button class="modal-close" onclick="closeModal()"><i class="ri-close-line"></i></button>
+
+            <div class="modal-header">
+                <h3><i class="ri-file-list-3-fill" style="color: var(--accent);"></i> Ringkasan Pesanan</h3>
+            </div>
+
+            <div class="modal-body">
+                <div class="modal-detail-row">
+                    <span>Unit Mobil</span>
+                    <strong id="modalCarName">Toyota Avanza</strong>
+                </div>
+                <div class="modal-detail-row">
+                    <span>Layanan</span>
+                    <strong id="modalService">Lepas Kunci</strong>
+                </div>
+                <div class="modal-detail-row">
+                    <span>Durasi</span>
+                    <strong id="modalDuration">1 Hari</strong>
+                </div>
+                <div class="modal-detail-row">
+                    <span>Jadwal Sewa</span>
+                    <strong id="modalDate" style="font-size: 0.85rem; text-align: right; max-width: 60%;">...</strong>
+                </div>
+
+                <div class="modal-total">
+                    <div class="label">Estimasi Total Biaya</div>
+                    <div class="amount" id="modalTotalPrice">Rp 0</div>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="modal-btn btn-cancel" onclick="closeModal()">Batal</button>
+                <button class="modal-btn btn-wa" id="btnConfirmWA">
+                    <i class="ri-whatsapp-fill" style="font-size: 1.2rem;"></i> Lanjut WA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK VIEW MODAL (FITUR BARU - IDE 3) -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal-glass modal-lg">
+            <button class="modal-close" onclick="closeModal('quickViewModal')" style="z-index: 20;"><i
+                    class="ri-close-line"></i></button>
+            <div class="qv-image" id="qvImageContainer">
+                <div class="slider-track" id="qvSliderTrack">
+                </div>
+                <button class="slider-btn slider-btn-prev" onclick="prevSlide()"><i
+                        class="ri-arrow-left-s-line"></i></button>
+                <button class="slider-btn slider-btn-next" onclick="nextSlide()"><i
+                        class="ri-arrow-right-s-line"></i></button>
+                <div class="slider-dots" id="qvSliderDots">
+                </div>
+            </div>
+            <div class="qv-content">
+                <div style="display:inline-block; background:rgba(59, 130, 246, 0.1); color:var(--accent); padding:4px 12px; border-radius:20px; font-size:0.75rem; font-weight:700; margin-bottom:10px; width:fit-content;"
+                    id="qvCategory">Kategori</div>
+                <h3 class="qv-title" id="qvName">Nama Mobil</h3>
+                <div class="car-rating" style="margin-bottom: 20px;">
+                    <i class="ri-star-fill"></i> <span id="qvRating">5.0</span>
+                </div>
+                <p class="qv-desc" id="qvDesc">Mobil tangguh dan nyaman, sangat cocok untuk perjalanan dalam dan luar
+                    kota beserta keluarga tercinta. Kapasitas luas dan irit bahan bakar.</p>
+                <div class="car-specs"
+                    style="grid-template-columns: repeat(2, 1fr); border:none; padding:0; margin-bottom:20px;"
+                    id="qvSpecs">
+                </div>
+                <div
+                    style="display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:20px; border-top:1px solid var(--glass-border);">
+                    <div class="price" style="display:flex; flex-direction:column; line-height:1.2;">
+                        <span style="font-size:0.85rem; color:var(--text-muted);">Start From</span>
+                        <span style="font-size:1.5rem; font-weight:800; color:var(--accent);" id="qvPrice">Rp 0</span>
+                    </div>
+                    <button class="btn btn-primary" id="qvBookBtn" style="padding: 10px 24px;">Pesan Sekarang</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AOS Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+
+        function setTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            if (theme === 'dark') {
+                themeIcon.classList.replace('ri-moon-line', 'ri-sun-line');
+            } else {
+                themeIcon.classList.replace('ri-sun-line', 'ri-moon-line');
+            }
+        }
+
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        setTheme(currentTheme);
+
+        themeToggle.addEventListener('click', () => {
+            let theme = document.documentElement.getAttribute('data-theme');
+            setTheme(theme === 'dark' ? 'light' : 'dark');
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = hamburger.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.replace('ri-menu-line', 'ri-close-line');
+            } else {
+                icon.classList.replace('ri-close-line', 'ri-menu-line');
+            }
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.querySelector('i').classList.replace('ri-close-line', 'ri-menu-line');
+            });
+        });
+
+        // Search tabs
+        function switchSearchTab(mode) {
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            if (mode === 'lepas-kunci') {
+                buttons[0].classList.add('active');
+            } else {
+                buttons[1].classList.add('active');
+            }
+        }
+
+        // Filter selection
+        function filterSelection(category) {
+            const cards = document.querySelectorAll('.car-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 50);
+                } else {
+                    card.style.display = 'none';
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                }
+            });
+        }
+
+        // Booking system
+        let tempBookingUrl = "";
+        let tempTelegramMsg = "";
+
+        function openModal() {
+            document.getElementById('bookingModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Modifikasi fungsi closeModal agar bisa menutup modal apa saja
+        function closeModal(modalId = 'bookingModal') {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // FITUR BARU - IDE 4: Togle FAQ Akordion
+        function toggleFaq(element) {
+            // Ambil elemen bapaknya (faq-item)
+            const item = element.parentElement;
+
+            // Cek apakah yang diklik ini sedang terbuka?
+            const isActive = item.classList.contains('active');
+
+            // Tutup semua FAQ yang sedang terbuka (biar rapi, hanya 1 yang terbuka)
+            document.querySelectorAll('.faq-item').forEach(faq => {
+                faq.classList.remove('active');
+            });
+
+            // Jika yang diklik tadi asalnya tertutup, maka buka
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        // FUNGSI QUICK VIEW & SLIDER (IDE 3)
+        let currentSlide = 0;
+        let totalSlides = 0;
+
+        function openQuickView(carId) {
+            const car = globalCarsData.find(c => c.id === carId);
+            if (!car) return;
+
+            let mainImg = (car.image && !car.image.startsWith('http') && !car.image.startsWith('assets/') && !car.image.startsWith('data:')) ? 'assets/cars/' + car.image : car.image;
+
+            let interiorImg = mainImg;
+            let bagasiImg = mainImg;
+
+            // MENCOCOKKAN ID MOBIL DENGAN FOLDER FOTO ANDA
+            if (car.id === 'xenia') {
+                interiorImg = 'assets/cars/Interior/Daihatsu All New Xenia/InteriorALLNEWX.jpg';
+                bagasiImg = 'assets/cars/Interior/Daihatsu All New Xenia/XeniaBAGASI.jpg';
+            } else if (car.id === 'brv') {
+                interiorImg = 'assets/cars/Interior/Honda BR-V (All New N7X Concept)/InteriorBRV.jpg';
+                bagasiImg = 'assets/cars/Interior/Honda BR-V (All New N7X Concept)/BagasiBRV.jpg';
+            } else if (car.id === 'brio') {
+                interiorImg = 'assets/cars/Interior/Honda Brio/InteriorBrio.jpg';
+                bagasiImg = 'assets/cars/Interior/Honda Brio/Bagasi.jpg';
+            } else if (car.id === 'xpander_ult') {
+                interiorImg = 'assets/cars/Interior/Mitsubishi Xpander Ultimate/interior xpander u.jpg';
+                bagasiImg = 'assets/cars/Interior/Mitsubishi Xpander Ultimate/bagasiXU.jpg';
+            } else if (car.id === 'xpander_sport') {
+                bagasiImg = 'assets/cars/Interior/Mitsubishi Xpander Sport/BagasiXS.jpg';
+                interiorImg = bagasiImg; // Sementara disamakan karena di foto folder hanya terlihat bagasi
+            }
+
+            const galleryImages = [mainImg, interiorImg, bagasiImg];
+
+            // Render Slider
+            totalSlides = galleryImages.length;
+            currentSlide = 0;
+            const track = document.getElementById('qvSliderTrack');
+            const dotsContainer = document.getElementById('qvSliderDots');
+
+            track.innerHTML = '';
+            dotsContainer.innerHTML = '';
+
+            galleryImages.forEach((img, index) => {
+                track.innerHTML += `<div class="slider-slide"><img src="${img}" alt="Foto Galeri ${index + 1}"></div>`;
+                dotsContainer.innerHTML += `<div class="dot ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})"></div>`;
+            });
+            updateSlider();
+
+            // Isi detail teks
+            document.getElementById('qvName').innerText = car.name;
+            document.getElementById('qvCategory').innerText = car.category.toUpperCase();
+            document.getElementById('qvRating').innerText = typeof car.rating === 'string' ? car.rating.split(' ')[0] : '5.0';
+            document.getElementById('qvPrice').innerText = `Rp ${car.price}.000`;
+
+            // Isi spesifikasi
+            document.getElementById('qvSpecs').innerHTML = `
+                <div class="spec-item"><i class="ri-user-line"></i> ${car.specs.seat}</div>
+                <div class="spec-item"><i class="ri-settings-4-line"></i> ${car.specs.trans}</div>
+                <div class="spec-item"><i class="ri-gas-station-line"></i> ${car.specs.fuel}</div>
+                <div class="spec-item"><i class="ri-briefcase-line"></i> ${car.specs.other}</div>
+            `;
+
+            // Atur tombol pesan di dalam modal
+            const btn = document.getElementById('qvBookBtn');
+            if (car.status === 'available') {
+                btn.innerText = "Pesan Sekarang";
+                btn.disabled = false;
+                btn.onclick = () => { closeModal('quickViewModal'); bookingWA(car.name, car.id); };
+            } else {
+                btn.innerText = "Tidak Tersedia";
+                btn.disabled = true;
+                btn.onclick = null;
+            }
+
+            // Tampilkan modal
+            document.getElementById('quickViewModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // FUNGSI GESER SLIDER
+        function updateSlider() {
+            const track = document.getElementById('qvSliderTrack');
+            const dots = document.querySelectorAll('#qvSliderDots .dot');
+            track.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => { dot.classList.toggle('active', index === currentSlide); });
+        }
+        function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; updateSlider(); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; updateSlider(); }
+        function goToSlide(index) { currentSlide = index; updateSlider(); }
+
+        document.getElementById('btnConfirmWA').addEventListener('click', () => {
+            if (tempBookingUrl !== "") {
+                sendTelegramNotif(tempTelegramMsg);
+                window.open(tempBookingUrl, '_blank');
+                closeModal();
+            }
+        });
+
+        function bookingWA(carName, context) {
+            let carId;
+            if (typeof context === 'string') carId = context;
+            else carId = context.closest('.car-card').getAttribute('data-id');
+
+            const carData = globalCarsData.find(c => c.id === carId);
+            const hargaPerHari = carData ? carData.price * 1000 : 0;
+
+            const isLepasKunci = document.querySelector('.search-tabs .tab-btn:first-child').classList.contains('active');
+            const layanan = isLepasKunci ? "Lepas Kunci" : "Dengan Sopir";
+            const biayaSopirPerHari = isLepasKunci ? 0 : 150000;
+
+            let lokasi = document.getElementById('lokasi').value || "Belum ditentukan";
+            let tglMulai = document.getElementById('tgl-mulai').value;
+            let jamMulai = document.getElementById('jam-mulai').value || "09:00";
+            let tglSelesai = document.getElementById('tgl-selesai').value;
+            let jamSelesai = document.getElementById('jam-selesai').value || "09:00";
+
+            let durasiHari = 1;
+            let tanggalTampil = "Belum ditentukan";
+
+            if (tglMulai && tglSelesai) {
+                const date1 = new Date(tglMulai);
+                const date2 = new Date(tglSelesai);
+                const diffTime = date2 - date1;
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+                if (diffDays > 0) durasiHari = diffDays;
+                tanggalTampil = `${tglMulai} s/d ${tglSelesai}`;
+            }
+
+            const totalHargaMobil = hargaPerHari * durasiHari;
+            const totalBiayaSopir = biayaSopirPerHari * durasiHari;
+            const estimasiTotal = totalHargaMobil + totalBiayaSopir;
+
+            const formatRupiah = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(angka);
+
+            document.getElementById('modalCarName').innerText = carName;
+            document.getElementById('modalService').innerText = layanan;
+            document.getElementById('modalDuration').innerText = `${durasiHari} Hari`;
+            document.getElementById('modalDate').innerText = tanggalTampil;
+            document.getElementById('modalTotalPrice').innerText = formatRupiah(estimasiTotal);
+
+            const phone = "6283170520797";
+            const hour = new Date().getHours();
+            let greeting = "Selamat pagi";
+            if (hour >= 11 && hour < 15) greeting = "Selamat siang";
+            else if (hour >= 15 && hour < 18) greeting = "Selamat sore";
+            else if (hour >= 18 || hour < 4) greeting = "Selamat malam";
+
+            const message = `${greeting} Admin King's Rental 👋\n\nSaya ingin menyewa unit *${carName}*.\n\n*📋 Detail Rencana Sewa:*\n- Layanan: ${layanan}\n- Durasi: ${durasiHari} Hari\n- Tanggal: ${tanggalTampil}\n- Waktu: ${jamMulai} - ${jamSelesai}\n- Lokasi Penjemputan: ${lokasi}\n\n*💰 Rincian Biaya:*\n- Sewa Mobil (${durasiHari}x): ${formatRupiah(totalHargaMobil)}\n- Biaya Sopir (${durasiHari}x): ${isLepasKunci ? '0 (Tanpa Sopir)' : formatRupiah(totalBiayaSopir)}\n*Total Estimasi: ${formatRupiah(estimasiTotal)}*\n\nApakah unit ini tersedia untuk tanggal tersebut?`;
+
+            tempBookingUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            tempTelegramMsg = `🚨 *PROSPEK SEWA BARU! (OTW WHATSAPP)*\n\n*Mobil:* ${carName}\n*Layanan:* ${layanan}\n*Tanggal:* ${tanggalTampil}\n*Durasi:* ${durasiHari} Hari\n*Estimasi Pendapatan:* ${formatRupiah(estimasiTotal)}\n\n_Pelanggan sedang menuju ruang chat WhatsApp kamu sekarang! Siap-siap balas._`;
+
+            openModal();
+        }
+
+        function fokusKePencarian() {
+            document.querySelector('.search-box').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            document.getElementById('lokasi').focus();
+        }
+
+        function filterMobil() {
+            const tglMulai = document.getElementById('tgl-mulai').value;
+            if (!tglMulai) {
+                alert("Mohon isi Tanggal Mulai Rental terlebih dahulu!");
+                document.getElementById('tgl-mulai').focus();
+                return;
+            }
+
+            const armadaSection = document.getElementById('armada');
+            armadaSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+
+            const grid = document.getElementById('carsGrid');
+
+            let loadingDiv = document.querySelector('.searching-overlay');
+            if (!loadingDiv) {
+                loadingDiv = document.createElement('div');
+                loadingDiv.className = 'searching-overlay';
+                loadingDiv.innerHTML = '<div class="spinner"></div><p style="font-weight:600; color:var(--text-main);">Mencari armada tersedia...</p>';
+                grid.style.position = 'relative';
+                grid.appendChild(loadingDiv);
+            }
+            loadingDiv.classList.add('active');
+
+            setTimeout(() => {
+                loadingDiv.classList.remove('active');
+
+                const cards = document.querySelectorAll('.car-card');
+                let mobilTersedia = 0;
+
+                cards.forEach(card => {
+                    if (card.classList.contains('unavailable')) {
+                        card.style.display = 'none';
+                    } else {
+                        card.style.display = 'flex';
+                        mobilTersedia++;
+                    }
+                });
+
+                const buttons = document.querySelectorAll('.filter-btn');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                buttons[0].classList.add('active');
+
+                if (mobilTersedia === 0) {
+                    alert("Maaf, semua unit mobil kami sedang disewa untuk tanggal tersebut. Silakan hubungi Admin untuk info lebih lanjut.");
+                }
+
+            }, 1500);
+        }
+
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // Review system
+        let currentRating = 0;
+
+        function setRating(n) {
+            currentRating = n;
+            document.getElementById('reviewRating').value = n;
+
+            const labels = ["", "Kurang Memuaskan", "Cukup Bagus", "Bagus Sekali", "Sangat Memuaskan", "Luar Biasa!"];
+            const labelElement = document.getElementById('ratingLabel');
+            if (labelElement) {
+                labelElement.innerText = labels[n] || "Pilih rating bintang";
+                labelElement.style.color = n > 0 ? 'var(--rating-gold)' : 'var(--text-muted)';
+            }
+
+            for (let i = 1; i <= 5; i++) {
+                const star = document.getElementById(`star-${i}`);
+                if (star) {
+                    if (i <= n) {
+                        star.style.color = 'var(--rating-gold)';
+                        star.style.transform = 'scale(1.2)';
+                    } else {
+                        star.style.color = '#cbd5e1';
+                        star.style.transform = 'scale(1)';
+                    }
+                }
+            }
+            document.getElementById('ratingError').style.display = 'none';
+        }
+
+        async function submitReview() {
+            if (currentRating === 0) {
+                document.getElementById('ratingError').style.display = 'block';
+                return;
+            }
+
+            const name = document.getElementById('reviewName').value;
+            const role = document.getElementById('reviewRole').value || 'Pelanggan';
+            const text = document.getElementById('reviewText').value;
+
+            const payload = {
+                action: 'add',
+                id: 'rev_' + Date.now(),
+                name: name,
+                role: role,
+                rating: parseInt(currentRating),
+                text: text,
+                image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png',
+                status: 'pending'
+            };
+
+            try {
+                const response = await fetch('api_admin_testimonials.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.status === 'success') {
+                    sendTelegramNotif(`🔔 *REVIEW BARU MASUK!*\n\n*Nama:* ${name}\n*Rating:* ${'⭐'.repeat(currentRating)}\n*Ulasan:* "${text}"\n\n_Segera cek Dashboard Admin untuk menyetujui ulasan ini._`);
+
+                    showToast('Terima kasih! Ulasan berhasil dikirim.');
+
+                    document.querySelector('#tulis-review form').reset();
+                    setRating(0);
+                } else {
+                    alert('Gagal mengirim ulasan: ' + result.message);
+                }
+            } catch (error) {
+                console.warn('Mode Simulasi Lokal (Tidak ada API Server).');
+                showToast('Terima kasih! Ulasan berhasil dikirim (Mode Simulasi).');
+                document.querySelector('#tulis-review form').reset();
+                setRating(0);
+            }
+        }
+
+
+        const defaultCars = [
+            {
+                id: 'avanza',
+                name: 'All New Avanza',
+                category: 'silver',
+                price: 350,
+                image: 'ToyotaAvanza.jpg',
+                rating: '4.8 (12 Review)',
+                specs: { seat: '7 Seat', trans: 'Manual', fuel: 'Bensin', other: '2 Bag' },
+                status: 'available'
+            },
+            {
+                id: 'xenia',
+                name: 'All New Xenia',
+                category: 'silver',
+                price: 350,
+                image: 'allNewXenia.jpg',
+                rating: '4.9 (18 Review)',
+                specs: { seat: '7 Seat', trans: 'Manual', fuel: 'Bensin', other: '2 Bag' },
+                status: 'available'
+            },
+            {
+                id: 'brio',
+                name: 'Honda Brio',
+                category: 'silver',
+                price: 300,
+                image: 'HondaBrio.jpg',
+                rating: '4.8 (56 Review)',
+                specs: { seat: '5 Seat', trans: 'Matic', fuel: 'Hemat', other: 'BT' },
+                status: 'available'
+            },
+            {
+                id: 'brv',
+                name: 'Honda BR-V N7x',
+                category: 'gold',
+                price: 400,
+                image: 'HondaBRVN7.jpg',
+                rating: '4.7 (80 Review)',
+                specs: { seat: '7 Seat', trans: 'Manual', fuel: 'Bensin', other: '3 Bag' },
+                status: 'available'
+            },
+            {
+                id: 'xpander_ult',
+                name: 'Mitsubishi Xpander Ultimate',
+                category: 'gold',
+                price: 400,
+                image: 'MistubishiXpanderUltimate.jpg',
+                rating: '4.9 (42 Review)',
+                specs: { seat: '7 Seat', trans: 'Matic', fuel: 'Bensin', other: 'Smart' },
+                status: 'available'
+            },
+            {
+                id: 'xpander_sport',
+                name: 'Mitsubishi Xpander Sport',
+                category: 'gold',
+                price: 400,
+                image: 'MistubishiXpanderSport.jpg',
+                rating: '4.8 (38 Review)',
+                specs: { seat: '7 Seat', trans: 'Matic', fuel: 'Bensin', other: 'Audio' },
+                status: 'available'
+            }
+        ];
+
+        let globalCarsData = [];
+
+        async function renderCars() {
+            const container = document.getElementById('carsGrid');
+
+            container.innerHTML = Array(3).fill(`
+                <div class="skel-card">
+                    <div class="skeleton" style="width: 100%; height: 200px; border-radius: 12px;"></div>
+                    <div class="skeleton" style="width: 60%; height: 24px; margin-top: 10px;"></div>
+                    <div class="skeleton" style="width: 100%; height: 60px;"></div>
+                    <div class="skeleton" style="width: 100%; height: 40px; border-radius: 50px; margin-top: auto;"></div>
+                </div>
+            `).join('');
+
+            try {
+                const response = await fetch('api_cars.php');
+                if (!response.ok) throw new Error("HTTP error " + response.status);
+                globalCarsData = await response.json();
+            } catch (error) {
+                console.warn('Menggunakan data bawaan (Mode Lokal):', error);
+                globalCarsData = defaultCars;
+            }
+
+            container.innerHTML = '';
+
+            if (globalCarsData.length === 0) {
+                container.innerHTML = '<p style="grid-column: 1/-1; text-align:center; color: var(--text-muted);">Belum ada armada yang tersedia di Database.</p>';
+                return;
+            }
+
+            globalCarsData.forEach((car, index) => {
+                const isAvailable = car.status === 'available';
+
+                const card = document.createElement('div');
+                card.className = `car-card glass-panel ${isAvailable ? '' : 'unavailable'}`;
+                card.setAttribute('data-category', car.category);
+                card.setAttribute('data-id', car.id);
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', index * 100);
+
+                const specsHtml = `
+                        <div class="spec-item"><i class="ri-user-line"></i> ${car.specs.seat}</div>
+                        <div class="spec-item"><i class="ri-settings-4-line"></i> ${car.specs.trans}</div>
+                        <div class="spec-item"><i class="ri-gas-station-line"></i> ${car.specs.fuel}</div>
+                        <div class="spec-item"><i class="ri-briefcase-line"></i> ${car.specs.other}</div>
+                    `;
+
+                let badgeHtml = '';
+                if (car.id === 'avanza') badgeHtml = '<span class="badge">Best Seller</span>';
+                if (car.id === 'xenia') badgeHtml = '<span class="badge" style="background: var(--accent);">Premium</span>';
+
+                let imgSrc = car.image;
+                if (imgSrc && !imgSrc.startsWith('data:') && !imgSrc.startsWith('http') && !imgSrc.startsWith('assets/')) {
+                    imgSrc = 'assets/cars/' + imgSrc;
+                }
+
+                card.innerHTML = `
+                        <div class="car-image">
+                            ${badgeHtml}
+                            <img src="${imgSrc}" alt="${car.name}">
+                        </div>
+                        <div class="car-content">
+                            <div class="car-header">
+                        <div class="car-title">
+                                    <h3>${car.name}</h3>
+                                    <div class="car-rating">
+                                        <i class="ri-star-fill"></i>
+                                        <span>${typeof car.rating === 'string' && car.rating.includes('(') ? car.rating.split(' ')[0] : (car.rating || '5.0')}</span>
+                                        <span class="review-count">${typeof car.rating === 'string' && car.rating.includes('(') ? '(' + car.rating.split('(')[1] : '(New)'}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="car-specs">
+                                ${specsHtml}
+                            </div>
+                            <div class="car-footer">
+                                <div class="price" style="display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2;">
+                                    <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-main);">Start From</span>
+                                    <span style="font-size: 1.2rem; font-weight: 800; color: var(--accent);">Rp ${car.price}.000</span>
+                                </div>
+                                <div style="display:flex; gap:8px;">
+                                    <button class="btn btn-outline" style="padding: 8px 12px; border-radius:12px;" onclick="openQuickView('${car.id}')" title="Lihat Detail"><i class="ri-eye-line"></i></button>
+                                    <button class="btn btn-primary" style="padding: 8px 16px; border-radius:12px;" ${!isAvailable ? 'disabled' : ''} onclick="bookingWA('${car.name}', '${car.id}')">${isAvailable ? 'Pesan' : 'Habis'}</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                container.appendChild(card);
+            });
+
+            // Refresh AOS after adding cards
+            AOS.refresh();
+
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderCars();
+        });
+
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'kings_cars_data' || e.key === 'kings_carStatus') {
+                renderCars();
+            }
+        });
+
+        window.addEventListener('focus', renderCars);
+
+        // Date validation
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date().toISOString().split('T')[0];
+            const startInput = document.getElementById('tgl-mulai');
+            const endInput = document.getElementById('tgl-selesai');
+
+            if (startInput) {
+                startInput.addEventListener('focus', function () {
+                    this.setAttribute('min', today);
+                });
+
+                startInput.addEventListener('change', function () {
+                    if (endInput && endInput.value && endInput.value < this.value) {
+                        endInput.value = this.value;
+                    }
+                });
+            }
+
+            if (endInput) {
+                endInput.addEventListener('focus', function () {
+                    const minDate = startInput.value || today;
+                    this.setAttribute('min', minDate);
+                });
+            }
+        });
+
+        // Typewriter effect
+        class TypeWriter {
+            constructor(txtElement, words, wait = 3000) {
+                this.txtElement = txtElement;
+                this.words = words;
+                this.txt = '';
+                this.wordIndex = 0;
+                this.wait = parseInt(wait, 10);
+                this.type();
+                this.isDeleting = false;
+            }
+
+            type() {
+                const current = this.wordIndex % this.words.length;
+                const fullTxt = this.words[current];
+
+                if (this.isDeleting) {
+                    this.txt = fullTxt.substring(0, this.txt.length - 1);
+                } else {
+                    this.txt = fullTxt.substring(0, this.txt.length + 1);
+                }
+
+                this.txtElement.innerHTML = `<span class="txt">${this.txt}</span>`;
+
+                let typeSpeed = 100;
+
+                if (this.isDeleting) {
+                    typeSpeed /= 2;
+                }
+
+                if (!this.isDeleting && this.txt === fullTxt) {
+                    typeSpeed = this.wait;
+                    this.isDeleting = true;
+                } else if (this.isDeleting && this.txt === '') {
+                    this.isDeleting = false;
+                    this.wordIndex++;
+                    typeSpeed = 500;
+                }
+
+                setTimeout(() => this.type(), typeSpeed);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const txtElement = document.querySelector('.txt-type');
+            if (txtElement) {
+                const words = JSON.parse(txtElement.getAttribute('data-words'));
+                const wait = txtElement.getAttribute('data-wait');
+                new TypeWriter(txtElement, words, wait);
+            }
+        });
+
+        function sendTelegramNotif(message) {
+            const botToken = '8323531306:AAGaEpVpXEzjlJ5FQRoJd18s4TyPyxYL150';
+            const chatId = '7752579306';
+
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            }).catch(error => console.error('Error kirim Telegram:', error));
+        }
+
+        // Hero 3D parallax
+        const heroSection = document.querySelector('.hero');
+        const heroImageContainer = document.querySelector('.hero-image');
+
+        if (heroSection && heroImageContainer) {
+            heroSection.addEventListener('mousemove', (e) => {
+                if (window.innerWidth > 900) {
+                    const xAxis = (window.innerWidth / 2 - e.pageX) / 40;
+                    const yAxis = (window.innerHeight / 2 - e.pageY) / 40;
+
+                    heroImageContainer.style.transform = `perspective(1000px) rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                }
+            });
+
+            heroSection.addEventListener('mouseleave', () => {
+                if (window.innerWidth > 900) {
+                    heroImageContainer.style.transition = 'transform 0.5s ease';
+                    heroImageContainer.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
+                }
+            });
+
+            heroSection.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 900) {
+                    heroImageContainer.style.transition = 'transform 0.1s ease-out';
+                }
+            });
+        }
+
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.classList.add('preloader-hidden');
+
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 600);
+                }, 800);
+            }
+        });
+
+        function showToast(message) {
+            let container = document.getElementById('toast-container');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'toast-container';
+                document.body.appendChild(container);
+            }
+
+            const toast = document.createElement('div');
+            toast.className = 'toast success';
+            toast.innerHTML = `<i class="ri-checkbox-circle-fill"></i> <span>${message}</span>`;
+
+            container.appendChild(toast);
+
+            setTimeout(() => toast.classList.add('show'), 10);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 400);
+            }, 3500);
+        }
+
+        // Counter animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 100;
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(updateCount, 20);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        const statObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                animateCounters();
+                statObserver.disconnect();
+            }
+        });
+
+        const counterElement = document.querySelector('.counter');
+        if (counterElement) {
+            statObserver.observe(counterElement);
+        }
+
+        // Testimonials rendering
+        document.addEventListener('DOMContentLoaded', async () => {
+            const container = document.getElementById('testimonial-track');
+            if (!container) return;
+
+            container.innerHTML = '<div class="spinner" style="margin: 30px auto;"></div>';
+
+            let data = [];
+            try {
+                const response = await fetch('api_testimonials.php');
+                if (!response.ok) throw new Error("HTTP error");
+                data = await response.json();
+            } catch (error) {
+                console.warn('Menggunakan data testimoni bawaan:', error);
+                // Menambah beberapa data dummy agar efek jalannya lebih terasa
+                data = [
+                    { name: 'Andi Pratama', role: 'Wisatawan Jakarta', rating: 5, text: 'Mobilnya bersih dan wangi. Pelayanan admin sangat ramah. Recommended buat yang cari rental di Bumiayu.', image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' },
+                    { name: 'Siti Aminah', role: 'Warga Lokal', rating: 5, text: 'Sewa buat acara nikahan keluarga, unit Xpander-nya mulus banget kaya baru. Harga juga bersahabat.', image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' },
+                    { name: 'Budi Santoso', role: 'Pebisnis', rating: 5, text: 'Sangat praktis dan on time. Supir ramah dan menguasai jalan area Brebes dan Banyumas. Terima kasih!', image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' },
+                    { name: 'Rina', role: 'Mahasiswi', rating: 4, text: 'Mobil maticnya enak dibawa nanjak ke Baturraden. Proses lepas kunci lumayan cepat tanpa ribet.', image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png' }
+                ];
+            }
+
+            container.innerHTML = '';
+
+            // Trik Marquee: Menggandakan data (duplicate 3x) agar saat di-scroll tidak ada ujungnya (seamless)
+            const loopedData = [...data, ...data, ...data];
+
+            loopedData.forEach((item) => {
+                const card = document.createElement('div');
+                card.className = 'review-card glass-panel';
+                card.innerHTML = `
+                    <div class="car-rating" style="margin-bottom: 12px;">
+                        <i class="ri-star-fill"></i> <span>${item.rating}.0</span> <span class="review-count">Verified</span>
+                    </div>
+                    <p class="review-text">${item.text}</p>
+                    <div class="user-profile">
+                        <div class="avatar"><img src="${item.image}" alt="User"></div>
+                        <div class="user-info">
+                            <h4>${item.name}</h4>
+                            <span style="font-size: 0.85rem; opacity: 0.7;">${item.role}</span>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        });
+
+
+        // ==============================================================
+        // LOGIKA JAVASCRIPT WIDGET ASISTEN AI (TAMBAHAN BARU)
+        // ==============================================================
+        const widgetBtn = document.getElementById('chat-widget-button');
+        const chatContainer = document.getElementById('chat-container');
+        const closeBtn = document.getElementById('close-chat-btn');
+
+        // FITUR BARU - IDE 1: Greeting Pop-up Otomatis
+        const greetingBubble = document.getElementById('chat-greeting-bubble');
+
+        setTimeout(() => {
+            // Munculkan balon pesan jika user belum membuka chat
+            if (!chatContainer.classList.contains('show') && greetingBubble) {
+                greetingBubble.classList.add('show');
+            }
+        }, 5000); // Muncul 5 detik setelah website dimuat
+
+        // Buka/Tutup Chat (Ganti bagian ini)
+        widgetBtn.addEventListener('click', () => {
+            chatContainer.classList.add('show');
+            widgetBtn.style.display = 'none';
+            if (greetingBubble) greetingBubble.classList.remove('show'); // Sembunyikan balon saat diklik
+        });
+
+        closeBtn.addEventListener('click', () => {
+            chatContainer.classList.remove('show');
+            setTimeout(() => { widgetBtn.style.display = 'flex'; }, 300);
+        });
+
+        // Konfigurasi Gemini API
+        const GEMINI_API_KEY = 'AIzaSyDpPElFjBJiDZ-yN3i5R7bw8WZRiR-_8co';
+        const sistemPrompt = `Kamu adalah asisten pelanggan (customer service) yang ramah untuk "Kings Rental Bumiayu". 
+        Gunakan bahasa Indonesia santai dan asik. Harga referensi: Avanza/Xenia Rp 300.000, Innova Rp 500.000, Brio/Agya Rp 250.000. 
+        Mobil untuk nanjak/pegunungan (seperti Baturraden): Sarankan Avanza/Innova/Rush. Jangan bahas hal-hal di luar rental mobil. Jangan berikan kode/script.`;
+
+        const chatBoxContainer = document.getElementById('chat-box');
+        const userChatInput = document.getElementById('user-input');
+        const sendChatBtn = document.getElementById('send-btn');
+
+        function addChatMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message', sender);
+
+            if (sender === 'ai') {
+                msgDiv.innerHTML = text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            } else {
+                msgDiv.innerText = text;
+            }
+
+            chatBoxContainer.appendChild(msgDiv);
+            chatBoxContainer.scrollTop = chatBoxContainer.scrollHeight;
+            return msgDiv;
+        }
+
+        async function fetchGeminiResponse(userText, loadingEl) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+            try {
+                const res = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        "system_instruction": { "parts": [{ "text": sistemPrompt }] },
+                        "contents": [{ "role": "user", "parts": [{ "text": userText }] }]
+                    })
+                });
+
+                if (!res.ok) throw new Error("Gagal menyambung ke server Google");
+
+                const data = await res.json();
+                loadingEl.classList.remove('loading-dots');
+
+                if (data.candidates && data.candidates.length > 0) {
+                    loadingEl.innerHTML = data.candidates[0].content.parts[0].text.replace(/\n/g, '<br>').replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                } else {
+                    loadingEl.innerText = "Maaf, AI sedang tidak bisa merespons.";
+                }
+            } catch (err) {
+                loadingEl.classList.remove('loading-dots');
+                loadingEl.innerHTML = `<span style="color:#ef4444; font-size:0.85rem;">Error koneksi API</span>`;
+            }
+        }
+
+        async function handleSendChat() {
+            const text = userChatInput.value.trim();
+            if (!text) return;
+
+            addChatMessage(text, 'user');
+            userChatInput.value = '';
+
+            sendChatBtn.disabled = true;
+            userChatInput.disabled = true;
+
+            const loadingMsg = addChatMessage("Sedang membalas", 'ai');
+            loadingMsg.classList.add('loading-dots');
+
+            await fetchGeminiResponse(text, loadingMsg);
+
+            sendChatBtn.disabled = false;
+            userChatInput.disabled = false;
+            userChatInput.focus();
+        }
+
+        sendChatBtn.addEventListener('click', handleSendChat);
+        userChatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSendChat();
+        });
+
+        // FITUR BARU - IDE 2: VOICE RECOGNITION (WEB SPEECH API)
+        const micBtn = document.getElementById('mic-btn');
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+        if (SpeechRecognition) {
+            const recognition = new SpeechRecognition();
+            recognition.lang = 'id-ID'; // Mengatur bahasa ke Bahasa Indonesia
+            recognition.interimResults = false;
+
+            micBtn.addEventListener('click', () => {
+                if (micBtn.classList.contains('recording')) {
+                    recognition.stop();
+                } else {
+                    recognition.start();
+                    micBtn.classList.add('recording');
+                    userChatInput.placeholder = "Mendengarkan suara Anda...";
+                }
+            });
+
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                userChatInput.value = transcript;
+                micBtn.classList.remove('recording');
+                userChatInput.placeholder = "Ketik pesan...";
+
+                // Jika ingin pesan langsung terkirim otomatis setelah bicara, hapus tanda '//' di bawah ini:
+                // handleSendChat(); 
+            };
+
+            recognition.onspeechend = () => {
+                micBtn.classList.remove('recording');
+                userChatInput.placeholder = "Ketik pesan...";
+            };
+
+            recognition.onerror = (event) => {
+                console.error("Speech recognition error:", event.error);
+                micBtn.classList.remove('recording');
+                userChatInput.placeholder = "Gagal mendengar. Coba lagi...";
+                setTimeout(() => userChatInput.placeholder = "Ketik pesan...", 3000);
+            };
+        } else {
+            // Jika browser (misal browser sangat jadul) tidak support, sembunyikan tombolnya
+            if (micBtn) micBtn.style.display = 'none';
+        }
+        // FITUR BARU: CEK STATUS LOGIN (Mengubah tombol Masuk menjadi Profil)
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                // Meminta data sesi dari server
+                const response = await fetch('api_session.php');
+                const session = await response.json();
+                
+                // Cari area tombol-tombol di pojok kanan atas
+                const navActions = document.querySelector('.nav-actions');
+                const loginBtn = navActions.querySelector('a[href="login.html"]');
+
+                // Jika user SUDAH LOGIN
+                if (session.logged_in) {
+                    if (loginBtn) loginBtn.remove(); // Hapus tombol "Masuk"
+
+                    // Ambil nama panggilan (kata pertama saja)
+                    const namaPanggilan = session.name.split(' ')[0];
+                    
+                    // Buat elemen profil baru
+                    const profileDiv = document.createElement('div');
+                    profileDiv.style.display = 'flex';
+                    profileDiv.style.alignItems = 'center';
+                    profileDiv.style.gap = '15px';
+                    profileDiv.style.marginRight = '10px';
+
+                    // Jika yang login Admin, arahkan ke dashboard. Jika pelanggan, tetap di index.
+                    const linkDashboard = session.role === 'admin' ? 'admin.html' : '#';
+                    const teksSapaan = session.role === 'admin' ? 'Dashboard Admin' : `Halo, ${namaPanggilan}`;
+
+                    // Buat sapaan dan tombol KELUAR
+                    profileDiv.innerHTML = `
+                        <a href="${linkDashboard}" style="font-weight: 700; color: var(--text-main); font-size: 0.95rem; text-decoration: none;">
+                            <i class="ri-user-smile-line" style="color: var(--accent); margin-right: 4px;"></i> ${teksSapaan}
+                        </a>
+                        <a href="api_logout.php" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.85rem; border-radius: 50px; color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">Keluar</a>
+                    `;
+                    
+                    // Masukkan ke dalam navbar
+                    navActions.prepend(profileDiv);
+                }
+            } catch (error) {
+                console.error("Gagal mengecek sesi login:", error);
+            }
+        });
+    </script>
+</body>
+
+</html>

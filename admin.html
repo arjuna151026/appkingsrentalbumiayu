@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | King's Rental</title>
+    <link rel="icon" href="assets/logos/logo_baru.png" type="image/png">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        /* --- CSS VARIABLES (PREMIUM THEME) --- */
+        :root {
+            --primary: #0f172a;
+            --primary-light: #1e293b;
+            --accent: #3b82f6;
+            --accent-hover: #2563eb;
+            --surface: #ffffff;
+            --surface-secondary: #f1f5f9;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --danger: #ef4444;
+            --success: #10b981;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --sidebar-width: 260px;
+        }
+
+        [data-theme="dark"] {
+            --primary: #f8fafc;
+            --accent: #60a5fa;
+            --surface: #0f172a;
+            --surface-secondary: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--surface-secondary);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        /* --- LOGIN STYLE --- */
+        .login-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        }
+
+        .login-card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .login-card h2 {
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            font-size: 1.8rem;
+        }
+
+        .login-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--surface);
+            color: var(--text-main);
+            outline: none;
+            transition: 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .btn-full {
+            width: 100%;
+            padding: 14px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1rem;
+        }
+
+        .btn-full:hover {
+            background: var(--accent-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-back-home {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        .btn-back-home:hover {
+            color: var(--accent);
+        }
+
+        /* --- MODERN DASHBOARD LAYOUT --- */
+        .dashboard-wrapper {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--surface);
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            border-right: 1px solid var(--border);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+        }
+
+        .sidebar-brand {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-brand i {
+            color: var(--accent);
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+            font-weight: 500;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(59, 130, 246, 0.08);
+            color: var(--accent);
+        }
+
+        .nav-item i {
+            font-size: 1.2rem;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 40px;
+            max-width: 1200px;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .page-title h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            color: var(--text-main);
+        }
+
+        .page-title p {
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .btn-logout {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 10px 20px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .btn-logout:hover {
+            border-color: var(--danger);
+            color: var(--danger);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        /* --- CARDS & LISTS --- */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+
+        .section-header h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .form-card {
+            background: var(--surface);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 40px;
+        }
+
+        .list-container {
+            display: grid;
+            gap: 16px;
+        }
+
+        .admin-car-card {
+            background: var(--surface);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: 0.2s;
+        }
+
+        .admin-car-card:hover {
+            border-color: var(--accent);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .car-image-preview {
+            width: 90px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: var(--surface-secondary);
+        }
+
+        .avatar-preview {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+            background: var(--surface-secondary);
+        }
+
+        .car-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+        }
+
+        .car-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .status-badge {
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-available {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .status-busy {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            background: var(--surface-secondary);
+            color: var(--text-muted);
+        }
+
+        .action-btn:hover {
+            color: var(--danger);
+            background: #fee2e2;
+        }
+
+        .btn-toggle {
+            width: auto;
+            height: auto;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid;
+            background: transparent;
+        }
+
+        .btn-toggle:hover {
+            opacity: 0.8;
+        }
+
+        /* --- RESPONSIVE (UPDATE) --- */
+        @media (max-width: 1024px) {
+
+            /* 1. Mencegah Horizontal Scroll secara global di mobile */
+            body,
+            html {
+                overflow-x: hidden;
+                width: 100%;
+            }
+
+            /* 2. Munculkan tombol menu hamburger */
+            #adminMobileMenu {
+                display: flex !important;
+            }
+
+            /* 3. Sidebar disembunyikan (digeser ke kiri) secara default */
+            .sidebar {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 280px;
+                /* Pastikan lebar sidebar tetap saat ditarik */
+                max-width: 80%;
+                /* Maksimal lebar sidebar 80% layar HP */
+                z-index: 1000;
+                transform: translateX(-100%);
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            /* 4. Main content full width di mobile dan cegah overflow */
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+                /* Padding dikurangi dikit agar layar lega */
+                width: 100vw;
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-card {
+                position: static;
+                margin-bottom: 30px;
+                width: 100%;
+                /* Kunci form agar tidak melebihi lebar */
+                overflow-x: hidden;
+            }
+
+            /* 5. Perbaikan Card Mobil/Testimoni agar tidak jebol */
+            .admin-car-card {
+                flex-direction: column;
+                /* Tumpuk gambar dan info ke bawah di layar kecil */
+                text-align: center;
+                gap: 15px;
+                width: 100%;
+            }
+
+            .car-image-preview,
+            .avatar-preview {
+                width: 100%;
+                height: 150px;
+                /* Buat gambar lebih besar di mobile */
+                object-fit: contain;
+            }
+
+            .avatar-preview {
+                height: 80px;
+                width: 80px;
+                border-radius: 50%;
+                margin: 0 auto;
+            }
+
+            /* Tombol aksi (Edit/Hapus) di-center */
+            .admin-car-card>div:last-child {
+                justify-content: center;
+                width: 100%;
+            }
+        }
+
+        /* GREETING POP-UP BUBBLE (Ide 1) */
+        .greeting-bubble {
+            position: fixed; bottom: 190px; right: 30px; background: var(--surface);
+            color: var(--text-main); padding: 12px 18px; border-radius: 16px; border-bottom-right-radius: 4px;
+            font-size: 0.9rem; font-weight: 600; box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border: 1px solid var(--glass-border); z-index: 99;
+            opacity: 0; transform: translateY(20px) scale(0.9); visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        .greeting-bubble.show { opacity: 1; transform: translateY(0) scale(1); visibility: visible; }
+        .greeting-bubble::after {
+            content: ''; position: absolute; bottom: -8px; right: 20px;
+            width: 15px; height: 15px; background: var(--surface); border-bottom: 1px solid var(--glass-border);
+            border-right: 1px solid var(--glass-border); transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-wrapper" id="loginPage">
+        <div class="login-card">
+            <div style="margin-bottom: 15px; display: flex; justify-content: center;">
+                <img src="assets/logos/logo_baru.png" alt="Kings Logo" style="height: 80px; width: auto;">
+            </div>
+            <h2>Admin Login</h2>
+            <p class="login-subtitle">Masuk untuk mengelola rental mobil</p>
+            <form onsubmit="event.preventDefault(); handleLogin();">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="Masukkan username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Masukkan password">
+                </div>
+                <button type="submit" class="btn-full">Masuk Dashboard</button>
+            </form>
+            <p id="errorMsg" style="color: var(--danger); margin-top: 20px; font-size: 0.9rem; display: none;">
+                <i class="ri-error-warning-line"></i> Username atau Password salah!
+            </p>
+
+            <a href="index.html" class="btn-back-home">
+                <i class="ri-arrow-left-line"></i> Kembali ke Website
+            </a>
+        </div>
+    </div>
+
+    <div class="dashboard-wrapper" id="dashboardPage">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-brand">
+                <img src="assets/logos/logo_baru.png" alt="Kings Logo" style="height: 40px; width: auto;"> King's.
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-item active" onclick="scrollToSection('mobil')">
+                    <i class="ri-car-line"></i> Kelola Mobil
+                </a>
+                <a href="#" class="nav-item" onclick="scrollToSection('testimoni')">
+                    <i class="ri-discuss-line"></i> Testimoni
+                </a>
+                <a href="index.html" class="nav-item" style="margin-top: auto;">
+                    <i class="ri-external-link-line"></i> Lihat Website
+                </a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="top-bar">
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <button id="adminMobileMenu" class="action-btn"
+                        style="display: none; background: white; border: 1px solid var(--border);">
+                        <i class="ri-menu-line"></i>
+                    </button>
+                    <div class="page-title">
+                        <h1>Dashboard Admin</h1>
+                        <p>Selamat datang kembali, Admin!</p>
+                    </div>
+                </div>
+                <button onclick="handleLogout()" class="btn-logout"><i class="ri-logout-box-r-line"></i> Logout</button>
+            </div>
+
+            <!-- SECTION: KELOLA MOBIL -->
+            <section id="mobilSection" style="margin-bottom: 60px;">
+                <div class="section-header">
+                    <h3><i class="ri-car-fill" style="color: var(--accent); margin-right: 10px;"></i> Kelola Armada</h3>
+                </div>
+
+                <div class="content-grid">
+                    <!-- Form Tambah Mobil -->
+                    <div class="form-card">
+                        <h4 id="formTitle" style="margin-bottom: 20px; font-family: 'Outfit';">Tambah Unit Baru</h4>
+                        <form id="addCarForm" onsubmit="event.preventDefault(); saveCar();"
+                            style="display: grid; gap: 15px;">
+
+                            <input type="hidden" id="editCarId" value="">
+                            <input type="hidden" id="existingImage" value="">
+
+                            <div class="form-group">
+                                <label>Nama Mobil</label>
+                                <input type="text" id="carName" required>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Harga (Ribuan)</label>
+                                    <input type="number" id="carPrice" placeholder="350" required>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Kategori</label>
+                                    <select id="carCategory">
+                                        <option value="silver">Silver</option>
+                                        <option value="gold">Gold</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Kursi</label>
+                                    <input type="text" id="specSeat" placeholder="7 Seat" required>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Transmisi</label>
+                                    <input type="text" id="specTrans" placeholder="Manual" required>
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>BBM</label>
+                                    <input type="text" id="specFuel" placeholder="Bensin" required>
+                                </div>
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label>Fitur</label>
+                                    <input type="text" id="specOther" placeholder="Bluetooth" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Foto Mobil <span id="imageHelp">(Max 6MB)</span></label>
+                                <input type="file" id="carImage" accept="image/*"
+                                    style="padding: 8px; font-size: 0.85rem;">
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                                <button type="button" onclick="resetFormState()" class="btn-full"
+                                    style="background: var(--surface-secondary); color: var(--text-main); border: 1px solid var(--border);">
+                                    <i class="ri-refresh-line"></i> Batal / Reset
+                                </button>
+                                <button type="submit" id="submitBtn" class="btn-full"
+                                    style="background: var(--primary);">
+                                    <i class="ri-add-line"></i> Simpan Mobil
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- List Mobil -->
+                    <div class="list-container" id="adminCarList">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: TESTIMONI -->
+            <section id="testimoniSection">
+                <div class="section-header">
+                    <h3><i class="ri-chat-smile-3-fill" style="color: var(--success); margin-right: 10px;"></i>
+                        Pengalaman Pelanggan</h3>
+                </div>
+
+                <!-- PENDING REVIEWS (BARU) -->
+                <div id="pendingReviewContainer" style="margin-bottom: 40px; display: none;">
+                    <h4
+                        style="margin-bottom: 15px; background: #fff7ed; padding: 10px; border-left: 4px solid #f97316; color: #9a3412;">
+                        <i class="ri-alarm-warning-line"></i> Review Menunggu Persetujuan
+                    </h4>
+                    <div class="list-container" id="adminPendingList">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <div class="content-grid">
+                    <!-- Form Tambah Testimoni -->
+                    <div class="form-card">
+                        <h4 style="margin-bottom: 20px; font-family: 'Outfit';">Tambah Testimoni</h4>
+                        <form onsubmit="event.preventDefault(); addNewTestimonial();" style="display: grid; gap: 15px;">
+                            <div class="form-group">
+                                <label>Nama Pelanggan</label>
+                                <input type="text" id="testiName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Status / Asal</label>
+                                <input type="text" id="testiRole" placeholder="Wisatawan Jakarta">
+                            </div>
+                            <div class="form-group">
+                                <label>Rating</label>
+                                <select id="testiRating">
+                                    <option value="5">⭐⭐⭐⭐⭐ (5.0)</option>
+                                    <option value="4">⭐⭐⭐⭐ (4.0)</option>
+                                    <option value="3">⭐⭐⭐ (3.0)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Ulasan</label>
+                                <textarea id="testiText" rows="3" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Foto Profil (Max 1MB)</label>
+                                <input type="file" id="testiImage" accept="image/*" required
+                                    style="padding: 8px; font-size: 0.85rem;">
+                            </div>
+                            <button type="submit" class="btn-full"
+                                style="background: var(--success); margin-top: 10px;">
+                                <i class="ri-save-line"></i> Simpan Testimoni
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- List Testimoni -->
+                    <div class="list-container" id="adminTestiList">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // --- NAVIGATION LOGIC ---
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('adminMobileMenu');
+        const sidebar = document.querySelector('.sidebar');
+
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent immediate closing
+                sidebar.classList.toggle('active');
+            });
+
+            // Close sidebar when clicking outside
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 1024 &&
+                    sidebar.classList.contains('active') &&
+                    !sidebar.contains(e.target) &&
+                    e.target !== mobileMenuBtn) {
+                    sidebar.classList.remove('active');
+                }
+            });
+        }
+
+        function scrollToSection(sectionId) {
+            // Update Active Nav
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            // Close sidebar on mobile after click
+            if (window.innerWidth <= 1024) {
+                sidebar.classList.remove('active');
+            }
+
+            // Scroll to section
+            const element = document.getElementById(sectionId + 'Section');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // --- DATA MOBIL DEFAULT (INIT) ---
+        // Jika localStorage kosong, kita isi dengan data ini agar index.html tidak rusak saat pertama load versi baru
+        const defaultCars = [
+            {
+                id: 'avanza',
+                name: 'All New Avanza',
+                category: 'silver',
+                price: 350,
+                image: 'ToyotaAvanza.jpg', // Local File
+                rating: '4.8 (12 Review)',
+                specs: { seat: '7 Seat', trans: 'Manual', fuel: 'Bensin', other: '2 Bag' },
+                status: 'available'
+            },
+            {
+                id: 'xenia',
+                name: 'All New Xenia',
+                category: 'silver',
+                price: 350,
+                image: 'allNewXenia.jpg',
+                rating: '4.9 (18 Review)',
+                specs: { seat: '7 Seat', trans: 'Manual', fuel: 'Bensin', other: '2 Bag' },
+                status: 'available'
+            },
+            {
+                id: 'brio',
+                name: 'Honda Brio',
+                category: 'silver',
+                price: 300,
+                image: 'HondaBrio.jpg',
+                rating: '4.8 (56 Review)',
+                specs: { seat: '5 Seat', trans: 'Matic', fuel: 'Hemat', other: 'BT' },
+                status: 'available'
+            },
+            {
+                id: 'brv',
+                name: 'Honda BR-V N7x',
+                category: 'gold',
+                price: 400,
+                image: 'HondaBRVN7.jpg',
+                rating: '4.7 (80 Review)',
+                specs: { seat: '7 Seat', trans: 'Manual', fuel: 'Bensin', other: '3 Bag' },
+                status: 'available'
+            },
+            {
+                id: 'xpander_ult',
+                name: 'Mitsubishi Xpander Ultimate',
+                category: 'gold',
+                price: 400,
+                image: 'MistubishiXpanderUltimate.jpg',
+                rating: '4.9 (42 Review)',
+                specs: { seat: '7 Seat', trans: 'Matic', fuel: 'Bensin', other: 'Smart' },
+                status: 'available'
+            },
+            {
+                id: 'xpander_sport',
+                name: 'Mitsubishi Xpander Sport',
+                category: 'gold',
+                price: 400,
+                image: 'MistubishiXpanderSport.jpg',
+                rating: '4.8 (38 Review)',
+                specs: { seat: '7 Seat', trans: 'Matic', fuel: 'Bensin', other: 'Audio' },
+                status: 'available'
+            }
+        ];
+
+        // --- CEK LOGIN & LOAD DATA ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLogged = localStorage.getItem('kings_isAdmin');
+
+            if (isLogged === 'true') {
+                showDashboard();
+            } else {
+                document.getElementById('loginPage').style.display = 'flex';
+                document.getElementById('dashboardPage').style.display = 'none';
+            }
+        });
+
+        // --- FUNGSI LOGIN DENGAN KEAMANAN HASH (SHA-256) ---
+        async function handleLogin() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            // 1. Username & Hash Password Baru
+            const correctUsername = "kingsrental";
+            // Hash ini adalah untuk password: 'rentalbmykings'
+            const correctPassHash = "be8fae973be6b70944981f5b7d5207e0cb14dbe235c22f99f9cadf9de75517b5";
+
+            // 2. Proses Enkripsi Inputan User
+            const hashBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pass));
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            const inputHash = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+
+            // 3. Cek Apakah Cocok
+            if (user === correctUsername && inputHash === correctPassHash) {
+                localStorage.setItem('kings_isAdmin', 'true');
+                showDashboard();
+            } else {
+                document.getElementById('errorMsg').style.display = 'block';
+            }
+        }
+
+        // --- FUNGSI LOGOUT ---
+        function handleLogout() {
+            localStorage.removeItem('kings_isAdmin');
+            location.reload();
+        }
+
+        // --- TAMPILKAN DASHBOARD ---
+        function showDashboard() {
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('dashboardPage').style.display = 'block';
+            renderCarList();
+            renderTestimonials(); // Load testimonials
+        }
+
+        // --- VARIABEL GLOBAL ADMIN ---
+        let adminCarsData = [];
+
+        // --- 1. RENDER LIST MOBIL (AMBIL DARI DATABASE) ---
+        async function renderCarList() {
+            const container = document.getElementById('adminCarList');
+            container.innerHTML = '<p style="text-align:center;">Memuat data dari database...</p>';
+
+            try {
+                // Gunakan api_cars.php yang sama dengan index.html
+                const response = await fetch('api_cars.php');
+                adminCarsData = await response.json();
+
+                container.innerHTML = '';
+                adminCarsData.forEach(car => {
+                    const isAvailable = car.status === 'available';
+
+                    // Deteksi foto lama vs base64
+                    let imgSrc = car.image;
+                    if (imgSrc && !imgSrc.startsWith('data:') && !imgSrc.startsWith('http') && !imgSrc.startsWith('assets/')) {
+                        imgSrc = 'assets/cars/' + imgSrc;
+                    }
+
+                    const card = document.createElement('div');
+                    card.className = 'admin-car-card';
+                    card.innerHTML = `
+                        <img src="${imgSrc}" class="car-image-preview">
+                        <div class="car-info" style="flex: 1;">
+                            <h4>${car.name}</h4>
+                            <p>${car.category.toUpperCase()} | <span style="font-weight: 600;">Rp ${car.price}.000</span></p>
+                            <span class="status-badge ${isAvailable ? 'status-available' : 'status-busy'}" style="margin-top: 8px;">
+                                ${isAvailable ? 'Check-In (Tersedia)' : 'Check-Out (Dipakai)'}
+                            </span>
+                        </div>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <button onclick="toggleStatus('${car.id}', '${car.status}')" class="btn-toggle" 
+                                style="border-color: ${isAvailable ? 'var(--danger)' : 'var(--success)'}; color: ${isAvailable ? 'var(--danger)' : 'var(--success)'};">
+                                ${isAvailable ? '<i class="ri-roadster-line"></i> Ganti Status' : '<i class="ri-check-line"></i> Kembalikan'}
+                            </button>
+                            <button onclick="editCar('${car.id}')" class="action-btn" title="Edit Mobil" style="color: var(--accent);">
+                                <i class="ri-edit-box-line"></i>
+                            </button>
+                            <button onclick="deleteCar('${car.id}')" class="action-btn" title="Hapus Mobil">
+                                <i class="ri-delete-bin-line"></i>
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error fetching cars:', error);
+                container.innerHTML = '<p style="color:red; text-align:center;">Gagal memuat data dari database!</p>';
+            }
+        }
+
+        // --- 2. LOGIKA FORM (TAMBAH / EDIT KE DATABASE) ---
+        function saveCar() {
+            const editId = document.getElementById('editCarId').value;
+            const name = document.getElementById('carName').value;
+            const price = document.getElementById('carPrice').value;
+            const category = document.getElementById('carCategory').value;
+            const specSeat = document.getElementById('specSeat').value;
+            const specTrans = document.getElementById('specTrans').value;
+            const specFuel = document.getElementById('specFuel').value;
+            const specOther = document.getElementById('specOther').value;
+            const imageInput = document.getElementById('carImage');
+
+            const sendDataToServer = async (imageData) => {
+                const payload = {
+                    action: editId ? 'edit' : 'add',
+                    id: editId || 'car_' + Date.now(),
+                    name: name,
+                    category: category,
+                    price: parseInt(price),
+                    image: imageData,
+                    rating: '5.0 (New)',
+                    specs: {
+                        seat: specSeat,
+                        trans: specTrans,
+                        fuel: specFuel,
+                        other: specOther
+                    },
+                    status: 'available'
+                };
+
+                try {
+                    // Gunakan alamat relatif agar lebih stabil
+                    const response = await fetch('api_admin_cars.php', {
+                        method: 'POST',
+                        mode: 'cors', // Tambahkan mode cors
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Respon server tidak oke');
+                    }
+
+                    const result = await response.json();
+
+                    if (result.status === 'success') {
+                        alert(result.message);
+                        resetFormState();
+                        renderCarList();
+                    } else {
+                        alert("Gagal: " + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error Detail:', error);
+                    alert("Terjadi kesalahan jaringan atau ukuran foto terlalu besar.");
+                }
+            };
+
+            // Validasi Gambar
+            if (imageInput.files && imageInput.files[0]) {
+                const file = imageInput.files[0];
+                if (file.size > 6 * 1024 * 1024) {
+                    alert('Ukuran foto terlalu besar! Maksimal 6MB.');
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    sendDataToServer(e.target.result); // Kirim dengan base64 image
+                };
+                reader.readAsDataURL(file);
+            } else {
+                if (editId) {
+                    sendDataToServer(""); // Edit tanpa ubah gambar
+                } else {
+                    alert('Silakan pilih foto mobil terlebih dahulu!');
+                }
+            }
+        }
+
+        // --- FUNGSI MENGISI FORM SAAT TOMBOL EDIT DIKLIK ---
+        function editCar(carId) {
+            const cars = adminCarsData;
+            const car = cars.find(c => c.id === carId);
+            if (!car) return;
+
+            // Isi inputan dengan data lama
+            document.getElementById('editCarId').value = car.id;
+            document.getElementById('existingImage').value = car.image;
+            document.getElementById('carName').value = car.name;
+            document.getElementById('carPrice').value = car.price;
+            document.getElementById('carCategory').value = car.category;
+            document.getElementById('specSeat').value = car.specs.seat;
+            document.getElementById('specTrans').value = car.specs.trans;
+            document.getElementById('specFuel').value = car.specs.fuel;
+            document.getElementById('specOther').value = car.specs.other;
+
+            // Ubah tampilan UI Form
+            document.getElementById('formTitle').innerText = "Edit Unit Mobil";
+            document.getElementById('submitBtn').innerHTML = "<i class='ri-save-line'></i> Update Mobil";
+            document.getElementById('submitBtn').style.background = "var(--accent)";
+            document.getElementById('imageHelp').innerText = "(Kosongkan jika tidak ganti foto)";
+            document.getElementById('carImage').required = false;
+
+            // Scroll layar ke arah form secara otomatis
+            document.getElementById('mobilSection').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // --- FUNGSI MERESET FORM KE MODE AWAL (TAMBAH) ---
+        function resetFormState() {
+            document.getElementById('addCarForm').reset();
+            document.getElementById('editCarId').value = "";
+            document.getElementById('existingImage').value = "";
+
+            document.getElementById('formTitle').innerText = "Tambah Unit Baru";
+            document.getElementById('submitBtn').innerHTML = "<i class='ri-add-line'></i> Simpan Mobil";
+            document.getElementById('submitBtn').style.background = "var(--primary)";
+            document.getElementById('imageHelp').innerText = "(Max 6MB)";
+            document.getElementById('carImage').required = true;
+        }
+
+        // --- 3. HAPUS MOBIL DARI DATABASE ---
+        async function deleteCar(carId) {
+            if (confirm('Apakah Anda yakin ingin menghapus mobil ini? Data akan dihapus dari Database permanen.')) {
+                try {
+                    const response = await fetch('api_admin_cars.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            action: 'delete',
+                            id: carId
+                        })
+                    });
+                    const result = await response.json();
+                    if (result.status === 'success') {
+                        renderCarList(); // Refresh
+                    }
+                } catch (error) {
+                    alert("Gagal menghapus mobil.");
+                }
+            }
+        }
+
+        // --- 4. UBAH STATUS MOBIL DI DATABASE ---
+        async function toggleStatus(carId, currentStatus) {
+            const newStatus = currentStatus === 'available' ? 'busy' : 'available';
+
+            try {
+                const response = await fetch('api_admin_cars.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: 'toggle_status',
+                        id: carId,
+                        new_status: newStatus
+                    })
+                });
+                const result = await response.json();
+                if (result.status === 'success') {
+                    renderCarList(); // Refresh UI
+                }
+            } catch (error) {
+                alert("Gagal mengubah status.");
+            }
+        }
+
+        // --- TESTIMONIAL MANAGAMENT ---
+
+        const defaultTestimonials = [
+            {
+                id: 'testi_1',
+                name: 'Andi Pratama',
+                role: 'Wisatawan Jakarta',
+                rating: 5,
+                text: '"Mobilnya bersih dan wangi. Pelayanan admin sangat ramah dan fast response. Recommended buat yang cari rental di Bumiayu."',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
+            },
+            {
+                id: 'testi_2',
+                name: 'Siti Aminah',
+                role: 'Warga Lokal',
+                rating: 5,
+                text: '"Sewa buat acara nikahan keluarga, unit Xpander-nya mulus banget kaya baru. Harga juga bersahabat."',
+                image: 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'
+            }
+        ];
+
+        async function addNewTestimonial() {
+            const name = document.getElementById('testiName').value;
+            const role = document.getElementById('testiRole').value;
+            const rating = document.getElementById('testiRating').value;
+            const text = document.getElementById('testiText').value;
+            const imageInput = document.getElementById('testiImage');
+
+            if (!name || !text) {
+                alert('Nama dan isi testimoni wajib diisi!');
+                return;
+            }
+
+            let defaultImage = 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png';
+
+            const sendData = async (imgData) => {
+                const payload = {
+                    action: 'add',
+                    id: 'testi_' + Date.now(),
+                    name: name,
+                    role: role,
+                    rating: parseInt(rating),
+                    text: text,
+                    image: imgData,
+                    status: 'approved'
+                };
+
+                try {
+                    const response = await fetch('api_admin_testimonials.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    if (result.status === 'success') {
+                        alert('Testimoni berhasil ditambahkan!');
+
+                        // Reset inputs
+                        document.getElementById('testiName').value = '';
+                        document.getElementById('testiRole').value = '';
+                        document.getElementById('testiText').value = '';
+                        document.getElementById('testiImage').value = '';
+
+                        renderTestimonials();
+                    } else {
+                        alert('Gagal: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error add testimonial:', error);
+                }
+            };
+
+            if (imageInput.files && imageInput.files[0]) {
+                const file = imageInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    sendData(e.target.result);
+                };
+                reader.readAsDataURL(file);
+            } else {
+                sendData(defaultImage);
+            }
+        }
+
+        async function renderTestimonials() {
+            const container = document.getElementById('adminTestiList');
+            container.innerHTML = '<div class="spinner" style="margin: 20px auto;"></div>';
+
+            try {
+                const response = await fetch('api_admin_testimonials.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'list', status: 'approved' })
+                });
+                const data = await response.json();
+
+                container.innerHTML = '';
+                if (data.length === 0) {
+                    container.innerHTML = '<p style="text-align:center; color: var(--text-muted); padding: 20px;">Belum ada testimoni aktif.</p>';
+                    return;
+                }
+
+                data.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'admin-car-card';
+                    card.innerHTML = `
+                        <img src="${item.image}" class="avatar-preview">
+                        <div class="car-info" style="flex: 1;">
+                            <h4>${item.name}</h4>
+                            <p style="font-size: 0.8rem; color: var(--accent); margin-bottom: 2px;">${item.role || '-'}</p>
+                            <div style="color: #f59e0b; font-size: 0.9rem;">${'⭐'.repeat(item.rating)}</div>
+                            <p style="font-style: italic; font-size: 0.85rem; margin-top: 6px; color: var(--text-muted);">"${item.text}"</p>
+                        </div>
+                        <button onclick="deleteTestimonial('${item.id}')" class="action-btn" title="Hapus Testimoni">
+                                <i class="ri-delete-bin-line"></i>
+                        </button>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error load testimonials:', error);
+                container.innerHTML = '<p style="text-align:center; color: var(--danger);">Gagal memuat testimoni.</p>';
+            }
+        }
+
+        async function deleteTestimonial(id) {
+            if (confirm('Hapus testimoni ini secara permanen?')) {
+                try {
+                    const response = await fetch('api_admin_testimonials.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ action: 'delete', id: id })
+                    });
+                    const result = await response.json();
+                    if (result.status === 'success') {
+                        renderTestimonials();
+                        renderPendingReviews(); // Refresh both just in case
+                    } else {
+                        alert('Gagal menghapus: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error delete testimonial:', error);
+                }
+            }
+        }
+
+        // --- PENDING REVIEW MANAGEMENT ---
+        async function renderPendingReviews() {
+            const container = document.getElementById('adminPendingList');
+            const wrapper = document.getElementById('pendingReviewContainer');
+
+            try {
+                const response = await fetch('api_admin_testimonials.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'list', status: 'pending' })
+                });
+                const data = await response.json();
+
+                if (data.length === 0) {
+                    wrapper.style.display = 'none';
+                    return;
+                }
+
+                wrapper.style.display = 'block';
+                container.innerHTML = '';
+
+                data.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'admin-car-card';
+                    card.style.background = '#fff7ed'; // Light Orange BG
+                    card.innerHTML = `
+                        <div style="flex: 1;">
+                            <h4>${item.name} <span style="font-size: 0.8rem; font-weight: 400; color: #f97316;">(Menunggu)</span></h4>
+                            <p style="font-size: 0.8rem; color: var(--accent); margin-bottom: 2px;">${item.role}</p>
+                            <div style="color: #f59e0b; font-size: 0.9rem;">${'⭐'.repeat(item.rating)}</div>
+                            <p style="font-style: italic; font-size: 0.85rem; margin-top: 6px; color: var(--text-muted);">"${item.text}"</p>
+                        </div>
+                        <div style="display: flex; gap: 10px;">
+                            <button onclick="approveReview('${item.id}')" class="btn-toggle" style="border-color: var(--success); color: var(--success); background: white;">
+                                <i class="ri-check-line"></i> Setujui
+                            </button>
+                            <button onclick="rejectReview('${item.id}')" class="action-btn" title="Tolak / Hapus" style="background: white;">
+                                <i class="ri-close-line" style="color: var(--danger);"></i>
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Error load pending reviews:', error);
+            }
+        }
+
+        async function approveReview(id) {
+            try {
+                const response = await fetch('api_admin_testimonials.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'approve', id: id })
+                });
+                const result = await response.json();
+                if (result.status === 'success') {
+                    renderPendingReviews();
+                    renderTestimonials();
+                    alert('Review berhasil disetujui dan ditayangkan!');
+                } else {
+                    alert('Gagal menyetujui: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Error approve review:', error);
+            }
+        }
+
+        async function rejectReview(id) {
+            if (confirm('Tolak dan hapus review ini?')) {
+                try {
+                    const response = await fetch('api_admin_testimonials.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ action: 'delete', id: id })
+                    });
+                    const result = await response.json();
+                    if (result.status === 'success') {
+                        renderPendingReviews();
+                    } else {
+                        alert('Gagal menolak: ' + result.message);
+                    }
+                } catch (error) {
+                    console.error('Error reject review:', error);
+                }
+            }
+        }
+
+        // Init Data
+        renderTestimonials();
+        renderPendingReviews();
+
+    </script>
+</body>
+
+</html>
