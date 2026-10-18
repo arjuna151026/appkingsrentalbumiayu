@@ -35,6 +35,8 @@
     <link rel="stylesheet" href="assets/css/traveloka-datepicker.css">
     <!-- Traveloka Style Time Picker CSS -->
     <link rel="stylesheet" href="assets/css/traveloka-timepicker.css">
+    <!-- i18n & Multi-Currency Switcher CSS -->
+    <link rel="stylesheet" href="assets/css/i18n-switcher.css">
 
     <style>
         /* -----------------------------------------------------------
@@ -2498,16 +2500,69 @@
             </a>
 
             <ul class="nav-links" id="nav-links">
-                <li><a href="#home" class="active">Beranda</a></li>
-                <li><a href="#armada">Armada</a></li>
-                <li><a href="#cara-sewa">Cara Sewa</a></li>
-                <li><a href="#sop-pelepasan">SOP</a></li>
-                <li><a href="#testimoni">Testimoni</a></li>
-                <li><a href="#kontak">Kontak</a></li>
+                <li><a href="#home" class="active" data-i18n="nav.home">Beranda</a></li>
+                <li><a href="#armada" data-i18n="nav.fleet">Armada</a></li>
+                <li><a href="#cara-sewa" data-i18n="nav.howToRent">Cara Sewa</a></li>
+                <li><a href="#sop-pelepasan" data-i18n="nav.sop">SOP</a></li>
+                <li><a href="#testimoni" data-i18n="nav.testimonials">Testimoni</a></li>
+                <li><a href="#kontak" data-i18n="nav.contact">Kontak</a></li>
+
+                <li class="mobile-switcher-bar">
+                    <div class="mobile-switcher-row">
+                        <span class="mobile-switcher-label"><i class="ri-global-line"></i> <span data-i18n="switcher.langLabel">Bahasa</span></span>
+                        <select id="mobileLangSelect" class="mobile-select">
+                            <option value="id">🇮🇩 Bahasa Indonesia</option>
+                            <option value="en">🇬🇧 English</option>
+                            <option value="es">🇪🇸 Español</option>
+                            <option value="ja">🇯🇵 日本語</option>
+                            <option value="zh">🇨🇳 中文</option>
+                        </select>
+                    </div>
+                    <div class="mobile-switcher-row">
+                        <span class="mobile-switcher-label"><i class="ri-money-dollar-circle-line"></i> <span data-i18n="switcher.currLabel">Mata Uang</span></span>
+                        <select id="mobileCurrSelect" class="mobile-select">
+                            <option value="IDR">IDR (Rp - Rupiah)</option>
+                            <option value="USD">USD ($ - Dollar)</option>
+                            <option value="EUR">EUR (€ - Euro)</option>
+                            <option value="SGD">SGD (S$ - Singapore)</option>
+                            <option value="JPY">JPY (¥ - Yen)</option>
+                            <option value="MYR">MYR (RM - Ringgit)</option>
+                            <option value="GBP">GBP (£ - Pound)</option>
+                            <option value="AUD">AUD (A$ - Dollar)</option>
+                        </select>
+                    </div>
+                </li>
             </ul>
 
             <div class="nav-actions">
-                <a href="login.html" class="btn btn-primary"
+                <!-- Language & Currency Switchers -->
+                <div class="i18n-currency-group">
+                    <!-- Language Dropdown -->
+                    <div class="switch-dropdown" id="langDropdown">
+                        <button type="button" class="switch-trigger-btn" id="langTrigger" title="Pilih Bahasa / Change Language" aria-label="Select Language">
+                            <span class="flag-emoji lang-current-flag">🇮🇩</span>
+                            <span class="label-text lang-current-code">ID</span>
+                            <i class="ri-arrow-down-s-line arrow-icon"></i>
+                        </button>
+                        <div class="switch-menu" id="langMenu">
+                            <!-- Populated dynamically by i18n-switcher.js -->
+                        </div>
+                    </div>
+
+                    <!-- Currency Dropdown -->
+                    <div class="switch-dropdown" id="currDropdown">
+                        <button type="button" class="switch-trigger-btn" id="currTrigger" title="Pilih Mata Uang / Change Currency" aria-label="Select Currency">
+                            <span class="curr-symbol curr-current-symbol">Rp</span>
+                            <span class="label-text curr-current-code">IDR</span>
+                            <i class="ri-arrow-down-s-line arrow-icon"></i>
+                        </button>
+                        <div class="switch-menu" id="currMenu">
+                            <!-- Populated dynamically by i18n-switcher.js -->
+                        </div>
+                    </div>
+                </div>
+
+                <a href="login.html" class="btn btn-primary" data-i18n="nav.login"
                     style="padding: 8px 20px; font-size: 0.9rem; margin-right: 8px; border-radius: 50px;">Masuk</a>
 
                 <button class="theme-toggle" id="theme-toggle" title="Switch Theme">
@@ -2524,19 +2579,19 @@
         <div class="hero-inner container">
             <div class="hero-grid">
                 <div class="hero-text" data-aos="fade-right" data-aos-duration="1000">
-                    <h1>Sewa Mobil Premium <br>
-                        <span class="txt-type" data-wait="2000"
+                    <h1><span data-i18n="hero.title">Sewa Mobil Premium</span> <br>
+                        <span class="txt-type" data-wait="2000" data-i18n-words="hero.typingWords"
                             data-words='["Bumiayu & Sekitarnya", "Lepas Kunci Mudah", "Dengan Sopir Ramah", "Harga Transparan"]'><span class="txt"></span></span>
                     </h1>
-                    <p>Rasakan pengalaman berkendara kelas atas dengan armada terawat dan layanan prioritas. Harga
+                    <p data-i18n="hero.subtitle">Rasakan pengalaman berkendara kelas atas dengan armada terawat dan layanan prioritas. Harga
                         transparan, tanpa biaya tersembunyi.</p>
 
                     <div class="btn-group">
                         <a href="#armada" class="btn btn-primary">
-                            Lihat Armada <i class="ri-arrow-right-line"></i>
+                            <span data-i18n="hero.btnFleet">Lihat Armada</span> <i class="ri-arrow-right-line"></i>
                         </a>
                         <a href="https://wa.me/6283170520797" class="btn btn-outline">
-                            <i class="ri-whatsapp-line"></i> Hubungi CS
+                            <i class="ri-whatsapp-line"></i> <span data-i18n="hero.btnContact">Hubungi CS</span>
                         </a>
                     </div>
                 </div>
@@ -2550,42 +2605,42 @@
     <div class="container search-container" data-aos="fade-up" data-aos-duration="800">
         <div class="search-tabs">
             <button class="tab-btn active" onclick="switchSearchTab('lepas-kunci')">
-                <i class="ri-car-line"></i> Tanpa Sopir
+                <i class="ri-car-line"></i> <span data-i18n="search.tabSelfDrive">Tanpa Sopir</span>
             </button>
             <button class="tab-btn" onclick="switchSearchTab('dengan-sopir')">
-                <i class="ri-user-star-line"></i> Dengan Sopir
+                <i class="ri-user-star-line"></i> <span data-i18n="search.tabWithDriver">Dengan Sopir</span>
             </button>
         </div>
 
         <form class="search-box" onsubmit="event.preventDefault(); filterMobil();">
             <div class="search-group" style="flex: 1.5;">
-                <label>Lokasi Rental Anda</label>
-                <input type="text" id="lokasi" placeholder="Cari kota atau wilayah">
+                <label data-i18n="search.labelLocation">Lokasi Rental Anda</label>
+                <input type="text" id="lokasi" placeholder="Cari kota atau wilayah" data-i18n-placeholder="search.placeholderLocation">
             </div>
 
             <div class="search-group">
-                <label>Tanggal Mulai Rental</label>
-                <input type="text" id="tgl-mulai" placeholder="Pilih Tanggal" onfocus="(this.type='date')"
+                <label data-i18n="search.labelStartDate">Tanggal Mulai Rental</label>
+                <input type="text" id="tgl-mulai" placeholder="Pilih Tanggal" data-i18n-placeholder="search.placeholderDate" onfocus="(this.type='date')"
                     onblur="(this.type='text')">
             </div>
 
             <div class="search-group" style="flex: 0.8;">
-                <label>Waktu Mulai</label>
+                <label data-i18n="search.labelStartTime">Waktu Mulai</label>
                 <input type="time" id="jam-mulai" value="09:00">
             </div>
 
             <div class="search-group">
-                <label>Tanggal Selesai</label>
-                <input type="text" id="tgl-selesai" placeholder="Pilih Tanggal" onfocus="(this.type='date')"
+                <label data-i18n="search.labelEndDate">Tanggal Selesai</label>
+                <input type="text" id="tgl-selesai" placeholder="Pilih Tanggal" data-i18n-placeholder="search.placeholderDate" onfocus="(this.type='date')"
                     onblur="(this.type='text')">
             </div>
 
             <div class="search-group" style="flex: 0.8;">
-                <label>Waktu Selesai</label>
+                <label data-i18n="search.labelEndTime">Waktu Selesai</label>
                 <input type="time" id="jam-selesai" value="09:00">
             </div>
 
-            <button type="submit" class="search-btn-primary">
+            <button type="submit" class="search-btn-primary" aria-label="Cari">
                 <i class="ri-search-line"></i>
             </button>
         </form>
@@ -2597,14 +2652,14 @@
                 <div class="stat-icon-mini"><i class="ri-car-fill"></i></div>
                 <div class="stat-info">
                     <h2><span class="counter" data-target="50">0</span>+</h2>
-                    <p>Armada Premium</p>
+                    <p data-i18n="stats.premiumFleet">Armada Premium</p>
                 </div>
             </div>
             <div class="stat-box">
                 <div class="stat-icon-mini"><i class="ri-user-heart-fill"></i></div>
                 <div class="stat-info">
                     <h2><span class="counter" data-target="1500">0</span>+</h2>
-                    <p>Pelanggan Puas</p>
+                    <p data-i18n="stats.happyCustomers">Pelanggan Puas</p>
                 </div>
             </div>
             <div class="stat-box">
@@ -2612,7 +2667,7 @@
                 <div class="stat-info">
                     <h2><span class="counter" data-target="24">0</span>/<span class="counter" data-target="7">0</span>
                     </h2>
-                    <p>Layanan Support</p>
+                    <p data-i18n="stats.support">Layanan Support</p>
                 </div>
             </div>
         </div>
@@ -2620,14 +2675,14 @@
 
     <section id="armada" class="section-padding container">
         <div class="section-title" data-aos="fade-up">
-            <span>Katalog Eksklusif</span>
-            <h2>Pilihan Armada Terbaik</h2>
+            <span data-i18n="fleet.sectionTag">Katalog Eksklusif</span>
+            <h2 data-i18n="fleet.sectionTitle">Pilihan Armada Terbaik</h2>
         </div>
 
         <div class="filter-tabs" data-aos="fade-up" data-aos-delay="100">
-            <button class="filter-btn active" onclick="filterSelection('all')">Semua</button>
-            <button class="filter-btn" onclick="filterSelection('gold')">Gold</button>
-            <button class="filter-btn" onclick="filterSelection('silver')">Silver</button>
+            <button class="filter-btn active" onclick="filterSelection('all')" data-i18n="fleet.filterAll">Semua</button>
+            <button class="filter-btn" onclick="filterSelection('gold')" data-i18n="fleet.filterGold">Gold</button>
+            <button class="filter-btn" onclick="filterSelection('silver')" data-i18n="fleet.filterSilver">Silver</button>
         </div>
 
         <div class="cars-grid" id="carsGrid">
@@ -2637,29 +2692,29 @@
 
     <section id="cara-sewa" class="section-padding container">
         <div class="section-title" data-aos="fade-up">
-            <span>Proses Mudah</span>
-            <h2>Cara Booking di King's</h2>
+            <span data-i18n="howToRent.sectionTag">Proses Mudah</span>
+            <h2 data-i18n="howToRent.sectionTitle">Cara Booking di King's</h2>
         </div>
         <div class="steps-grid">
             <div class="step-card glass-panel" data-aos="flip-left" data-aos-delay="0">
                 <div class="step-icon"><i class="ri-car-line"></i></div>
-                <h3>1. Pilih Unit</h3>
-                <p>Pilih mobil yang sesuai dengan kebutuhan perjalanan Anda.</p>
+                <h3 data-i18n="howToRent.step1Title">1. Pilih Unit</h3>
+                <p data-i18n="howToRent.step1Desc">Pilih mobil yang sesuai dengan kebutuhan perjalanan Anda.</p>
             </div>
             <div class="step-card glass-panel" data-aos="flip-left" data-aos-delay="100">
                 <div class="step-icon"><i class="ri-whatsapp-line"></i></div>
-                <h3>2. Kontak Admin</h3>
-                <p>Klik tombol pesan untuk terhubung otomatis ke WhatsApp.</p>
+                <h3 data-i18n="howToRent.step2Title">2. Kontak Admin</h3>
+                <p data-i18n="howToRent.step2Desc">Klik tombol pesan untuk terhubung otomatis ke WhatsApp.</p>
             </div>
             <div class="step-card glass-panel" data-aos="flip-left" data-aos-delay="200">
                 <div class="step-icon"><i class="ri-wallet-3-line"></i></div>
-                <h3>3. Pembayaran</h3>
-                <p>Lakukan DP ringan untuk mengunci jadwal pemakaian Anda.</p>
+                <h3 data-i18n="howToRent.step3Title">3. Pembayaran</h3>
+                <p data-i18n="howToRent.step3Desc">Lakukan DP ringan untuk mengunci jadwal pemakaian Anda.</p>
             </div>
             <div class="step-card glass-panel" data-aos="flip-left" data-aos-delay="300">
                 <div class="step-icon"><i class="ri-key-2-line"></i></div>
-                <h3>4. Serah Terima</h3>
-                <p>Unit diantar ke lokasi atau ambil di garasi kami.</p>
+                <h3 data-i18n="howToRent.step4Title">4. Serah Terima</h3>
+                <p data-i18n="howToRent.step4Desc">Unit diantar ke lokasi atau ambil di garasi kami.</p>
             </div>
         </div>
     </section>
@@ -2667,35 +2722,35 @@
     <!-- SOP SECTION -->
     <section id="sop-pelepasan" class="section-padding container">
         <div class="section-title" data-aos="fade-up">
-            <span>Standar Pelayanan</span>
-            <h2>SOP Pelepasan Unit Kendaraan</h2>
+            <span data-i18n="sop.sectionTag">Standar Pelayanan</span>
+            <h2 data-i18n="sop.sectionTitle">SOP Pelepasan Unit Kendaraan</h2>
         </div>
 
         <div class="glass-panel" data-aos="fade-up" data-aos-delay="100"
             style="padding: 30px; border-radius: var(--radius-lg); margin-bottom: 40px; border: 1px solid var(--glass-border);">
             <div style="display: grid; gap: 20px; font-size: 0.95rem; color: var(--text-muted);">
                 <div>
-                    <strong style="color: var(--text-main); display: block; margin-bottom: 5px;">Tujuan:</strong>
-                    Untuk memastikan seluruh proses pelepasan unit kendaraan ke pelanggan berjalan dengan standar
-                    pelayanan yang baik, aman, dan tercatat dengan jelas.
+                    <strong style="color: var(--text-main); display: block; margin-bottom: 5px;" data-i18n="sop.purpose">Tujuan:</strong>
+                    <span data-i18n="sop.purposeDesc">Untuk memastikan seluruh proses pelepasan unit kendaraan ke pelanggan berjalan dengan standar
+                    pelayanan yang baik, aman, dan tercatat dengan jelas.</span>
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
                     <div>
-                        <strong style="color: var(--text-main); display: block; margin-bottom: 5px;">Ruang
+                        <strong style="color: var(--text-main); display: block; margin-bottom: 5px;" data-i18n="sop.scope">Ruang
                             Lingkup:</strong>
-                        Seluruh unit kendaraan yang akan dilepas ke pelanggan baik untuk jangka pendek maupun jangka
-                        panjang.
+                        <span data-i18n="sop.scopeDesc">Seluruh unit kendaraan yang akan dilepas ke pelanggan baik untuk jangka pendek maupun jangka
+                        panjang.</span>
                     </div>
                     <div>
-                        <strong style="color: var(--text-main); display: block; margin-bottom: 5px;">Pihak
+                        <strong style="color: var(--text-main); display: block; margin-bottom: 5px;" data-i18n="sop.parties">Pihak
                             Terkait:</strong>
-                        Staff operasional / admin, driver / petugas serah terima, customer.
+                        <span data-i18n="sop.partiesDesc">Staff operasional / admin, driver / petugas serah terima, customer.</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h3 data-aos="fade-up"
+        <h3 data-aos="fade-up" data-i18n="sop.procedureTitle"
             style="text-align: center; margin-bottom: 30px; font-size: 1.5rem; color: var(--text-main);">
             Prosedur Pelepasan Unit:
         </h3>
@@ -2880,10 +2935,10 @@
 
 
                 <div class="section-title" style="margin-bottom: 30px; position: relative;">
-                    <span
+                    <span data-i18n="testimonials.sectionTag"
                         style="background: rgba(59, 130, 246, 0.1); color: var(--accent); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; display: inline-block; margin-bottom: 10px;">Bagikan
                         Cerita Anda</span>
-                    <h3
+                    <h3 data-i18n="testimonials.writeReview"
                         style="font-size: 1.8rem; background: linear-gradient(to right, var(--text-main), var(--text-muted)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">
                         Tulis Ulasan</h3>
                 </div>
@@ -2892,7 +2947,7 @@
                     style="display: grid; gap: 18px; position: relative; z-index: 2;">
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px;">
                         <div class="form-group">
-                            <label
+                            <label data-i18n="testimonials.nameLabel"
                                 style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); font-size: 0.85rem;">Nama
                                 Lengkap</label>
                             <input type="text" id="reviewName" required
@@ -2901,10 +2956,10 @@
                                 onblur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.02)';">
                         </div>
                         <div class="form-group">
-                            <label
+                            <label data-i18n="testimonials.roleLabel"
                                 style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); font-size: 0.85rem;">Pekerjaan
                                 / Asal</label>
-                            <input type="text" id="reviewRole" placeholder="Contoh: Wisatawan Jakarta"
+                            <input type="text" id="reviewRole" placeholder="Contoh: Wisatawan Jakarta" data-i18n-placeholder="testimonials.rolePlaceholder"
                                 style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); color: var(--text-main); font-size: 0.95rem; transition: all 0.3s; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);"
                                 onfocus="this.style.borderColor='var(--accent)'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
                                 onblur="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='0 4px 6px -1px rgba(0, 0, 0, 0.02)';">
@@ -2912,7 +2967,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label
+                        <label data-i18n="testimonials.ratingLabel"
                             style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); font-size: 0.85rem;">Beri
                             Rating</label>
                         <div class="rating-input-container"
@@ -2930,22 +2985,22 @@
                                 <i class="ri-star-fill" onclick="setRating(5)" id="star-5"
                                     style="transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></i>
                             </div>
-                            <span id="ratingLabel"
+                            <span id="ratingLabel" data-i18n="testimonials.ratingPrompt"
                                 style="font-size: 0.95rem; font-weight: 600; color: var(--text-muted); transition: 0.3s;">Pilih
                                 rating bintang</span>
                             <input type="hidden" id="reviewRating" value="0" required>
                             <p id="ratingError"
                                 style="color: #ef4444; font-size: 0.85rem; display: none; margin-top: 10px; font-weight: 500; display: flex; align-items: center; gap: 5px;">
-                                <i class="ri-error-warning-fill"></i> Silakan pilih bintang rating!
+                                <i class="ri-error-warning-fill"></i> <span data-i18n="testimonials.ratingError">Silakan pilih bintang rating!</span>
                             </p>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label
+                        <label data-i18n="testimonials.experienceLabel"
                             style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-main); font-size: 0.85rem;">Ceritakan
                             Pengalaman Anda</label>
-                        <textarea id="reviewText" rows="4" required
+                        <textarea id="reviewText" rows="4" required data-i18n-placeholder="testimonials.experiencePlaceholder"
                             placeholder="Bagaimana pengalaman Anda menggunakan layanan kami?"
                             style="width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); font-family: inherit; color: var(--text-main); font-size: 0.95rem; transition: all 0.3s; resize: vertical; min-height: 100px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);"
                             onfocus="this.style.borderColor='var(--accent)'; this.style.boxShadow='0 0 0 3px rgba(59, 130, 246, 0.1)';"
@@ -2954,11 +3009,11 @@
 
                     <button type="submit" class="btn btn-primary"
                         style="justify-content: center; width: 100%; padding: 14px; font-size: 1rem; border-radius: 50px; margin-top: 5px; position: relative; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);">
-                        Kirim Ulasan Saya <i class="ri-send-plane-fill" style="margin-left: 8px;"></i>
+                        <span data-i18n="testimonials.submitBtn">Kirim Ulasan Saya</span> <i class="ri-send-plane-fill" style="margin-left: 8px;"></i>
                     </button>
                     <p style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 5px;">
-                        <i class="ri-lock-2-line" style="vertical-align: middle;"></i> Review Anda akan dimoderasi
-                        sebelum ditampilkan.
+                        <i class="ri-lock-2-line" style="vertical-align: middle;"></i> <span data-i18n="testimonials.moderationNote">Review Anda akan dimoderasi
+                        sebelum ditampilkan.</span>
                     </p>
                 </form>
             </div>
@@ -2968,9 +3023,9 @@
     <section class="cta-banner-full" data-aos="fade-up">
         <img src="assets/images/banner-full.jpg" alt="Promo Berlangganan King's Rental">
         <form class="cta-overlay-form"
-            onsubmit="event.preventDefault(); alert('Terima kasih sudah berlangganan info King\'s Rental!');">
-            <input type="email" placeholder="Masukkan Alamat Email" required>
-            <button type="submit">Berlangganan</button>
+            onsubmit="event.preventDefault(); alert(window.i18n ? window.i18n.t('cta.subscribeSuccess') : 'Terima kasih sudah berlangganan info King\'s Rental!');">
+            <input type="email" placeholder="Masukkan Alamat Email" data-i18n-placeholder="cta.emailPlaceholder" required>
+            <button type="submit" data-i18n="cta.subscribe">Berlangganan</button>
         </form>
     </section>
 
@@ -2992,20 +3047,20 @@
                         <img src="assets/logos/logo_baru.png" alt="Kings Logo" style="height: 50px; width: auto;">
                         King's.
                     </a>
-                    <p>Mitra perjalanan terbaik Anda. Menyediakan layanan sewa mobil premium dengan standar keamanan
+                    <p data-i18n="footer.brandDesc">Mitra perjalanan terbaik Anda. Menyediakan layanan sewa mobil premium dengan standar keamanan
                         dan kenyamanan tinggi.</p>
                 </div>
 
                 <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
-                    <h4>Navigasi</h4>
+                    <h4 data-i18n="footer.navTitle">Navigasi</h4>
                     <ul>
-                        <li><a href="#home">Beranda</a></li>
-                        <li><a href="#armada">Daftar Mobil</a></li>
-                        <li><a href="#">Syarat & Ketentuan</a></li>
-                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#home" data-i18n="nav.home">Beranda</a></li>
+                        <li><a href="#armada" data-i18n="footer.carList">Daftar Mobil</a></li>
+                        <li><a href="#" data-i18n="footer.terms">Syarat & Ketentuan</a></li>
+                        <li><a href="#" data-i18n="footer.aboutUs">Tentang Kami</a></li>
                     </ul>
 
-                    <h4 style="margin-top: 32px;">Follow kami di</h4>
+                    <h4 style="margin-top: 32px;" data-i18n="footer.followUs">Follow kami di</h4>
                     <ul class="social-list">
                         <li><a href="#"><i class="ri-facebook-box-fill" style="color: #1877F2;"></i> Facebook</a>
                         </li>
@@ -3020,19 +3075,19 @@
                 </div>
 
                 <div class="footer-links" data-aos="fade-up" data-aos-delay="200">
-                    <h4>Layanan</h4>
+                    <h4 data-i18n="footer.servicesTitle">Layanan</h4>
                     <ul>
-                        <li><a href="#">Sewa/12jam</a></li>
-                        <li><a href="#">Sewa Harian</a></li>
-                        <li><a href="#">Sewa Bulanan</a></li>
-                        <li><a href="#">Antar Jemput Stasiun/Bandara</a></li>
-                        <li><a href="#">Wedding Car</a></li>
-                        <li><a href="#">Dll</a></li>
+                        <li><a href="#" data-i18n="footer.halfDay">Sewa/12jam</a></li>
+                        <li><a href="#" data-i18n="footer.daily">Sewa Harian</a></li>
+                        <li><a href="#" data-i18n="footer.monthly">Sewa Bulanan</a></li>
+                        <li><a href="#" data-i18n="footer.transfer">Antar Jemput Stasiun/Bandara</a></li>
+                        <li><a href="#" data-i18n="footer.weddingCar">Wedding Car</a></li>
+                        <li><a href="#" data-i18n="footer.etc">Dll</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-contact" data-aos="fade-up" data-aos-delay="300">
-                    <h4>Hubungi Kami</h4>
+                    <h4 data-i18n="footer.contactTitle">Hubungi Kami</h4>
                     <div class="contact-item">
                         <i class="ri-map-pin-line"></i>
                         <a href="https://maps.app.goo.gl/3GqQhwy9PepKmtPj9" target="_blank"
@@ -3060,7 +3115,7 @@
                 </div>
             </div>
             <div class="copyright">
-                &copy; 2026 King's Rental Bumiayu. All Rights Reserved.
+                <span data-i18n="footer.copyright">&copy; 2026 King's Rental Bumiayu. All Rights Reserved.</span>
                 <a href="admin.html"
                     style="margin-left: 10px; opacity: 0.5; font-size: 0.8rem; text-decoration: none;"><i
                         class="ri-lock-line"></i> Admin</a>
@@ -3075,7 +3130,7 @@
 
     <!-- WIDGET CHAT AI (BARU) -->
     <!-- GREETING POP-UP BUBBLE (FITUR BARU - IDE 1) -->
-    <div id="chat-greeting-bubble" class="greeting-bubble glass-panel">
+    <div id="chat-greeting-bubble" class="greeting-bubble glass-panel" data-i18n="chatBot.greeting">
         Halo Kak! Ada yang bisa dibantu? ✨
     </div>
     <div id="chat-widget-button" title="Tanya Asisten AI">
@@ -3399,7 +3454,9 @@
             document.getElementById('qvName').innerText = car.name;
             document.getElementById('qvCategory').innerText = car.category.toUpperCase();
             document.getElementById('qvRating').innerText = typeof car.rating === 'string' ? car.rating.split(' ')[0] : '5.0';
-            document.getElementById('qvPrice').innerText = `Rp ${car.price}.000`;
+            const qvPriceEl = document.getElementById('qvPrice');
+            qvPriceEl.innerText = window.CurrencyManager ? window.CurrencyManager.convertAndFormat(car.price) : `Rp ${car.price}.000`;
+            qvPriceEl.setAttribute('data-current-price-idr', car.price);
 
             // Isi spesifikasi
             document.getElementById('qvSpecs').innerHTML = `
@@ -3412,11 +3469,11 @@
             // Atur tombol pesan di dalam modal
             const btn = document.getElementById('qvBookBtn');
             if (car.status === 'available') {
-                btn.innerText = "Pesan Sekarang";
+                btn.innerText = window.i18n ? window.i18n.t('quickView.bookNow') : "Pesan Sekarang";
                 btn.disabled = false;
                 btn.onclick = () => { closeModal('quickViewModal'); bookingWA(car.name, car.id); };
             } else {
-                btn.innerText = "Tidak Tersedia";
+                btn.innerText = window.i18n ? window.i18n.t('fleet.soldOut') : "Tidak Tersedia";
                 btn.disabled = true;
                 btn.onclick = null;
             }
@@ -3481,12 +3538,16 @@
             const estimasiTotal = totalHargaMobil + totalBiayaSopir;
 
             const formatRupiah = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', maximumFractionDigits: 0 }).format(angka);
+            const formatActiveCurrency = (angka) => window.CurrencyManager ? window.CurrencyManager.convertAndFormat(angka) : formatRupiah(angka);
 
             document.getElementById('modalCarName').innerText = carName;
             document.getElementById('modalService').innerText = layanan;
             document.getElementById('modalDuration').innerText = `${durasiHari} Hari`;
             document.getElementById('modalDate').innerText = tanggalTampil;
-            document.getElementById('modalTotalPrice').innerText = formatRupiah(estimasiTotal);
+            
+            const modalTotalPriceEl = document.getElementById('modalTotalPrice');
+            modalTotalPriceEl.innerText = formatActiveCurrency(estimasiTotal);
+            modalTotalPriceEl.setAttribute('data-current-total-idr', estimasiTotal);
 
             const phone = "6283170520797";
             const hour = new Date().getHours();
@@ -3495,10 +3556,15 @@
             else if (hour >= 15 && hour < 18) greeting = "Selamat sore";
             else if (hour >= 18 || hour < 4) greeting = "Selamat malam";
 
-            const message = `${greeting} Admin King's Rental 👋\n\nSaya ingin menyewa unit *${carName}*.\n\n*📋 Detail Rencana Sewa:*\n- Layanan: ${layanan}\n- Durasi: ${durasiHari} Hari\n- Tanggal: ${tanggalTampil}\n- Waktu: ${jamMulai} - ${jamSelesai}\n- Lokasi Penjemputan: ${lokasi}\n\n*💰 Rincian Biaya:*\n- Sewa Mobil (${durasiHari}x): ${formatRupiah(totalHargaMobil)}\n- Biaya Sopir (${durasiHari}x): ${isLepasKunci ? '0 (Tanpa Sopir)' : formatRupiah(totalBiayaSopir)}\n*Total Estimasi: ${formatRupiah(estimasiTotal)}*\n\nApakah unit ini tersedia untuk tanggal tersebut?`;
+            const userCurr = window.CurrencyManager ? window.CurrencyManager.getCurrency() : 'IDR';
+            const rincianHargaMobil = userCurr === 'IDR' ? formatRupiah(totalHargaMobil) : `${formatActiveCurrency(totalHargaMobil)} (≈ ${formatRupiah(totalHargaMobil)})`;
+            const rincianBiayaSopir = isLepasKunci ? '0 (Tanpa Sopir)' : (userCurr === 'IDR' ? formatRupiah(totalBiayaSopir) : `${formatActiveCurrency(totalBiayaSopir)} (≈ ${formatRupiah(totalBiayaSopir)})`);
+            const rincianTotalEstimasi = userCurr === 'IDR' ? formatRupiah(estimasiTotal) : `${formatActiveCurrency(estimasiTotal)} (≈ ${formatRupiah(estimasiTotal)})`;
+
+            const message = `${greeting} Admin King's Rental 👋\n\nSaya ingin menyewa unit *${carName}*.\n\n*📋 Detail Rencana Sewa:*\n- Layanan: ${layanan}\n- Durasi: ${durasiHari} Hari\n- Tanggal: ${tanggalTampil}\n- Waktu: ${jamMulai} - ${jamSelesai}\n- Lokasi Penjemputan: ${lokasi}\n\n*💰 Rincian Biaya:*\n- Sewa Mobil (${durasiHari}x): ${rincianHargaMobil}\n- Biaya Sopir (${durasiHari}x): ${rincianBiayaSopir}\n*Total Estimasi: ${rincianTotalEstimasi}*\n\nApakah unit ini tersedia untuk tanggal tersebut?`;
 
             tempBookingUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            tempTelegramMsg = `🚨 *PROSPEK SEWA BARU! (OTW WHATSAPP)*\n\n*Mobil:* ${carName}\n*Layanan:* ${layanan}\n*Tanggal:* ${tanggalTampil}\n*Durasi:* ${durasiHari} Hari\n*Estimasi Pendapatan:* ${formatRupiah(estimasiTotal)}\n\n_Pelanggan sedang menuju ruang chat WhatsApp kamu sekarang! Siap-siap balas._`;
+            tempTelegramMsg = `🚨 *PROSPEK SEWA BARU! (OTW WHATSAPP)*\n\n*Mobil:* ${carName}\n*Layanan:* ${layanan}\n*Tanggal:* ${tanggalTampil}\n*Durasi:* ${durasiHari} Hari\n*Estimasi Pendapatan:* ${formatActiveCurrency(estimasiTotal)}\n\n_Pelanggan sedang menuju ruang chat WhatsApp kamu sekarang! Siap-siap balas._`;
 
             openModal();
         }
@@ -3763,13 +3829,18 @@
                     `;
 
                 let badgeHtml = '';
-                if (car.id === 'avanza') badgeHtml = '<span class="badge">Best Seller</span>';
-                if (car.id === 'xenia') badgeHtml = '<span class="badge" style="background: var(--accent);">Premium</span>';
+                if (car.id === 'avanza') badgeHtml = `<span class="badge">${window.i18n ? window.i18n.t('fleet.bestSeller') : 'Best Seller'}</span>`;
+                if (car.id === 'xenia') badgeHtml = `<span class="badge" style="background: var(--accent);">${window.i18n ? window.i18n.t('fleet.premium') : 'Premium'}</span>`;
 
                 let imgSrc = car.image;
                 if (imgSrc && !imgSrc.startsWith('data:') && !imgSrc.startsWith('http') && !imgSrc.startsWith('assets/')) {
                     imgSrc = 'assets/cars/' + imgSrc;
                 }
+
+                const priceDisplay = window.CurrencyManager ? window.CurrencyManager.convertAndFormat(car.price) : `Rp ${car.price}.000`;
+                const startFromText = window.i18n ? window.i18n.t('fleet.startFrom') : 'Start From';
+                const bookText = isAvailable ? (window.i18n ? window.i18n.t('fleet.bookNow') : 'Pesan') : (window.i18n ? window.i18n.t('fleet.soldOut') : 'Habis');
+                const viewDetailText = window.i18n ? window.i18n.t('fleet.viewDetail') : 'Lihat Detail';
 
                 card.innerHTML = `
                         <div class="car-image">
@@ -3792,12 +3863,12 @@
                             </div>
                             <div class="car-footer">
                                 <div class="price" style="display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2;">
-                                    <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-main);">Start From</span>
-                                    <span style="font-size: 1.2rem; font-weight: 800; color: var(--accent);">Rp ${car.price}.000</span>
+                                    <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-main);" data-i18n="fleet.startFrom">${startFromText}</span>
+                                    <span style="font-size: 1.2rem; font-weight: 800; color: var(--accent);" data-price-idr="${car.price}">${priceDisplay}</span>
                                 </div>
                                 <div style="display:flex; gap:8px;">
-                                    <button class="btn btn-outline" style="padding: 8px 12px; border-radius:12px;" onclick="openQuickView('${car.id}')" title="Lihat Detail"><i class="ri-eye-line"></i></button>
-                                    <button class="btn btn-primary" style="padding: 8px 16px; border-radius:12px;" ${!isAvailable ? 'disabled' : ''} onclick="bookingWA('${car.name}', '${car.id}')">${isAvailable ? 'Pesan' : 'Habis'}</button>
+                                    <button class="btn btn-outline" style="padding: 8px 12px; border-radius:12px;" onclick="openQuickView('${car.id}')" title="${viewDetailText}"><i class="ri-eye-line"></i></button>
+                                    <button class="btn btn-primary" style="padding: 8px 16px; border-radius:12px;" ${!isAvailable ? 'disabled' : ''} onclick="bookingWA('${car.name}', '${car.id}')">${bookText}</button>
                                 </div>
                             </div>
                         </div>
@@ -3809,6 +3880,14 @@
             AOS.refresh();
 
         }
+
+        // Listen for language and currency updates
+        window.addEventListener('languageChanged', () => {
+            renderCars();
+        });
+        window.addEventListener('currencyChanged', () => {
+            if (window.CurrencyManager) window.CurrencyManager.updateAllPrices();
+        });
 
         document.addEventListener('DOMContentLoaded', () => {
             renderCars();
@@ -3905,7 +3984,7 @@
             if (txtElement) {
                 const words = JSON.parse(txtElement.getAttribute('data-words'));
                 const wait = txtElement.getAttribute('data-wait');
-                new TypeWriter(txtElement, words, wait);
+                window.heroTypeWriterInstance = new TypeWriter(txtElement, words, wait);
             }
         });
 
@@ -4252,14 +4331,17 @@
 
                     // Jika yang login Admin, arahkan ke dashboard. Jika pelanggan, tetap di index.
                     const linkDashboard = session.role === 'admin' ? 'admin.html' : '#';
-                    const teksSapaan = session.role === 'admin' ? 'Dashboard Admin' : `Halo, ${namaPanggilan}`;
+                    const teksSapaan = session.role === 'admin' 
+                        ? (window.i18n ? window.i18n.t('nav.adminDashboard') : 'Dashboard Admin') 
+                        : (window.i18n ? window.i18n.t('nav.helloUser', { name: namaPanggilan }) : `Halo, ${namaPanggilan}`);
+                    const teksKeluar = window.i18n ? window.i18n.t('nav.logout') : 'Keluar';
 
                     // Buat sapaan dan tombol KELUAR
                     profileDiv.innerHTML = `
                         <a href="${linkDashboard}" style="font-weight: 700; color: var(--text-main); font-size: 0.95rem; text-decoration: none;">
-                            <i class="ri-user-smile-line" style="color: var(--accent); margin-right: 4px;"></i> ${teksSapaan}
+                            <i class="ri-user-smile-line" style="color: var(--accent); margin-right: 4px;"></i> <span>${teksSapaan}</span>
                         </a>
-                        <a href="api_logout.php" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.85rem; border-radius: 50px; color: #ef4444; border-color: rgba(239, 68, 68, 0.3);">Keluar</a>
+                        <a href="api_logout.php" class="btn btn-outline" style="padding: 6px 16px; font-size: 0.85rem; border-radius: 50px; color: #ef4444; border-color: rgba(239, 68, 68, 0.3);" data-i18n="nav.logout">${teksKeluar}</a>
                     `;
                     
                     // Masukkan ke dalam navbar
@@ -4275,6 +4357,11 @@
     <script src="assets/js/traveloka-datepicker.js"></script>
     <!-- Traveloka Style Time Picker Component -->
     <script src="assets/js/traveloka-timepicker.js"></script>
+    
+    <!-- i18n & Multi-Currency Engine -->
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/currency.js"></script>
+    <script src="assets/js/i18n-switcher.js"></script>
 </body>
 
 </html>

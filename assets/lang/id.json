@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "code": "id",
+    "name": "Bahasa Indonesia",
+    "flag": "🇮🇩",
+    "dir": "ltr"
+  },
+  "nav": {
+    "home": "Beranda",
+    "fleet": "Armada",
+    "howToRent": "Cara Sewa",
+    "sop": "SOP",
+    "testimonials": "Testimoni",
+    "contact": "Kontak",
+    "login": "Masuk",
+    "logout": "Keluar",
+    "adminDashboard": "Dashboard Admin",
+    "helloUser": "Halo, {name}"
+  },
+  "hero": {
+    "title": "Sewa Mobil Premium",
+    "typingWords": "[\"Bumiayu & Sekitarnya\", \"Lepas Kunci Mudah\", \"Dengan Sopir Ramah\", \"Harga Transparan\"]",
+    "subtitle": "Rasakan pengalaman berkendara kelas atas dengan armada terawat dan layanan prioritas. Harga transparan, tanpa biaya tersembunyi.",
+    "btnFleet": "Lihat Armada",
+    "btnContact": "Hubungi CS"
+  },
+  "search": {
+    "tabSelfDrive": "Tanpa Sopir",
+    "tabWithDriver": "Dengan Sopir",
+    "labelLocation": "Lokasi Rental Anda",
+    "placeholderLocation": "Cari kota atau wilayah",
+    "labelStartDate": "Tanggal Mulai Rental",
+    "labelStartTime": "Waktu Mulai",
+    "labelEndDate": "Tanggal Selesai",
+    "labelEndTime": "Waktu Selesai",
+    "placeholderDate": "Pilih Tanggal"
+  },
+  "stats": {
+    "premiumFleet": "Armada Premium",
+    "happyCustomers": "Pelanggan Puas",
+    "support": "Layanan Support"
+  },
+  "fleet": {
+    "sectionTag": "Katalog Eksklusif",
+    "sectionTitle": "Pilihan Armada Terbaik",
+    "filterAll": "Semua",
+    "filterGold": "Gold",
+    "filterSilver": "Silver",
+    "startFrom": "Start From",
+    "bookNow": "Pesan",
+    "soldOut": "Habis",
+    "viewDetail": "Lihat Detail",
+    "noFleet": "Belum ada armada yang tersedia di Database.",
+    "bestSeller": "Best Seller",
+    "premium": "Premium",
+    "perDay": "/hari"
+  },
+  "howToRent": {
+    "sectionTag": "Proses Mudah",
+    "sectionTitle": "Cara Booking di King's",
+    "step1Title": "1. Pilih Unit",
+    "step1Desc": "Pilih mobil yang sesuai dengan kebutuhan perjalanan Anda.",
+    "step2Title": "2. Kontak Admin",
+    "step2Desc": "Klik tombol pesan untuk terhubung otomatis ke WhatsApp.",
+    "step3Title": "3. Pembayaran",
+    "step3Desc": "Lakukan DP ringan untuk mengunci jadwal pemakaian Anda.",
+    "step4Title": "4. Serah Terima",
+    "step4Desc": "Unit diantar ke lokasi atau ambil di garasi kami."
+  },
+  "sop": {
+    "sectionTag": "Standar Pelayanan",
+    "sectionTitle": "SOP Pelepasan Unit Kendaraan",
+    "purpose": "Tujuan:",
+    "purposeDesc": "Untuk memastikan seluruh proses pelepasan unit kendaraan ke pelanggan berjalan dengan standar pelayanan yang baik, aman, dan tercatat dengan jelas.",
+    "scope": "Ruang Lingkup:",
+    "scopeDesc": "Seluruh unit kendaraan yang akan dilepas ke pelanggan baik untuk jangka pendek maupun jangka panjang.",
+    "parties": "Pihak Terkait:",
+    "partiesDesc": "Staff operasional / admin, driver / petugas serah terima, customer.",
+    "procedureTitle": "Prosedur Pelepasan Unit:"
+  },
+  "testimonials": {
+    "sectionTag": "Testimoni Pelanggan",
+    "sectionTitle": "Apa Kata Mereka?",
+    "writeReview": "Tulis Ulasan",
+    "nameLabel": "Nama Anda",
+    "roleLabel": "Pekerjaan / Asal",
+    "rolePlaceholder": "Contoh: Wisatawan Jakarta",
+    "ratingLabel": "Beri Rating",
+    "ratingPrompt": "Pilih rating bintang",
+    "experienceLabel": "Ceritakan Pengalaman Anda",
+    "experiencePlaceholder": "Bagaimana pengalaman Anda menggunakan layanan kami?",
+    "submitBtn": "Kirim Ulasan Saya",
+    "moderationNote": "Review Anda akan dimoderasi sebelum ditampilkan.",
+    "ratingError": "Silakan pilih bintang rating!"
+  },
+  "cta": {
+    "emailPlaceholder": "Masukkan Alamat Email",
+    "subscribe": "Berlangganan",
+    "subscribeSuccess": "Terima kasih sudah berlangganan info King's Rental!"
+  },
+  "footer": {
+    "brandDesc": "Mitra perjalanan terbaik Anda. Menyediakan layanan sewa mobil premium dengan standar keamanan dan kenyamanan tinggi.",
+    "navTitle": "Navigasi",
+    "carList": "Daftar Mobil",
+    "terms": "Syarat & Ketentuan",
+    "aboutUs": "Tentang Kami",
+    "followUs": "Follow kami di",
+    "servicesTitle": "Layanan",
+    "halfDay": "Sewa/12jam",
+    "daily": "Sewa Harian",
+    "monthly": "Sewa Bulanan",
+    "transfer": "Antar Jemput Stasiun/Bandara",
+    "weddingCar": "Wedding Car",
+    "etc": "Dll",
+    "contactTitle": "Hubungi Kami",
+    "copyright": "© 2026 King's Rental Bumiayu. All Rights Reserved."
+  },
+  "chatBot": {
+    "greeting": "Halo Kak! Ada yang bisa dibantu? ✨",
+    "inputPlaceholder": "Ketik pesan...",
+    "voiceFail": "Gagal mendengar. Coba lagi..."
+  },
+  "quickView": {
+    "bookNow": "Pesan Sekarang"
+  },
+  "switcher": {
+    "langLabel": "Bahasa",
+    "currLabel": "Mata Uang"
+  }
+}

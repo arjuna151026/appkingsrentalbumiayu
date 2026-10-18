@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "code": "ja",
+    "name": "日本語",
+    "flag": "🇯🇵",
+    "dir": "ltr"
+  },
+  "nav": {
+    "home": "ホーム",
+    "fleet": "車両一覧",
+    "howToRent": "レンタル方法",
+    "sop": "SOP",
+    "testimonials": "レビュー",
+    "contact": "お問い合わせ",
+    "login": "ログイン",
+    "logout": "ログアウト",
+    "adminDashboard": "管理ダッシュボード",
+    "helloUser": "こんにちは、{name}さん"
+  },
+  "hero": {
+    "title": "プレミアムレンタカー",
+    "typingWords": "[\"ブミアユ周辺\", \"簡単セルフドライブ\", \"親切なドライバー付き\", \"透明な料金\"]",
+    "subtitle": "整備された車両と優先サービスで最高のドライブ体験を。透明な料金、隠れた費用はありません。",
+    "btnFleet": "車両を見る",
+    "btnContact": "お問い合わせ"
+  },
+  "search": {
+    "tabSelfDrive": "セルフドライブ",
+    "tabWithDriver": "ドライバー付き",
+    "labelLocation": "レンタル場所",
+    "placeholderLocation": "都市または地域を検索",
+    "labelStartDate": "開始日",
+    "labelStartTime": "開始時間",
+    "labelEndDate": "終了日",
+    "labelEndTime": "終了時間",
+    "placeholderDate": "日付を選択"
+  },
+  "stats": {
+    "premiumFleet": "プレミアム車両",
+    "happyCustomers": "満足したお客様",
+    "support": "サポートサービス"
+  },
+  "fleet": {
+    "sectionTag": "限定カタログ",
+    "sectionTitle": "最高の車両セレクション",
+    "filterAll": "すべて",
+    "filterGold": "ゴールド",
+    "filterSilver": "シルバー",
+    "startFrom": "料金",
+    "bookNow": "予約",
+    "soldOut": "売り切れ",
+    "viewDetail": "詳細を見る",
+    "noFleet": "データベースに車両がまだありません。",
+    "bestSeller": "人気No.1",
+    "premium": "プレミアム",
+    "perDay": "/日"
+  },
+  "howToRent": {
+    "sectionTag": "簡単プロセス",
+    "sectionTitle": "King'sでの予約方法",
+    "step1Title": "1. 車を選ぶ",
+    "step1Desc": "旅のニーズに合った車をお選びください。",
+    "step2Title": "2. 管理者に連絡",
+    "step2Desc": "注文ボタンをクリックしてWhatsAppで接続。",
+    "step3Title": "3. お支払い",
+    "step3Desc": "軽い頭金でスケジュールを確保。",
+    "step4Title": "4. お引渡し",
+    "step4Desc": "お届けまたはガレージでお受け取り。"
+  },
+  "sop": {
+    "sectionTag": "サービス基準",
+    "sectionTitle": "車両リリースSOP",
+    "purpose": "目的：",
+    "purposeDesc": "お客様への車両リリースプロセス全体が、良好で安全かつ明確に記録されたサービス基準で行われることを保証する。",
+    "scope": "範囲：",
+    "scopeDesc": "短期および長期の両方でお客様にリリースされるすべての車両。",
+    "parties": "関係者：",
+    "partiesDesc": "運営スタッフ / 管理者、ドライバー / 引渡し担当者、お客様。",
+    "procedureTitle": "ユニットリリース手順："
+  },
+  "testimonials": {
+    "sectionTag": "お客様の声",
+    "sectionTitle": "みんなの感想は？",
+    "writeReview": "レビューを書く",
+    "nameLabel": "お名前",
+    "roleLabel": "職業 / 出身地",
+    "rolePlaceholder": "例：ジャカルタからの観光客",
+    "ratingLabel": "評価する",
+    "ratingPrompt": "星評価を選択",
+    "experienceLabel": "体験を教えてください",
+    "experiencePlaceholder": "当サービスのご利用体験はいかがでしたか？",
+    "submitBtn": "レビューを送信",
+    "moderationNote": "レビューは表示前にモデレートされます。",
+    "ratingError": "星評価を選択してください！"
+  },
+  "cta": {
+    "emailPlaceholder": "メールアドレスを入力",
+    "subscribe": "登録する",
+    "subscribeSuccess": "King's Rentalの最新情報をご登録いただきありがとうございます！"
+  },
+  "footer": {
+    "brandDesc": "最高の旅のパートナー。高い安全性と快適性を備えたプレミアムレンタカーサービスを提供。",
+    "navTitle": "ナビゲーション",
+    "carList": "車両リスト",
+    "terms": "利用規約",
+    "aboutUs": "会社概要",
+    "followUs": "フォローする",
+    "servicesTitle": "サービス",
+    "halfDay": "12時間レンタル",
+    "daily": "日借り",
+    "monthly": "月借り",
+    "transfer": "駅/空港送迎",
+    "weddingCar": "ウェディングカー",
+    "etc": "その他",
+    "contactTitle": "お問い合わせ",
+    "copyright": "© 2026 King's Rental Bumiayu. All Rights Reserved."
+  },
+  "chatBot": {
+    "greeting": "こんにちは！何かお手伝いできますか？✨",
+    "inputPlaceholder": "メッセージを入力...",
+    "voiceFail": "聞き取れませんでした。もう一度お試しください..."
+  },
+  "quickView": {
+    "bookNow": "今すぐ予約"
+  },
+  "switcher": {
+    "langLabel": "言語",
+    "currLabel": "通貨"
+  }
+}

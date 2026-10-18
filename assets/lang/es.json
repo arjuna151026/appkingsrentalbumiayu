@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "code": "es",
+    "name": "Español",
+    "flag": "🇪🇸",
+    "dir": "ltr"
+  },
+  "nav": {
+    "home": "Inicio",
+    "fleet": "Flota",
+    "howToRent": "Cómo Alquilar",
+    "sop": "SOP",
+    "testimonials": "Reseñas",
+    "contact": "Contacto",
+    "login": "Iniciar Sesión",
+    "logout": "Cerrar Sesión",
+    "adminDashboard": "Panel de Admin",
+    "helloUser": "Hola, {name}"
+  },
+  "hero": {
+    "title": "Alquiler de Autos Premium",
+    "typingWords": "[\"Bumiayu y Alrededores\", \"Conducción Fácil\", \"Con Conductor Amable\", \"Precios Transparentes\"]",
+    "subtitle": "Experimente la conducción de primera clase con una flota bien mantenida y servicio prioritario. Precios transparentes, sin cargos ocultos.",
+    "btnFleet": "Ver Flota",
+    "btnContact": "Contáctenos"
+  },
+  "search": {
+    "tabSelfDrive": "Sin Conductor",
+    "tabWithDriver": "Con Conductor",
+    "labelLocation": "Su Ubicación de Alquiler",
+    "placeholderLocation": "Buscar ciudad o zona",
+    "labelStartDate": "Fecha de Inicio",
+    "labelStartTime": "Hora de Inicio",
+    "labelEndDate": "Fecha de Fin",
+    "labelEndTime": "Hora de Fin",
+    "placeholderDate": "Elegir Fecha"
+  },
+  "stats": {
+    "premiumFleet": "Flota Premium",
+    "happyCustomers": "Clientes Satisfechos",
+    "support": "Servicio de Soporte"
+  },
+  "fleet": {
+    "sectionTag": "Catálogo Exclusivo",
+    "sectionTitle": "Mejor Selección de Flota",
+    "filterAll": "Todos",
+    "filterGold": "Gold",
+    "filterSilver": "Silver",
+    "startFrom": "Desde",
+    "bookNow": "Reservar",
+    "soldOut": "Agotado",
+    "viewDetail": "Ver Detalle",
+    "noFleet": "Aún no hay flota disponible en la base de datos.",
+    "bestSeller": "Más Vendido",
+    "premium": "Premium",
+    "perDay": "/día"
+  },
+  "howToRent": {
+    "sectionTag": "Proceso Fácil",
+    "sectionTitle": "Cómo Reservar en King's",
+    "step1Title": "1. Elegir Vehículo",
+    "step1Desc": "Seleccione el auto que se adapte a sus necesidades de viaje.",
+    "step2Title": "2. Contactar Admin",
+    "step2Desc": "Haga clic en el botón de pedido para conectarse por WhatsApp.",
+    "step3Title": "3. Pago",
+    "step3Desc": "Realice un anticipo ligero para asegurar su horario.",
+    "step4Title": "4. Entrega",
+    "step4Desc": "El auto se entrega en su ubicación o recójalo en nuestro garaje."
+  },
+  "sop": {
+    "sectionTag": "Estándar de Servicio",
+    "sectionTitle": "SOP de Liberación de Vehículos",
+    "purpose": "Objetivo:",
+    "purposeDesc": "Garantizar que todo el proceso de liberación de vehículos a los clientes se realice con estándares de servicio buenos, seguros y bien documentados.",
+    "scope": "Alcance:",
+    "scopeDesc": "Todas las unidades de vehículos que serán liberadas a clientes tanto a corto como a largo plazo.",
+    "parties": "Partes Relacionadas:",
+    "partiesDesc": "Personal operativo / admin, conductor / oficial de entrega, cliente.",
+    "procedureTitle": "Procedimiento de Liberación de Unidad:"
+  },
+  "testimonials": {
+    "sectionTag": "Testimonios de Clientes",
+    "sectionTitle": "¿Qué Dicen?",
+    "writeReview": "Escribir Reseña",
+    "nameLabel": "Su Nombre",
+    "roleLabel": "Ocupación / Origen",
+    "rolePlaceholder": "Ej.: Turista de Yakarta",
+    "ratingLabel": "Dar Calificación",
+    "ratingPrompt": "Elegir calificación de estrellas",
+    "experienceLabel": "Cuéntenos Su Experiencia",
+    "experiencePlaceholder": "¿Cómo fue su experiencia usando nuestro servicio?",
+    "submitBtn": "Enviar Mi Reseña",
+    "moderationNote": "Su reseña será moderada antes de ser publicada.",
+    "ratingError": "¡Por favor seleccione una calificación!"
+  },
+  "cta": {
+    "emailPlaceholder": "Ingrese Correo Electrónico",
+    "subscribe": "Suscribirse",
+    "subscribeSuccess": "¡Gracias por suscribirse a las noticias de King's Rental!"
+  },
+  "footer": {
+    "brandDesc": "Su mejor compañero de viaje. Proporcionando servicios de alquiler de autos premium con altos estándares de seguridad y comodidad.",
+    "navTitle": "Navegación",
+    "carList": "Lista de Autos",
+    "terms": "Términos y Condiciones",
+    "aboutUs": "Sobre Nosotros",
+    "followUs": "Síguenos en",
+    "servicesTitle": "Servicios",
+    "halfDay": "Alquiler 12 Horas",
+    "daily": "Alquiler Diario",
+    "monthly": "Alquiler Mensual",
+    "transfer": "Traslado Estación/Aeropuerto",
+    "weddingCar": "Auto de Boda",
+    "etc": "Otros",
+    "contactTitle": "Contáctenos",
+    "copyright": "© 2026 King's Rental Bumiayu. Todos los Derechos Reservados."
+  },
+  "chatBot": {
+    "greeting": "¡Hola! ¿En qué podemos ayudarle? ✨",
+    "inputPlaceholder": "Escriba un mensaje...",
+    "voiceFail": "No se pudo escuchar. Intente de nuevo..."
+  },
+  "quickView": {
+    "bookNow": "Reservar Ahora"
+  },
+  "switcher": {
+    "langLabel": "Idioma",
+    "currLabel": "Moneda"
+  }
+}

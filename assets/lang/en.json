@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "code": "en",
+    "name": "English",
+    "flag": "🇬🇧",
+    "dir": "ltr"
+  },
+  "nav": {
+    "home": "Home",
+    "fleet": "Fleet",
+    "howToRent": "How to Rent",
+    "sop": "SOP",
+    "testimonials": "Reviews",
+    "contact": "Contact",
+    "login": "Sign In",
+    "logout": "Sign Out",
+    "adminDashboard": "Admin Dashboard",
+    "helloUser": "Hi, {name}"
+  },
+  "hero": {
+    "title": "Premium Car Rental",
+    "typingWords": "[\"Bumiayu & Surroundings\", \"Easy Self-Drive\", \"With Friendly Driver\", \"Transparent Pricing\"]",
+    "subtitle": "Experience top-class driving with well-maintained fleet and priority service. Transparent pricing, no hidden fees.",
+    "btnFleet": "View Fleet",
+    "btnContact": "Contact Us"
+  },
+  "search": {
+    "tabSelfDrive": "Self-Drive",
+    "tabWithDriver": "With Driver",
+    "labelLocation": "Your Rental Location",
+    "placeholderLocation": "Search city or area",
+    "labelStartDate": "Start Date",
+    "labelStartTime": "Start Time",
+    "labelEndDate": "End Date",
+    "labelEndTime": "End Time",
+    "placeholderDate": "Pick a Date"
+  },
+  "stats": {
+    "premiumFleet": "Premium Fleet",
+    "happyCustomers": "Happy Customers",
+    "support": "Support Service"
+  },
+  "fleet": {
+    "sectionTag": "Exclusive Catalog",
+    "sectionTitle": "Best Fleet Selection",
+    "filterAll": "All",
+    "filterGold": "Gold",
+    "filterSilver": "Silver",
+    "startFrom": "Start From",
+    "bookNow": "Book",
+    "soldOut": "Sold Out",
+    "viewDetail": "View Detail",
+    "noFleet": "No fleet available in Database yet.",
+    "bestSeller": "Best Seller",
+    "premium": "Premium",
+    "perDay": "/day"
+  },
+  "howToRent": {
+    "sectionTag": "Easy Process",
+    "sectionTitle": "How to Book at King's",
+    "step1Title": "1. Choose a Car",
+    "step1Desc": "Select the car that suits your travel needs.",
+    "step2Title": "2. Contact Admin",
+    "step2Desc": "Click the order button to connect via WhatsApp.",
+    "step3Title": "3. Payment",
+    "step3Desc": "Make a light down payment to lock your schedule.",
+    "step4Title": "4. Handover",
+    "step4Desc": "The car is delivered to you or pick it up at our garage."
+  },
+  "sop": {
+    "sectionTag": "Service Standard",
+    "sectionTitle": "Vehicle Release SOP",
+    "purpose": "Purpose:",
+    "purposeDesc": "To ensure the entire vehicle release process to customers runs with good, safe, and well-documented service standards.",
+    "scope": "Scope:",
+    "scopeDesc": "All vehicle units to be released to customers for both short-term and long-term periods.",
+    "parties": "Related Parties:",
+    "partiesDesc": "Operational staff / admin, driver / handover officer, customer.",
+    "procedureTitle": "Unit Release Procedure:"
+  },
+  "testimonials": {
+    "sectionTag": "Customer Testimonials",
+    "sectionTitle": "What They Say?",
+    "writeReview": "Write a Review",
+    "nameLabel": "Your Name",
+    "roleLabel": "Occupation / Origin",
+    "rolePlaceholder": "E.g.: Tourist from Jakarta",
+    "ratingLabel": "Give a Rating",
+    "ratingPrompt": "Choose star rating",
+    "experienceLabel": "Tell Us Your Experience",
+    "experiencePlaceholder": "How was your experience using our service?",
+    "submitBtn": "Submit My Review",
+    "moderationNote": "Your review will be moderated before being displayed.",
+    "ratingError": "Please select a star rating!"
+  },
+  "cta": {
+    "emailPlaceholder": "Enter Email Address",
+    "subscribe": "Subscribe",
+    "subscribeSuccess": "Thank you for subscribing to King's Rental updates!"
+  },
+  "footer": {
+    "brandDesc": "Your best travel partner. Providing premium car rental services with high safety and comfort standards.",
+    "navTitle": "Navigation",
+    "carList": "Car List",
+    "terms": "Terms & Conditions",
+    "aboutUs": "About Us",
+    "followUs": "Follow us on",
+    "servicesTitle": "Services",
+    "halfDay": "12-Hour Rental",
+    "daily": "Daily Rental",
+    "monthly": "Monthly Rental",
+    "transfer": "Station/Airport Transfer",
+    "weddingCar": "Wedding Car",
+    "etc": "Others",
+    "contactTitle": "Contact Us",
+    "copyright": "© 2026 King's Rental Bumiayu. All Rights Reserved."
+  },
+  "chatBot": {
+    "greeting": "Hello! How can we help you? ✨",
+    "inputPlaceholder": "Type a message...",
+    "voiceFail": "Failed to listen. Please try again..."
+  },
+  "quickView": {
+    "bookNow": "Book Now"
+  },
+  "switcher": {
+    "langLabel": "Language",
+    "currLabel": "Currency"
+  }
+}
