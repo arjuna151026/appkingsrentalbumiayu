@@ -164,10 +164,7 @@
          BAGIAN 3: JAVASCRIPT (OTAK AI / GEMINI)
          ========================================= -->
     <script>
-        // 1. Kunci Rahasia API Anda 
-        const API_KEY = 'AQ.Ab8RN6LMT8YW2GA9wxl4j4gd6-Jn2cqwxlh0WWUV8zPHgXaDZQ'; 
-        
-        // 2. Instruksi Sifat AI
+        // 1. Instruksi Sifat AI (API Key tersimpan aman di file .env dan diakses via api_gemini.php)
         const sistemPrompt = `Kamu adalah asisten pelanggan (customer service) yang ramah dan profesional untuk sebuah bisnis penyewaan mobil bernama "Kings Rental Bumiayu". 
         Tugasmu adalah merekomendasikan mobil, menjawab pertanyaan harga, dan membantu pelanggan.
         Gunakan bahasa Indonesia yang sopan, santai, dan tidak kaku. 
@@ -200,8 +197,7 @@
 
         // Fungsi utama untuk mengobrol dengan server Google Gemini
         async function fetchGeminiResponse(userText, loadingElement) {
-            // MENGGUNAKAN NAMA MODEL PALING BARU DAN STABIL (gemini-2.5-flash)
-            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${API_KEY}`;
+            const url = 'api_gemini.php';
 
             const requestBody = {
                 "system_instruction": { "parts": [{"text": sistemPrompt}] },
