@@ -12,17 +12,17 @@ if ($result) {
         // Menyesuaikan dengan nama kolom yang benar di phpMyAdmin
         // dan membentuk format data yang pas untuk index.html & admin.html
         $car = array(
-            "id" => $row['id'], 
+            "id" => $row['car_id'],  // FIX: nama kolom adalah car_id, bukan id
             "name" => $row['name'],
             "category" => $row['category'],
             "price" => (int)$row['price'],
             "image" => $row['image'],
             "rating" => $row['rating'],
             "specs" => array(
-                "seat" => $row['specs_seat'],
-                "trans" => $row['specs_trans'],
-                "fuel" => $row['specs_fuel'],
-                "other" => $row['specs_other']
+                "seat" => $row['spec_seat'],   // FIX: spec_seat bukan specs_seat
+                "trans" => $row['spec_trans'],  // FIX: spec_trans bukan specs_trans
+                "fuel" => $row['spec_fuel'],    // FIX: spec_fuel bukan specs_fuel
+                "other" => $row['spec_other']   // FIX: spec_other bukan specs_other
             ),
             "status" => $row['status']
         );
