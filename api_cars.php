@@ -24,7 +24,8 @@ if ($result) {
                 "fuel" => $row['spec_fuel'],    // FIX: spec_fuel bukan specs_fuel
                 "other" => $row['spec_other']   // FIX: spec_other bukan specs_other
             ),
-            "status" => $row['status']
+            "status" => $row['status'],
+            "colors" => !empty($row['colors']) ? $row['colors'] : ($row['category'] ? ucfirst($row['category']) : 'Silver, Putih, Hitam')
         );
         array_push($cars, $car);
     }

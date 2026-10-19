@@ -15,7 +15,8 @@ USE `kings_rental_db`;
 CREATE TABLE IF NOT EXISTS `cars` (
   `car_id` varchar(50) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `category` varchar(20) DEFAULT 'silver',
+  `category` varchar(20) DEFAULT 'putih',
+  `colors` varchar(255) DEFAULT 'Putih, Hitam, Silver',
   `price` int(11) DEFAULT 0,
   `image` longtext DEFAULT NULL,
   `rating` varchar(50) DEFAULT '5.0 (New)',
@@ -31,13 +32,15 @@ CREATE TABLE IF NOT EXISTS `cars` (
 -- --------------------------------------------------------
 -- Data Bawaan `cars`
 -- --------------------------------------------------------
-INSERT IGNORE INTO `cars` (`car_id`, `name`, `category`, `price`, `image`, `rating`, `spec_seat`, `spec_trans`, `spec_fuel`, `spec_other`, `status`) VALUES
-('avanza', 'All New Avanza', 'silver', 350, 'ToyotaAvanza.jpg', '4.8 (12 Review)', '7 Seat', 'Manual', 'Bensin', '2 Bag', 'available'),
-('xenia', 'All New Xenia', 'silver', 350, 'allNewXenia.jpg', '4.9 (18 Review)', '7 Seat', 'Manual', 'Bensin', '2 Bag', 'available'),
-('brio', 'Honda Brio', 'silver', 300, 'HondaBrio.jpg', '4.8 (56 Review)', '5 Seat', 'Matic', 'Hemat', 'BT', 'available'),
-('brv', 'Honda BR-V N7x', 'gold', 400, 'HondaBRVN7.jpg', '4.7 (80 Review)', '7 Seat', 'Manual', 'Bensin', '3 Bag', 'available'),
-('xpander_ult', 'Mitsubishi Xpander Ultimate', 'gold', 400, 'MistubishiXpanderUltimate.jpg', '4.9 (42 Review)', '7 Seat', 'Matic', 'Bensin', 'Smart', 'available'),
-('xpander_sport', 'Mitsubishi Xpander Sport', 'gold', 400, 'MistubishiXpanderSport.jpg', '4.8 (38 Review)', '7 Seat', 'Matic', 'Bensin', 'Audio', 'available');
+INSERT IGNORE INTO `cars` (`car_id`, `name`, `category`, `colors`, `price`, `image`, `rating`, `spec_seat`, `spec_trans`, `spec_fuel`, `spec_other`, `status`) VALUES
+('avanza', 'All New Avanza', 'putih', 'Putih, Hitam, Silver', 350, 'ToyotaAvanza.jpg', '4.8 (12 Review)', '7 Seat', 'Manual', 'Bensin', '2 Bag', 'available'),
+('xenia', 'All New Xenia', 'silver', 'Silver, Putih, Hitam, Merah', 350, 'allNewXenia.jpg', '4.9 (18 Review)', '7 Seat', 'Manual', 'Bensin', '2 Bag', 'available'),
+('brio', 'Honda Brio RS', 'merah', 'Merah, Putih, Kuning, Hitam', 300, 'HondaBrioRed.png', '4.8 (56 Review)', '5 Seat', 'Matic', 'Hemat', 'BT', 'available'),
+('fortuner', 'Toyota Fortuner GR Sport', 'hitam', 'Hitam, Putih', 600, 'toyotaFortuner.jpg', '4.9 (48 Review)', '7 Seat', 'Matic', 'Diesel', '4x2 GR', 'available'),
+('brv', 'Honda BR-V N7x', 'gold', 'Gold, Putih, Hitam', 400, 'HondaBRVN7.jpg', '4.7 (80 Review)', '7 Seat', 'Manual', 'Bensin', '3 Bag', 'available'),
+('civic', 'Honda Civic RS Turbo', 'putih', 'Putih, Hitam, Merah', 750, 'HondaCivic.jpg', '4.9 (32 Review)', '5 Seat', 'Matic', 'Pertamax', 'Turbocharged', 'available'),
+('xpander_ult', 'Mitsubishi Xpander Ultimate', 'hitam', 'Hitam, Silver, Putih', 400, 'MistubishiXpanderUltimate.jpg', '4.9 (42 Review)', '7 Seat', 'Matic', 'Bensin', 'Smart', 'available'),
+('xpander_sport', 'Mitsubishi Xpander Sport', 'gold', 'Gold, Silver, Hitam', 400, 'MistubishiXpanderSport.jpg', '4.8 (38 Review)', '7 Seat', 'Matic', 'Bensin', 'Audio', 'available');
 
 -- --------------------------------------------------------
 -- Struktur Tabel `testimonials`

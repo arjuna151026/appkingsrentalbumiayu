@@ -744,6 +744,85 @@
             box-shadow: 0 4px 12px -2px var(--accent-glow);
         }
 
+        /* Color dots for filters */
+        .color-dot {
+            display: inline-block;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .color-dot.black-dot { background: #1e293b; border-color: #64748b; }
+        .color-dot.white-dot { background: #ffffff; border-color: #cbd5e1; box-shadow: 0 0 4px rgba(255,255,255,0.6); }
+        .color-dot.red-dot { background: #ef4444; border-color: #b91c1c; }
+        .color-dot.silver-dot { background: #94a3b8; border-color: #cbd5e1; }
+        .color-dot.gold-dot { background: #f59e0b; border-color: #d97706; }
+
+        /* Card color badge & swatches preview */
+        .card-colors-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 6px 0 10px 0;
+            padding: 4px 10px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            width: fit-content;
+        }
+        .card-colors-row .color-lbl {
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .color-swatch-chip {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .color-swatch-chip:hover {
+            transform: scale(1.25);
+        }
+
+        /* QuickView color selection */
+        .qv-color-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1.5px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .qv-color-btn:hover {
+            border-color: var(--accent);
+            background: rgba(14, 165, 233, 0.08);
+        }
+        .qv-color-btn.active {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: #ffffff;
+            box-shadow: 0 4px 12px var(--accent-glow);
+        }
+        .qv-color-btn.active .color-dot {
+            border-color: #ffffff;
+        }
+
         /* Asymmetric grid: first card wider for visual interest */
         .cars-grid {
             display: grid;
@@ -2681,8 +2760,11 @@
 
         <div class="filter-tabs" data-aos="fade-up" data-aos-delay="100">
             <button class="filter-btn active" onclick="filterSelection('all')" data-i18n="fleet.filterAll">Semua</button>
-            <button class="filter-btn" onclick="filterSelection('gold')" data-i18n="fleet.filterGold">Gold</button>
-            <button class="filter-btn" onclick="filterSelection('silver')" data-i18n="fleet.filterSilver">Silver</button>
+            <button class="filter-btn" onclick="filterSelection('hitam')"><span class="color-dot black-dot"></span><span data-i18n="fleet.filterBlack">Hitam</span></button>
+            <button class="filter-btn" onclick="filterSelection('putih')"><span class="color-dot white-dot"></span><span data-i18n="fleet.filterWhite">Putih</span></button>
+            <button class="filter-btn" onclick="filterSelection('merah')"><span class="color-dot red-dot"></span><span data-i18n="fleet.filterRed">Merah</span></button>
+            <button class="filter-btn" onclick="filterSelection('silver')"><span class="color-dot silver-dot"></span><span data-i18n="fleet.filterSilver">Silver</span></button>
+            <button class="filter-btn" onclick="filterSelection('gold')"><span class="color-dot gold-dot"></span><span data-i18n="fleet.filterGold">Gold</span></button>
         </div>
 
         <div class="cars-grid" id="carsGrid">
@@ -3202,6 +3284,10 @@
                     <strong id="modalCarName">Toyota Avanza</strong>
                 </div>
                 <div class="modal-detail-row">
+                    <span>Pilihan Warna</span>
+                    <strong id="modalCarColor" style="color: var(--accent);">Putih</strong>
+                </div>
+                <div class="modal-detail-row">
                     <span>Layanan</span>
                     <strong id="modalService">Lepas Kunci</strong>
                 </div>
@@ -3256,6 +3342,14 @@
                 <div class="car-specs"
                     style="grid-template-columns: repeat(2, 1fr); border:none; padding:0; margin-bottom:20px;"
                     id="qvSpecs">
+                </div>
+                <div class="qv-color-selection" style="margin-bottom: 18px;">
+                    <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; display: flex; align-items: center; justify-content: space-between;">
+                        <span><i class="ri-palette-line" style="color: var(--accent); margin-right: 4px;"></i><span data-i18n="fleet.colorOptions">Pilihan Warna Unit:</span></span>
+                        <span id="qvSelectedColorLabel" style="color: var(--accent); font-weight: 700; font-size: 0.85rem;"></span>
+                    </div>
+                    <div class="color-swatches-container" id="qvColorSwatches" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    </div>
                 </div>
                 <div
                     style="display:flex; justify-content:space-between; align-items:center; margin-top:auto; padding-top:20px; border-top:1px solid var(--glass-border);">
@@ -3344,16 +3438,32 @@
             }
         }
 
-        // Filter selection
+        // Filter selection (Mendukung filter Kategori dan Warna Mobil)
         function filterSelection(category) {
             const cards = document.querySelectorAll('.car-card');
             const buttons = document.querySelectorAll('.filter-btn');
 
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+            if (window.event && window.event.currentTarget && window.event.currentTarget.classList.contains('filter-btn')) {
+                window.event.currentTarget.classList.add('active');
+            }
+
+            const target = (category || 'all').toLowerCase();
 
             cards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
+                const cardCat = (card.getAttribute('data-category') || '').toLowerCase();
+                const cardColors = (card.getAttribute('data-colors') || '').toLowerCase();
+
+                const isMatch = target === 'all' || 
+                    cardCat === target || 
+                    cardColors.includes(target) ||
+                    (target === 'hitam' && (cardCat.includes('hitam') || cardColors.includes('hitam') || cardColors.includes('black'))) ||
+                    (target === 'putih' && (cardCat.includes('putih') || cardColors.includes('putih') || cardColors.includes('white'))) ||
+                    (target === 'merah' && (cardCat.includes('merah') || cardColors.includes('merah') || cardColors.includes('red'))) ||
+                    (target === 'silver' && (cardCat.includes('silver') || cardColors.includes('silver'))) ||
+                    (target === 'gold' && (cardCat.includes('gold') || cardColors.includes('gold')));
+
+                if (isMatch) {
                     card.style.display = 'flex';
                     setTimeout(() => {
                         card.style.opacity = '1';
@@ -3458,6 +3568,39 @@
             qvPriceEl.innerText = window.CurrencyManager ? window.CurrencyManager.convertAndFormat(car.price) : `Rp ${car.price}.000`;
             qvPriceEl.setAttribute('data-current-price-idr', car.price);
 
+            // Isi pilihan warna interaktif
+            const swatchesContainer = document.getElementById('qvColorSwatches');
+            const colorLabel = document.getElementById('qvSelectedColorLabel');
+            const rawColors = car.colors || (car.category ? car.category.charAt(0).toUpperCase() + car.category.slice(1) : 'Putih, Hitam, Silver');
+            const carColors = rawColors.split(',').map(c => c.trim()).filter(Boolean);
+
+            window.currentSelectedQuickColor = carColors[0] || 'Standar';
+            if (colorLabel) colorLabel.innerText = window.currentSelectedQuickColor;
+
+            if (swatchesContainer) {
+                swatchesContainer.innerHTML = '';
+                carColors.forEach((col, idx) => {
+                    const clower = col.toLowerCase();
+                    let dotClass = 'silver-dot';
+                    if (clower.includes('hitam') || clower.includes('black')) dotClass = 'black-dot';
+                    else if (clower.includes('putih') || clower.includes('white')) dotClass = 'white-dot';
+                    else if (clower.includes('merah') || clower.includes('red')) dotClass = 'red-dot';
+                    else if (clower.includes('gold')) dotClass = 'gold-dot';
+
+                    const btnEl = document.createElement('button');
+                    btnEl.type = 'button';
+                    btnEl.className = `qv-color-btn ${idx === 0 ? 'active' : ''}`;
+                    btnEl.innerHTML = `<span class="color-dot ${dotClass}"></span> ${col}`;
+                    btnEl.onclick = () => {
+                        document.querySelectorAll('.qv-color-btn').forEach(b => b.classList.remove('active'));
+                        btnEl.classList.add('active');
+                        window.currentSelectedQuickColor = col;
+                        if (colorLabel) colorLabel.innerText = col;
+                    };
+                    swatchesContainer.appendChild(btnEl);
+                });
+            }
+
             // Isi spesifikasi
             document.getElementById('qvSpecs').innerHTML = `
                 <div class="spec-item"><i class="ri-user-line"></i> ${car.specs.seat}</div>
@@ -3471,7 +3614,7 @@
             if (car.status === 'available') {
                 btn.innerText = window.i18n ? window.i18n.t('quickView.bookNow') : "Pesan Sekarang";
                 btn.disabled = false;
-                btn.onclick = () => { closeModal('quickViewModal'); bookingWA(car.name, car.id); };
+                btn.onclick = () => { closeModal('quickViewModal'); bookingWA(car.name, car.id, window.currentSelectedQuickColor); };
             } else {
                 btn.innerText = window.i18n ? window.i18n.t('fleet.soldOut') : "Tidak Tersedia";
                 btn.disabled = true;
@@ -3502,13 +3645,16 @@
             }
         });
 
-        function bookingWA(carName, context) {
+        function bookingWA(carName, context, preferredColor) {
             let carId;
             if (typeof context === 'string') carId = context;
             else carId = context.closest('.car-card').getAttribute('data-id');
 
             const carData = globalCarsData.find(c => c.id === carId);
             const hargaPerHari = carData ? carData.price * 1000 : 0;
+
+            const defaultColor = (carData && carData.colors ? carData.colors.split(',')[0].trim() : (carData ? carData.category : 'Standar')) || 'Standar';
+            const selectedColor = preferredColor || window.currentSelectedQuickColor || defaultColor;
 
             const isLepasKunci = document.querySelector('.search-tabs .tab-btn:first-child').classList.contains('active');
             const layanan = isLepasKunci ? "Lepas Kunci" : "Dengan Sopir";
@@ -3541,6 +3687,8 @@
             const formatActiveCurrency = (angka) => window.CurrencyManager ? window.CurrencyManager.convertAndFormat(angka) : formatRupiah(angka);
 
             document.getElementById('modalCarName').innerText = carName;
+            const modalColorEl = document.getElementById('modalCarColor');
+            if (modalColorEl) modalColorEl.innerText = selectedColor;
             document.getElementById('modalService').innerText = layanan;
             document.getElementById('modalDuration').innerText = `${durasiHari} Hari`;
             document.getElementById('modalDate').innerText = tanggalTampil;
@@ -3561,10 +3709,10 @@
             const rincianBiayaSopir = isLepasKunci ? '0 (Tanpa Sopir)' : (userCurr === 'IDR' ? formatRupiah(totalBiayaSopir) : `${formatActiveCurrency(totalBiayaSopir)} (≈ ${formatRupiah(totalBiayaSopir)})`);
             const rincianTotalEstimasi = userCurr === 'IDR' ? formatRupiah(estimasiTotal) : `${formatActiveCurrency(estimasiTotal)} (≈ ${formatRupiah(estimasiTotal)})`;
 
-            const message = `${greeting} Admin King's Rental 👋\n\nSaya ingin menyewa unit *${carName}*.\n\n*📋 Detail Rencana Sewa:*\n- Layanan: ${layanan}\n- Durasi: ${durasiHari} Hari\n- Tanggal: ${tanggalTampil}\n- Waktu: ${jamMulai} - ${jamSelesai}\n- Lokasi Penjemputan: ${lokasi}\n\n*💰 Rincian Biaya:*\n- Sewa Mobil (${durasiHari}x): ${rincianHargaMobil}\n- Biaya Sopir (${durasiHari}x): ${rincianBiayaSopir}\n*Total Estimasi: ${rincianTotalEstimasi}*\n\nApakah unit ini tersedia untuk tanggal tersebut?`;
+            const message = `${greeting} Admin King's Rental 👋\n\nSaya ingin menyewa unit *${carName}*.\n\n*📋 Detail Rencana Sewa:*\n- Layanan: ${layanan}\n- Pilihan Warna: ${selectedColor}\n- Durasi: ${durasiHari} Hari\n- Tanggal: ${tanggalTampil}\n- Waktu: ${jamMulai} - ${jamSelesai}\n- Lokasi Penjemputan: ${lokasi}\n\n*💰 Rincian Biaya:*\n- Sewa Mobil (${durasiHari}x): ${rincianHargaMobil}\n- Biaya Sopir (${durasiHari}x): ${rincianBiayaSopir}\n*Total Estimasi: ${rincianTotalEstimasi}*\n\nApakah unit ini tersedia untuk tanggal tersebut?`;
 
             tempBookingUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            tempTelegramMsg = `🚨 *PROSPEK SEWA BARU! (OTW WHATSAPP)*\n\n*Mobil:* ${carName}\n*Layanan:* ${layanan}\n*Tanggal:* ${tanggalTampil}\n*Durasi:* ${durasiHari} Hari\n*Estimasi Pendapatan:* ${formatActiveCurrency(estimasiTotal)}\n\n_Pelanggan sedang menuju ruang chat WhatsApp kamu sekarang! Siap-siap balas._`;
+            tempTelegramMsg = `🚨 *PROSPEK SEWA BARU! (OTW WHATSAPP)*\n\n*Mobil:* ${carName}\n*Warna:* ${selectedColor}\n*Layanan:* ${layanan}\n*Tanggal:* ${tanggalTampil}\n*Durasi:* ${durasiHari} Hari\n*Estimasi Pendapatan:* ${formatActiveCurrency(estimasiTotal)}\n\n_Pelanggan sedang menuju ruang chat WhatsApp kamu sekarang! Siap-siap balas._`;
 
             openModal();
         }
@@ -3722,7 +3870,8 @@
             {
                 id: 'avanza',
                 name: 'All New Avanza',
-                category: 'silver',
+                category: 'putih',
+                colors: 'Putih, Hitam, Silver',
                 price: 350,
                 image: 'ToyotaAvanza.jpg',
                 rating: '4.8 (12 Review)',
@@ -3733,6 +3882,7 @@
                 id: 'xenia',
                 name: 'All New Xenia',
                 category: 'silver',
+                colors: 'Silver, Putih, Hitam, Merah',
                 price: 350,
                 image: 'allNewXenia.jpg',
                 rating: '4.9 (18 Review)',
@@ -3741,18 +3891,31 @@
             },
             {
                 id: 'brio',
-                name: 'Honda Brio',
-                category: 'silver',
+                name: 'Honda Brio RS',
+                category: 'merah',
+                colors: 'Merah, Putih, Kuning, Hitam',
                 price: 300,
-                image: 'HondaBrio.jpg',
+                image: 'HondaBrioRed.png',
                 rating: '4.8 (56 Review)',
                 specs: { seat: '5 Seat', trans: 'Matic', fuel: 'Hemat', other: 'BT' },
+                status: 'available'
+            },
+            {
+                id: 'fortuner',
+                name: 'Toyota Fortuner GR Sport',
+                category: 'hitam',
+                colors: 'Hitam, Putih',
+                price: 600,
+                image: 'toyotaFortuner.jpg',
+                rating: '4.9 (48 Review)',
+                specs: { seat: '7 Seat', trans: 'Matic', fuel: 'Diesel', other: '4x2 GR' },
                 status: 'available'
             },
             {
                 id: 'brv',
                 name: 'Honda BR-V N7x',
                 category: 'gold',
+                colors: 'Gold, Putih, Hitam',
                 price: 400,
                 image: 'HondaBRVN7.jpg',
                 rating: '4.7 (80 Review)',
@@ -3760,9 +3923,21 @@
                 status: 'available'
             },
             {
+                id: 'civic',
+                name: 'Honda Civic RS Turbo',
+                category: 'putih',
+                colors: 'Putih, Hitam, Merah',
+                price: 750,
+                image: 'HondaCivic.jpg',
+                rating: '4.9 (32 Review)',
+                specs: { seat: '5 Seat', trans: 'Matic', fuel: 'Pertamax', other: 'Turbo' },
+                status: 'available'
+            },
+            {
                 id: 'xpander_ult',
                 name: 'Mitsubishi Xpander Ultimate',
-                category: 'gold',
+                category: 'hitam',
+                colors: 'Hitam, Silver, Putih',
                 price: 400,
                 image: 'MistubishiXpanderUltimate.jpg',
                 rating: '4.9 (42 Review)',
@@ -3773,6 +3948,7 @@
                 id: 'xpander_sport',
                 name: 'Mitsubishi Xpander Sport',
                 category: 'gold',
+                colors: 'Gold, Silver, Hitam',
                 price: 400,
                 image: 'MistubishiXpanderSport.jpg',
                 rating: '4.8 (38 Review)',
@@ -3816,7 +3992,8 @@
 
                 const card = document.createElement('div');
                 card.className = `car-card glass-panel ${isAvailable ? '' : 'unavailable'}`;
-                card.setAttribute('data-category', car.category);
+                card.setAttribute('data-category', (car.category || '').toLowerCase());
+                card.setAttribute('data-colors', (car.colors || car.category || '').toLowerCase());
                 card.setAttribute('data-id', car.id);
                 card.setAttribute('data-aos', 'fade-up');
                 card.setAttribute('data-aos-delay', index * 100);
@@ -3828,9 +4005,30 @@
                         <div class="spec-item"><i class="ri-briefcase-line"></i> ${car.specs.other}</div>
                     `;
 
+                // Color swatches preview for the card
+                const rawColors = car.colors || (car.category ? car.category.charAt(0).toUpperCase() + car.category.slice(1) : 'Putih');
+                const colorsList = rawColors.split(',').map(c => c.trim()).filter(Boolean);
+                const colorChipsHtml = colorsList.map(c => {
+                    const clower = c.toLowerCase();
+                    let bg = '#94a3b8';
+                    if (clower.includes('hitam') || clower.includes('black')) bg = '#1e293b';
+                    else if (clower.includes('putih') || clower.includes('white')) bg = '#ffffff';
+                    else if (clower.includes('merah') || clower.includes('red')) bg = '#ef4444';
+                    else if (clower.includes('gold')) bg = '#f59e0b';
+                    else if (clower.includes('kuning') || clower.includes('yellow')) bg = '#eab308';
+                    return `<span class="color-swatch-chip" style="background:${bg};" title="${c}"></span>`;
+                }).join('');
+
+                const colorsRowHtml = `
+                    <div class="card-colors-row" title="Pilihan Warna: ${colorsList.join(', ')}">
+                        <span class="color-lbl"><i class="ri-palette-line" style="color:var(--accent);"></i> Warna:</span>
+                        ${colorChipsHtml}
+                    </div>
+                `;
+
                 let badgeHtml = '';
                 if (car.id === 'avanza') badgeHtml = `<span class="badge">${window.i18n ? window.i18n.t('fleet.bestSeller') : 'Best Seller'}</span>`;
-                if (car.id === 'xenia') badgeHtml = `<span class="badge" style="background: var(--accent);">${window.i18n ? window.i18n.t('fleet.premium') : 'Premium'}</span>`;
+                if (car.id === 'xenia' || car.id === 'fortuner') badgeHtml = `<span class="badge" style="background: var(--accent);">${window.i18n ? window.i18n.t('fleet.premium') : 'Premium'}</span>`;
 
                 let imgSrc = car.image;
                 if (imgSrc && !imgSrc.startsWith('data:') && !imgSrc.startsWith('http') && !imgSrc.startsWith('assets/')) {
@@ -3849,7 +4047,7 @@
                         </div>
                         <div class="car-content">
                             <div class="car-header">
-                        <div class="car-title">
+                                <div class="car-title">
                                     <h3>${car.name}</h3>
                                     <div class="car-rating">
                                         <i class="ri-star-fill"></i>
@@ -3861,6 +4059,7 @@
                             <div class="car-specs">
                                 ${specsHtml}
                             </div>
+                            ${colorsRowHtml}
                             <div class="car-footer">
                                 <div class="price" style="display: flex; flex-direction: column; align-items: flex-start; line-height: 1.2;">
                                     <span style="font-size: 0.85rem; font-weight: 400; color: var(--text-main);" data-i18n="fleet.startFrom">${startFromText}</span>

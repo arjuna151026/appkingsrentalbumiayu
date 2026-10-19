@@ -38,9 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $spec_fuel = $data['specs']['fuel'];
         $spec_other = $data['specs']['other'];
         $status = $data['status'];
+        $colors = $data['colors'] ?? '';
 
-        $stmt = $conn->prepare("INSERT INTO cars (car_id, name, category, price, image, rating, spec_seat, spec_trans, spec_fuel, spec_other, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssisssssss", $car_id, $name, $category, $price, $image, $rating, $spec_seat, $spec_trans, $spec_fuel, $spec_other, $status);
+        $stmt = $conn->prepare("INSERT INTO cars (car_id, name, category, price, image, rating, spec_seat, spec_trans, spec_fuel, spec_other, status, colors) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssissssssss", $car_id, $name, $category, $price, $image, $rating, $spec_seat, $spec_trans, $spec_fuel, $spec_other, $status, $colors);
         
         if ($stmt->execute()) {
             echo json_encode(["status" => "success", "message" => "Mobil berhasil ditambahkan"]);
@@ -59,16 +60,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $spec_trans = $data['specs']['trans'];
         $spec_fuel = $data['specs']['fuel'];
         $spec_other = $data['specs']['other'];
+        $colors = $data['colors'] ?? '';
         
         // Cek apakah admin mengupload gambar baru
         if (!empty($data['image'])) {
             $image = $data['image'];
-            $stmt = $conn->prepare("UPDATE cars SET name=?, category=?, price=?, image=?, spec_seat=?, spec_trans=?, spec_fuel=?, spec_other=? WHERE car_id=?");
-            $stmt->bind_param("ssissssss", $name, $category, $price, $image, $spec_seat, $spec_trans, $spec_fuel, $spec_other, $car_id);
+            $stmt = $conn->prepare("UPDATE cars SET name=?, category=?, price=?, image=?, spec_seat=?, spec_trans=?, spec_fuel=?, spec_other=?, colors=? WHERE car_id=?");
+            $stmt->bind_param("ssisssssss", $name, $category, $price, $image, $spec_seat, $spec_trans, $spec_fuel, $spec_other, $colors, $car_id);
         } else {
             // Jika tidak ada gambar baru, update datanya saja
-            $stmt = $conn->prepare("UPDATE cars SET name=?, category=?, price=?, spec_seat=?, spec_trans=?, spec_fuel=?, spec_other=? WHERE car_id=?");
-            $stmt->bind_param("ssisssss", $name, $category, $price, $spec_seat, $spec_trans, $spec_fuel, $spec_other, $car_id);
+            $stmt = $conn->prepare("UPDATE cars SET name=?, category=?, price=?, spec_seat=?, spec_trans=?, spec_fuel=?, spec_other=?, colors=? WHERE car_id=?");
+            $stmt->bind_param("ssissssss", $name, $category, $price, $spec_seat, $spec_trans, $spec_fuel, $spec_other, $colors, $car_id);
         }
 
         if ($stmt->execute()) {

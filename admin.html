@@ -627,12 +627,19 @@
                                     <input type="number" id="carPrice" placeholder="350" required>
                                 </div>
                                 <div class="form-group" style="margin-bottom: 0;">
-                                    <label>Kategori</label>
+                                    <label>Kategori / Warna Utama</label>
                                     <select id="carCategory">
+                                        <option value="hitam">Hitam (Black)</option>
+                                        <option value="putih">Putih (White)</option>
+                                        <option value="merah">Merah (Red)</option>
                                         <option value="silver">Silver</option>
                                         <option value="gold">Gold</option>
                                     </select>
                                 </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Pilihan Warna Unit (Pisahkan dengan koma)</label>
+                                <input type="text" id="carColors" placeholder="Contoh: Hitam, Putih, Merah, Silver">
                             </div>
                             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                                 <div class="form-group" style="margin-bottom: 0;">
@@ -974,6 +981,7 @@
             const name = document.getElementById('carName').value;
             const price = document.getElementById('carPrice').value;
             const category = document.getElementById('carCategory').value;
+            const colors = document.getElementById('carColors').value;
             const specSeat = document.getElementById('specSeat').value;
             const specTrans = document.getElementById('specTrans').value;
             const specFuel = document.getElementById('specFuel').value;
@@ -986,6 +994,7 @@
                     id: editId || 'car_' + Date.now(),
                     name: name,
                     category: category,
+                    colors: colors,
                     price: parseInt(price),
                     image: imageData,
                     rating: '5.0 (New)',
@@ -1062,6 +1071,7 @@
             document.getElementById('carName').value = car.name;
             document.getElementById('carPrice').value = car.price;
             document.getElementById('carCategory').value = car.category;
+            document.getElementById('carColors').value = car.colors || '';
             document.getElementById('specSeat').value = car.specs.seat;
             document.getElementById('specTrans').value = car.specs.trans;
             document.getElementById('specFuel').value = car.specs.fuel;
@@ -1085,6 +1095,7 @@
             document.getElementById('addCarForm').reset();
             document.getElementById('editCarId').value = "";
             document.getElementById('existingImage').value = "";
+            document.getElementById('carColors').value = "";
 
             document.getElementById('formTitle').innerText = "Tambah Unit Baru";
             document.getElementById('submitBtn').innerHTML = "<i class='ri-add-line'></i> Simpan Mobil";
